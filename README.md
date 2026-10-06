@@ -21,10 +21,10 @@ Errepositorio honetan, Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarr
   - [6.3. Ikonoak](#63-ikonoak)
   - [6.4. Botoiak](#64-botoiak)
   - [6.5. Irudiak](#65-irudiak)
-7. [Prototipoa](#7-prototipoa)
-8. [Edukien lizentzia](#8-edukien-lizentzia)
-9. [Erabilgarritasunaren azterketa](#9-erabilgarritasunaren-azterketa)
-10. [Bibliografia eta webgrafia](#10-bibliografia-eta-webgrafia)
+- [7. Prototipoa](#7-prototipoa)
+- [8. Edukien lizentzia](#8-edukien-lizentzia)
+- [9. Erabilgarritasunaren azterketa](#9-erabilgarritasunaren-azterketa)
+- [10. Bibliografia eta webgrafia](#10-bibliografia-eta-webgrafia)
 
 <br>
 
