@@ -184,7 +184,7 @@ Edukien lizentziari dagokionez, ondorengo lerrotan jasota geratzen da erabiliko 
 
    Bergarako Antzoki Web webgunea garatzean erabilgarritasuna ardatz nagusietako bat izango da, erabiltzaile-profil anitza (gazteak eta weberako ohitura gutxiko pertsona helduak) kontuan hartuta.
 
-Kontuan hartu beharrekoak:
+**Kontuan hartu beharrekoak:**
 
   - ISO 9241-11: Efikazia (Erabiltzaileak bere helburua lortzea. Adibidez, programazioa kontsultatzea, emanaldi baten informazioa aurkitzea, sarrerak erostea edo antzokiarekin harremanetan jartzea).
     
@@ -194,7 +194,7 @@ Kontuan hartu beharrekoak:
 
 Nielsenen 10 heuristikoak: egoeraren ikusgarritasuna, hizkuntza ulergarria, kontrola eta askatasuna, koherentzia, erabilera malgutasuna, erroreen prebentzioa, menuak ikusgai, diseinu minimalista, akatsen konponbidea eta laguntza FAQ.
 
-Gaur egunera egokitzeko ere kontutan izan dira:
+**Gaur egunera egokitzeko ere kontutan izan dira:**
    
   - Irisgarritasuna: alt testuak, aria-label atributuak, kontraste nahikoa eta teklatuarekin nabigatzeko aukera.
   
@@ -204,7 +204,7 @@ Gaur egunera egokitzeko ere kontutan izan dira:
 
   - Webgunean 65 urtetik gorakoentzat, sarrerak erostean, erroreen prebentzioa eta diseinu minimalistagoa landuko da bereziki, hau silver economi atalaren barruan jorratuko da.
 
-Emango diren pausoak:
+**Emango diren pausoak:**
 
   - Analisi heuristikoa: prototipoa Nielsenen 10 printzipioen arabera berrikusi, eta aurkitutako arazoak zuzendu.
   
