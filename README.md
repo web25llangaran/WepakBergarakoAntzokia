@@ -159,6 +159,76 @@ Webguneko argazkiek eta kartelak garrantzi handia dute ikuskizunak erakargarri e
 
 <br>
 
-## 8. Erabilgarritasunaren Azterketa
+## 8. Edukien lizentzia
 
-*(Gehitu hemen erabiltzaile-test zein azterketei buruzko informazioa eta ondorioak)*
+Edukien lizentziari dagokionez, ondorengo lerrotan jasota geratzen da erabiliko diren lizentzia iturriak:
+
+- **Tipografia:**
+  
+  Google Fonts erabiliko da letra motentzat. Hau kode irekiko lizentzia da. Dohakoa
+
+- **Ikonoak:**
+
+  BootStrap Icons erabiliko da. Hau 2000 ikonoz goraztik osatutako kode irekiko, dohakoa eta kalitate handiko erraminta da.
+  Ordainketa ikonoak visa txartela etab... Banku pasarelak samurtutakoak izango dira.
+  
+- **Irudiak:**
+
+  Webgune honetarako irudi portzentai handiena ekitaldiena izango da, hauen irudiak, ekitaldi arduradunak erraztuko ditu. Arduradun hauek izango direlarik lizentziaren arduradunak.
+
+  Bestelako argazkiak berriz ondorengo webguneetatik jasoko dira: [Unsplash.com](https://unsplash.com/es) , [Pixabay](https://pixabay.com/es/), [Pexels](https://www.pexels.com/es-es/) Hauek lizentzia propiodunak eta dohakoak izango dira.
+
+  <br>
+
+## 9. Erabilgarritasunaren azterketa
+
+   KatuEtxetik webgunea garatzean erabilgarritasuna ardatz nagusietako bat izango da, erabiltzaile-profil anitza (gazteak eta weberako ohitura gutxiko pertsona helduak) kontuan hartuta.
+
+Kontuan hartu beharrekoak:
+
+   ISO 9241-11: efikazia (animalien babesleen sareak eta erabiltzaileak bere helburua lortzea: adoptatu, alerta sortu, dohaintza egin), efizientzia (klik eta esfortzu gutxi) eta gogobetetasuna (esperientzia positiboa).
+Nielsenen 10 heuristikoak: egoeraren ikusgarritasuna, hizkuntza ulergarria, kontrola eta askatasuna, koherentzia, erabilera malgutasuna, erroreen prebentzioa, menuak ikusgai, diseinu minimalista, akatsen konponbidea eta laguntza FAQ.
+
+   Gaur egunera egokitzeko ere kontutan izan dira:
+   
+- Irisgarritasuna: alt testuak, aria-label atributuak, kontraste nahikoa eta teklatuarekin nabigatzeko aukera.
+  
+- Mobile first eta abiadura: botoi handiak, beheko nabigazio barra iraunkorra, irudi arinak (WebP/AVIF) eta 2 segundo azpiko karga.
+  
+- Irakurketa-ereduak: informazio garrantzitsuena eta ekintza-deiak toki egokian jarriko dira.
+
+Emango diren pausoak:
+
+- Analisi heuristikoa: prototipoa Nielsenen 10 printzipioen arabera berrikusi, eta aurkitutako arazoak zuzendu.
+  
+- Irisgarritasun-berrikuspena: kontrastea, testu-tamainak eta alt testuak egiaztatu, batez ere testu txiki eta grisetan.
+  
+- Erabiltzaile testak: 5 erabiltzailerekin (profil gazteak eta helduak nahastuz) zeregin zehatzak proposatu: katu bat adoptatzeko prozesua hasi, galdutako maskota baten alerta sortu eta dohaintza egin. Horrela arazoen %85 inguru detektatuko da.
+  
+- Gogobetetasun inkesta: SUS galdetegia pasatu proba ondoren.
+  
+Hobekuntzak eta berriz probatzea: emaitzen arabera diseinua doitu eta aldaketak berrikusi.
+
+<br>
+
+## 10. Bibliografia eta webgrafia
+
+KatuEtxetik webgunearen diseinua burutzerako orduan, ondorengo iturriak kontsultatu dira:
+
+- Erabilgarritasuna, diseinu-printzipioak, irisgarritasuna, estilo-gida, tipografia eta baliabide teknikoak:
+
+   - Miguel Altuna Lanbide Heziketa (2026-2027) ikasmateriala.
+   - Tipografia: [Google Fonts](https://fonts.google.com/)
+   - Koloreak: [Realtimecolors](https://www.realtimecolors.com/)
+   - Irudiak: [Unsplash.com](https://unsplash.com/es) , [Pixabay](https://pixabay.com/es/), [Pexels](https://www.pexels.com/es-es/)
+   - Ikonoak: [BootStrap Icons](https://icons.getbootstrap.com/)
+   - [IA Figma](https://www.figma.com/)
+   - [IA Claude](https://claude.ai/)
+ 
+- Benchmarka (aztertutako webguneak)
+
+  - [Gipuzkoako Animalien Babeslea](https://protectoradegipuzkoa.com/eu)
+  - [Esperanza Felina](https://www.esperanzafelina.com/)
+  - [Katubihotz](https://www.katubihotz.com/)
+  - [Adopciones La Granja de Labayru](https://www.adopcioneslagranja.com/)
+  - [Felinos Bilbao](https://felinosbilbao.org)
