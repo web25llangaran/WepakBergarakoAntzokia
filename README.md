@@ -110,15 +110,15 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 
 ### 6.2. Tipografia
 
-Diseinuak bi letra-tipo nagusiren konbinazioa erabiltzen du: Serif klasiko bat izenburu eta kategoria kulturaletarako (dotorezia eta antzerki-izaera emateko) eta Sans-Serif funtzional bat testu gorputz, botoi eta UI osagaietarako.
+Diseinuak bi letra-tipo nagusiren konbinazioa erabiltzen du: Playfair Display  klasiko bat izenburu eta kategoria kulturaletarako (dotorezia eta antzerki-izaera emateko) eta Clarity City funtzional bat testu gorputz, botoi eta UI osagaietarako.
 
 | Erabilera | Letra-tipoa / Estiloa | Pisua (Weight) | Adibidea eta Ezaugarriak |
 | :--- | :--- | :--- | :--- |
-| **Izenburu Nagusiak (Hero H1)** | Serif (adib. *Playfair Display* / *Georgia*) | Bold & Italic mix | Izenburu nagusietan hitz gakoak italikoz nabarmentzen dira izaera artistikoa emateko. |
-| **Atal Izenburuak (H2 / H3)** | Serif (adib. *Playfair Display* / *Merriweather*) | Bold | `Datozen ekitaldiak` bezalako atal nagusietarako. |
-| **Subkategoriak / Tag-ak** | Sans-Serif (adib. *Inter* / *Roboto*) | Bold / Uppercase | Botoietan, txarteletako kategoria-etiketetan (`ANTZERKIA`, `MUSIKA`, `DANTZA`) testu larriz. |
-| **Testu Gorputza (Body)** | Sans-Serif (adib. *Inter* / *System UI*) | Regular (400) | Deskribapen eta paragrafo nagusietan irakurgarritasun handia bermatzeko. |
-| **Meta-data eta Prezioak** | Sans-Serif | Medium / Bold | Datak, orduak, aretoak eta prezioak (`22,00€`) argi eta garbi erakusteko. |
+| **Izenburu Nagusiak (Hero H1)** | Playfair Display | Bold & Italic mix | Izenburu nagusietan hitz gakoak italikoz nabarmentzen dira izaera artistikoa emateko. |
+| **Atal Izenburuak (H2 / H3)** | Playfair Display | Bold | `Datozen ekitaldiak` bezalako atal nagusietarako. |
+| **Subkategoriak / Tag-ak** | Clarity City | Bold / Uppercase | Botoietan, txarteletako kategoria-etiketetan (`ANTZERKIA`, `MUSIKA`, `DANTZA`) testu larriz. |
+| **Testu Gorputza (Body)** | Clarity City | Regular (400) | Deskribapen eta paragrafo nagusietan irakurgarritasun handia bermatzeko. |
+| **Meta-data eta Prezioak** | Clarity City | Medium / Bold | Datak, orduak, aretoak eta prezioak (`22,00€`) argi eta garbi erakusteko. |
 
 
 ### 6.3. Ikonoak
