@@ -244,7 +244,7 @@ Hobekuntzak eta berriz probatzea: emaitzen arabera diseinua doitu eta aldaketak 
 
 ## 10. Bibliografia eta webgrafia
 
-KatuEtxetik webgunearen diseinua burutzerako orduan, ondorengo iturriak kontsultatu dira:
+Bergarako antzokiko webgunearen diseinua burutzerako orduan, ondorengo iturriak kontsultatu dira:
 
 - Erabilgarritasuna, diseinu-printzipioak, irisgarritasuna, estilo-gida, tipografia eta baliabide teknikoak:
 
