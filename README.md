@@ -144,7 +144,7 @@ Webguneko argazkiek eta kartelak garrantzi handia dute ikuskizunak erakargarri e
 
 ## 7. Prototipoa
 
-*(Gehitu hemen Figma edo beste tresna baten bidez egindako prototipo interaktiboaren esteka)*
+[Esteka](https://www.figma.com/make/cSZZR61VIvdkEErPISoQ94/Bergara-Antzoki-Web?p=f&t=oeZJ5F1ilhsOBIHI-0)
 
 ---
 
