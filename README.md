@@ -76,9 +76,9 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
   * **Helduak / Adinekoak:** Teknologiekin harreman txikiagoa dutenak eta interfaze oso argia eta erraza behar dutenak.
 * **Funtsezko irizpidea:** Interfazearen erabilgarritasuna (accessibility & usability) ardatz nagusia izango da garapen osoan zehar.
 * **Identifikatutako hiru rol nagusiak:**
-  1. **Erabiltzaile erregistratua (Arrunta):** Webguneko bolumen nagusia. Ekitaldiak ikusi, txartelak erosi eta bere erosketen historia kudea dezake.
-  2. **Gonbidatua:** Erregistratu gabeko bisitaria. Orrialdearen edukia eta agenda ikus ditzake, baina sarrerak erosteko erregistratu edo identifikatu beharko da.
-  3. **Administratzailea:** Edukien, ekitaldien eta sarreren kudeaketaz arduratzen den profila.
+  * **Erabiltzaile erregistratua (Arrunta):** Webguneko bolumen nagusia. Ekitaldiak ikusi, txartelak erosi eta bere erosketen historia kudea dezake.
+  * **Gonbidatua:** Erregistratu gabeko bisitaria. Orrialdearen edukia eta agenda ikus ditzake, baina sarrerak erosteko erregistratu edo identifikatu beharko da.
+  * **Administratzailea:** Edukien, ekitaldien eta sarreren kudeaketaz arduratzen den profila.
 
 <br>
 
