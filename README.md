@@ -76,7 +76,7 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 * **Identifikatutako hiru rol nagusiak:**
   1. **Erabiltzaile erregistratua (Arrunta):** Webguneko bolumen nagusia. Ekitaldiak ikusi, txartelak erosi eta bere erosketen historia kudea dezake.
   2. **Gonbidatua:** Erregistratu gabeko bisitaria. Orrialdearen edukia eta agenda ikus ditzake, baina sarrerak erosteko erregistratu edo identifikatu beharko da.
-  3. **Administratzailea:** Edukien kudeaketaz, ekitaldi berriak igotzeaz eta sarreren salmenta kontrolatzeaz arduratzen den profila.
+  3. **Administratzailea:** Edukien, ekitaldien eta sarreren kudeaketaz arduratzen den profila.
 
 <br>
 
