@@ -1,6 +1,7 @@
 # BERGARAKO ANTZOKIA — WEB PROIEKTUA
 
-Bergarako antzokiko ekintzen informazioa kontsultatzeko eta sarrerak erosteko webgunearen garapen-dokumentazioa.
+Errepositorio honetan, Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez saltzeko webgune baten sorrera landuko da. Honen kudeaketa barne hartuz.
+
 
 <br>
 
