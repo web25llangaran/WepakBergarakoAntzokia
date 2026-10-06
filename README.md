@@ -27,32 +27,42 @@ Bergarako antzokiko ekintzen informazioa kontsultatzeko eta sarrerak erosteko we
 
 ## 1. Sarrera
 
-Bergarako Antzokia udalerriko kultura eta aisialdi eskaintzaren pilar nagusietako bat da. Proiektu honen helburu nagusia antzokiaren ingurune digitala berritzea da, herritarrei eta bisitariei zerbitzu moderno, azkar eta hurbil bat eskaintzeko asmoz.
+Bergarako Antzokia udalerriko kultura eta aisialdi eskaintzaren ardatz nagusietako bat da. Proiektu honen helburu nagusia antzokiaren ingurune digitala berritzea da, herritarrei eta bisitariei zerbitzu moderno, azkar eta hurbil bat eskaintzeko asmoz.
 
 * **Testuingurua eta Proiektuaren Jatorria:** Udalerriko kultur ekosistema indartzea eta kudeaketa digitala eguneratzea.
-* **Helburu Nagusia:** Bergaran antolatzen diren kultura-ekitaldi guztiak —hala nola antzerkiak, kontzertuak, proiekzioak eta herri-ekimenak— modu zehatz, erakargarri eta intuitiboan ikusaraztea.
+* **Helburu Nagusia:** Bergarako antzokian antolatzen diren kultura-ekitaldi guztiak —hala nola antzerkiak, kontzertuak, proiekzioak eta herri-ekimenak— modu zehatz, erakargarri eta intuitiboan ikusaraztea.
 * **Funtzionalitate Nagusia eta Balio Erantsia:** Erabiltzaileak uneoro eguneratuta dagoen agenda bat izango du eskura. Ekitaldien xehetasunak kontsultatzeaz gain, sarrerak linean erosteko eta aukeratutako eserlekuak modu errazean hautatzeko aukera osoa izango du, izapideak azkartuz eta lehiatilan sortzen diren ilarak ekidinez.
 
 ---
 
 ## 2. Benchmark-a
 
-| Webgunea | Indarguneak | Ahuleziak | Esteka |
-| :--- | :--- | :--- | :--- |
-| **Diario Vasco – Agenda** | Ekitaldi kopuru handia eta kategoria ugari. | Diseinu zaharkitua eta kargatua. | [Ikusi](https://agenda.diariovasco.com/) |
-| **Gipuzkoan** | Gipuzkoako herri askotako ekitaldiak biltzen ditu. | Nabigazioa ez da oso intuitiboa. | [Ikusi](https://agenda.diariovasco.com/) |
-| **Kulturklik** | Kultura-eskaintza oso zabala. | Euskadi osoa hartzen du, ez dago tokian tokikora bideratuta. | [Ikusi](https://www.kulturklik.euskadi.eus/) |
-| **Euskalplan** | Diseinu modernoa eta iragazki erabilgarriak. | Informazio gehiegi erakusten du aldi berean. | [Ikusi](https://www.euskalplan.eus/es) |
-| **Kulturweb** | Kontzertu, jai eta kultura-ekitaldi ugari. | Informazioa oso pilatuta dago, irakurgarritasuna zailduz. | [Ikusi](https://www.kulturweb.com/) |
+Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez saltzeko aplikazioa garatu aurretik, inguruko herrietako kultur atarien analisia burutu da, honako iturburuetako informazioan oinarrituta:
+
+- **Arkupe Aretxabaleta** : [https://www.aretxabaleta.eus/es/arkupe/agenda](https://www.aretxabaleta.eus/es/arkupe/agenda)
+   - **Ona** : Agenda orokorra erakusten du (antzerkia, kontzertuak, ikastaroak). Hizkuntza aukeraketa (EU/ES) eta bilatzailea ditu. Ordutegiak, helbidea eta harremanetarako bideak oso argi zehazten ditu.
+   - **Ahula** : Online sarrera salmenta, kanpoko zerbitzu baten bidez egiten du (aretxabaleta.sacatuentrada.es).  Erosketan ez du xamurtasunik ematen online zerbitzuetan jajoak ez diren erabiltzaileentzat (Adibidez: 65utetik gorako erabiltzaileak).
+
+- **Amaia Antzokia Arrasate** : [https://amaiaarrasate.janto.es/](https://amaiaarrasate.janto.es/)
+   - **Ona** : Kategoriak bereizten ditu (cine, cine infantil, musika, teatro, teatro infantil). Ekitaldi bakoitzean data, prezioa (4€, 5€ edo 15€) eta sarrera erosteko botoia ("Comprar") ikusten dira.
+   - **Ahula** : Erosketan ez du samurtasunik ematen online zerbitzuetan jajoak ez diren erabiltzaileentzat (Adibidez: 65utetik gorako erabiltzaileak).
+     
+- **Coliseo Eibar** : [https://www.eibar.eus/es/cultura/coliseo/cartelera-de-cine-en-el-coliseo](https://www.eibar.eus/es/cultura/coliseo/cartelera-de-cine-en-el-coliseo)
+   - **Ona** :  Zinemako kartelera, aurretiazko salmenta atala eta "Coliseoaren laguna" txartela kudeatzeko atalak ditu..
+   - **Ahula** : Udal atariaren barruan dago. Online sarrera salmenta, kanpoko zerbitzu baten bidez egiten du (https://ticket.kutxabank.es/janto/main.php?idProvincia=20)
+
+- **Elgoibar Herriko Antzokia** : [https://herrikoantzokia.eus/](https://herrikoantzokia.eus/)
+   - **Ona** : Egutegi grafikoa du hilabeteko egunekin. Kategoriak bereizten ditu.
+  - **Ahula** : Erosketan ez du samurtasunik ematen online zerbitzuetan jajoak ez diren erabiltzaileentzat (Adibidez: 65utetik gorako erabiltzaileak)
 
 ### 2.1. Ondorioak
 
-* **Erreferentzien aukeraketa:** Webgune hauek aztertu dira Gipuzkoako ekitaldien inguruko erreferente nagusiak direlako eta bakoitzak ezaugarri zehatz batzuk nabarmentzen dituelako.
-* **Diseinuaren norabidea:** 
-  * *Euskalplan*-etik diseinu modernoa eta iragazkien sistema hartuko dira.
-  * *Diario Vasco*-tik ekitaldien aniztasuna kudeatzeko modua.
-  * *Gipuzkoan*-etik herrien eta lekuen antolaketa-egitura.
-* **Azken helburua:** Webgune sinple, modernoa eta erabilerraza lortzea, non erabiltzaileak ekitaldia, data, lekua eta prezioa azkar eta gutxieneko klik kopuruan aurkituko dituen.
+- Webgunera sartu ahal izateko domeinu izen erraza sortu.
+- Webguneak elebitasuna izango du ardatz (eu/es).
+- Erabiltzaileari erraztasunak eman: Filtroak erabiliko dira ekitaldiak samurrago bilatu ahal izateko.
+- Ekitaldi bakoitzean data, prezioa eta informazio garrantzitsua lehen begiradan agertuko da.
+- Sarrera erosketa zuzena. Samurtasunak emanaz online zerbitzuetan jajoak ez diren erabiltzaileentzat (silver economi landuaz).
+- Webguneko kudeaketari buruz ezin daiteke ondoriorik atera ez bait daukagu beste erreferentziarik. Hala ere, kudeaketa intuitibo eta erraza proposatuko da.
 
 ---
 
