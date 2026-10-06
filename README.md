@@ -89,17 +89,17 @@ Webgunea ahalik eta bakunena eta ulertzeko errazena burutuko da, adin guztietako
 
 ### 4.1. Mugikorra
 
-![Mobile prototipo](diseinua/img/MugikorraBozetoa.png)
+![Mobile prototipo](diseinua/img/MugikorraBozetoa.jpeg)
 
 ### 4.2. Mahaigaina
 
-![Mahaigaina prototipoa](diseinua/img/OrdenagailuBozetoa.png)
+![Mahaigaina prototipoa](diseinua/img/OrdenagailuBozetoa.jpeg)
 
 <br>
 
 ## 5. Nabigazio Mapa
 
-![Nabigazio mapa](diseinua/img/NabigazioMapa.png)
+![Nabigazio mapa](diseinua/img/NabigazioMapa.jpeg)
 
 <br>
 
