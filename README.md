@@ -109,11 +109,11 @@ Orrialdea ahalik eta bakunena eta ulertzeko errazena egiten saiatu gara, adin gu
 
 | Funtzioa | Kolorea | Hex Kodea | Helburua / Aplikazioa |
 | :--- | :--- | :---: | :--- |
-| **Primary** | Electric Crimson | `#D91B42` | Goiburu nagusiak, ekintza-botoiak (CTA) eta egoera aktiboak. |
-| **Secondary** | Deep Ink / Slate | `#0F172A` | Oinarrizko atzealdeak, administrazio-panela eta testu nagusia. |
-| **Accent** | Acid Lime / Citron | `#D2F535` | Kategoria-ikurrak, hautatutako eserlekuak eta prezio nabarmenduak. |
-| **Background** | Pure Cold White | `#F8FAFC` | Gune publikoko atzealde garbi eta zabala. |
-| **Surface** | Pure White (Shadow) | `#FFFFFF` | Ekitaldien txartelak (cards) eta edukiontzi nagusiak. |
+| **Primary** | Granatea | #7A1C2C | Goiburu nagusiak, ekintza-botoiak (CTA) eta egoera aktiboak. |
+| **Secondary** | Ikatz-granate iluna  | #260F10 | Oinarrizko atzealdeak, administrazio-panela. |
+| **Accent** | Urre Zaharra | #D4AF37 | Kategoria-ikurrak, hautatutako eserlekuak eta prezio nabarmenduak. |
+| **Background** | Grisa, Zuri hautsia | #F9F9FB| Gune publikoko atzealde garbi eta zabala. |
+| **Testua eta egitura** | Ikatz-granate iluna  | #260F10  | Irakurgarritasun handia, beltz puruaren kontraste gogorrik gabe |
 
 ### 6.2. Tipografia
 
