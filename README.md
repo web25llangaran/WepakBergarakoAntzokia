@@ -50,7 +50,7 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
      
 - **Coliseo Eibar** : [https://www.eibar.eus/es/cultura/coliseo/cartelera-de-cine-en-el-coliseo](https://www.eibar.eus/es/cultura/coliseo/cartelera-de-cine-en-el-coliseo)
    - **Ona** :  Zinemako kartelera, aurretiazko salmenta atala eta "Coliseoaren laguna" txartela kudeatzeko atalak ditu..
-   - **Ahula** : Udal atariaren barruan dago. Online sarrera salmenta, kanpoko zerbitzu baten bidez egiten du: https://ticket.kutxabank.es/janto/main.php?idProvincia=20
+   - **Ahula** : Udal atariaren barruan dago. Online sarrera salmenta, kanpoko zerbitzu baten bidez egiten du: ticket.kutxabank.es/janto...
 
 - **Elgoibar Herriko Antzokia** : [https://herrikoantzokia.eus/](https://herrikoantzokia.eus/)
    - **Ona** : Egutegi grafikoa du hilabeteko egunekin. Kategoriak bereizten ditu.
