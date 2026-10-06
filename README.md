@@ -84,15 +84,22 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 
 ## 4. Krokisa (Wireframes)
 
+Gure paginaren kasuan **Mobile first** kontuan izan dugu, hau gure orrialdea batez ere mugikorretatik erabiliko delako da.
+Orrialdea ahalik eta bakunena eta ulertzeko errazena egiten saiatu gara, adin guztietako jendearentzat eskuragarri egon dadin.
+
 ### 4.1. Mugikorra
 
+![Mobile prototipo](img/MugikorraBozetoa.png)
 
 ### 4.2. Mahaigaina
+
+![Mahaigaina prototipoa](img/OrdenagailuBozetoa.png)
 
 <br>
 
 ## 5. Nabigazio Mapa
 
+![Nabigazio mapa](img/NabigazioMapa.png)
 
 <br>
 
