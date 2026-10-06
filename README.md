@@ -84,28 +84,31 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 
 ## 4. Krokisa (Wireframes)
 
-Gure paginaren kasuan **Mobile first** kontuan izan dugu, hau gure orrialdea batez ere mugikorretatik erabiliko delako da.
-Orrialdea ahalik eta bakunena eta ulertzeko errazena egiten saiatu gara, adin guztietako jendearentzat eskuragarri egon dadin.
+Webguneko krokisa burutzean **Mobile first** kontuan izan da, hau orrialdea batez ere mugikorretatik erabiliko delako da.
+Webgunea ahalik eta bakunena eta ulertzeko errazena burutuko da, adin guztietako jendearentzat eskuragarri egon dadin.
 
 ### 4.1. Mugikorra
 
-![Mobile prototipo](img/MugikorraBozetoa.png)
+![Mobile prototipo](diseinua/img/MugikorraBozetoa.png)
 
 ### 4.2. Mahaigaina
 
-![Mahaigaina prototipoa](img/OrdenagailuBozetoa.png)
+![Mahaigaina prototipoa](diseinua/img/OrdenagailuBozetoa.png)
 
 <br>
 
 ## 5. Nabigazio Mapa
 
-![Nabigazio mapa](img/NabigazioMapa.png)
+![Nabigazio mapa](diseinua/img/NabigazioMapa.png)
 
 <br>
 
 ## 6. Estilo Gida
 
 ### 6.1. Koloreak
+
+Antzokiko batetako webgunerako, koloreen paletak, grina, sormena, kultura jasoa eta gertukoa transmititu nahi ditu.
+Hau kontuan izanik, kolore bat esleitzeko, gida honek gaiari lotutako ondorengo kolore-paleta proposatzen du: 
 
 | Funtzioa | Kolorea | Hex Kodea | Helburua / Aplikazioa |
 | :--- | :--- | :---: | :--- |
@@ -114,6 +117,19 @@ Orrialdea ahalik eta bakunena eta ulertzeko errazena egiten saiatu gara, adin gu
 | **Accent** | Urre Zaharra | #D4AF37 | Kategoria-ikurrak, hautatutako eserlekuak eta prezio nabarmenduak. |
 | **Background** | Grisa, Zuri hautsia | #F9F9FB| Gune publikoko atzealde garbi eta zabala. |
 | **Testua eta egitura** | Ikatz-granate iluna  | #260F10  | Irakurgarritasun handia, beltz puruaren kontraste gogorrik gabe |
+
+Granatea da kolore nagusia, eta antzokiaren irudi tradizionala dakar gogora. Berotasuna, grina eta sormena transmititzen ditu, eta, gorri biziak ez bezala, serio eta dotore sentitzen da.
+
+Ikatz-granate iluna, ia beltza da, baina marroi-gorrixka apur batekin, beltz hutsa baino beroagoa, argiak itzali eta ikuskizuna hasi baino lehenagokoa. Testurako ere ona da, irakurgarritasun handia ematen baitu zuriaren gainean.
+
+Zuri hautsia, atzeko plano gisa lasaitasuna eta garbitasuna ematen ditu. Beste koloreei arnasa eman eta webgunea ez da horren astuna egiten, nahiz eta kolore ilun asko erabili.
+
+Urre zaharra, distira eta ospakizunari lotua.Iikuskizunaren "estreinaldia", sarrerak eta ekitaldi bereziak. Ez da gehiegi erabiliko, bitxikeria edo luxu itxura hartuko bait luke, eta herriko antzoki bat gertukoa izan behar da.
+
+More iluna,  multzoko kolore "zaratatsuena" da. Sormena, misterioa eta ikuskizunaren fantasia transmititzen ditu, eta webgunea tradizionalegi geratzea saihesten du. Granatearekin eta urrearekin batera erabilita, antzoki-giro klasiko hori eguneratzen du, eta gazteagoentzat erakargarriagoa egiten du. 
+
+![Kolore paleta](diseinua/img/BergarakoAntzokiaKOLOREAK.jpg)
+![Kolore paleta Realtimes Colors ](diseinua/img/EstiloGidaKoloreak.png)
 
 ### 6.2. Tipografia
 
