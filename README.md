@@ -2,7 +2,7 @@
 
 Bergarako antzokiko ekintzen informazioa kontsultatzeko eta sarrerak erosteko webgunearen garapen-dokumentazioa.
 
----
+<br>
 
 ## AURKIBIDEA
 
