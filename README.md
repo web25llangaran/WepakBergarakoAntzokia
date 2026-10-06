@@ -23,7 +23,7 @@ Bergarako antzokiko ekintzen informazioa kontsultatzeko eta sarrerak erosteko we
 - [7. Prototipoa](#7-prototipoa)
 - [8. Erabilgarritasunaren Azterketa](#8-erabilgarritasunaren-azterketa)
 
----
+<br>
 
 ## 1. Sarrera
 
@@ -33,7 +33,7 @@ Bergarako Antzokia udalerriko kultura eta aisialdi eskaintzaren ardatz nagusieta
 * **Helburu Nagusia:** Bergarako antzokian antolatzen diren kultura-ekitaldi guztiak —hala nola antzerkiak, kontzertuak, proiekzioak eta herri-ekimenak— modu zehatz, erakargarri eta intuitiboan ikusaraztea.
 * **Funtzionalitate Nagusia eta Balio Erantsia:** Erabiltzaileak uneoro eguneratuta dagoen agenda bat izango du eskura. Ekitaldien xehetasunak kontsultatzeaz gain, sarrerak linean erosteko eta aukeratutako eserlekuak modu errazean hautatzeko aukera osoa izango du, izapideak azkartuz eta lehiatilan sortzen diren ilarak ekidinez.
 
----
+<br>
 
 ## 2. Benchmark-a
 
@@ -64,7 +64,7 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 - Sarrera erosketa zuzena. Samurtasunak emanaz online zerbitzuetan jajoak ez diren erabiltzaileentzat (silver economi landuaz).
 - Webguneko kudeaketari buruz ezin daiteke ondoriorik atera ez bait daukagu beste erreferentziarik. Hala ere, kudeaketa intuitibo eta erraza proposatuko da.
 
----
+<br>
 
 ## 3. Erabiltzaile Profila (User Profile)
 
@@ -77,7 +77,7 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
   2. **Gonbidatua:** Erregistratu gabeko bisitaria. Orrialdearen edukia eta agenda ikus ditzake, baina sarrerak erosteko erregistratu edo identifikatu beharko da.
   3. **Administratzailea:** Edukien kudeaketaz, ekitaldi berriak igotzeaz eta sarreren salmenta kontrolatzeaz arduratzen den profila.
 
----
+<br>
 
 ## 4. Krokisa (Wireframes)
 
@@ -86,12 +86,12 @@ Bergarako Antzokiko ekitaldiak sarean erakusteko eta sarrerak Internet bidez sal
 
 ### 4.2. Mahaigaina
 
----
+<br>
 
 ## 5. Nabigazio Mapa
 
 
----
+<br>
 
 ## 6. Estilo Gida
 
@@ -117,7 +117,6 @@ Diseinuak bi letra-tipo nagusiren konbinazioa erabiltzen du: Serif klasiko bat i
 | **Testu Gorputza (Body)** | Sans-Serif (adib. *Inter* / *System UI*) | Regular (400) | Deskribapen eta paragrafo nagusietan irakurgarritasun handia bermatzeko. |
 | **Meta-data eta Prezioak** | Sans-Serif | Medium / Bold | Datak, orduak, aretoak eta prezioak (`22,00€`) argi eta garbi erakusteko. |
 
----
 
 ### 6.3. Ikonoak
 
@@ -128,7 +127,6 @@ Diseinuak bi letra-tipo nagusiren konbinazioa erabiltzen du: Serif klasiko bat i
   * **Ordainketa:** Ordaintzeko moten ikonoak jarriko ditugu (`Visa | Bizum`).
 * **Estiloa:** Lerro garbiak, 1.5px - 2px-ko lodiera, testuaren kolore berekoak edo **Primary** (`#D91B42`) / **Accent** (`#D2F535`) koloreetan nabarmenduta.
 
----
 
 ### 6.4. Botoiak
 
@@ -141,7 +139,6 @@ Botoiek hierarkia bisual argia jarraitzen dute, erabiltzailea ekintza nagusira (
 | **Header** | Atzealdea: Gardena<br>Bordea: Zuria (`#FFFFFF`)<br>Testua: Zuria | Goiburuko akzioak (`Erregistratu / Saioa`). |
 | **Text link** | Atzealdea: Gardena<br>Testua: Zuria / **Primary** | Navigazio simplerako estekak (`Ekitaldiak`). |
 
----
 
 ### 6.5. Irudiak
 
@@ -151,12 +148,13 @@ Webguneko argazkiek eta kartelak garrantzi handia dute ikuskizunak erakargarri e
 * **Ekitaldien Argazkiak (Txartelak):** Ekitaldi bakoitzak bere kartel edo argazkia izango du neurri berean, dena ordenatuta ikus dadin.
 * **Etiketak Argazkien Gainean:** Argazkien goiko ertzean etiketa txikiak jarriko dira ikuskizun mota adierazteko (adibidez: *Antzerkia*, *Musika*, *Dantza*) edo ekitaldia gomendatua dela nabarmentzeko.
 
+<br>
 
 ## 7. Prototipoa
 
 [Esteka](https://www.figma.com/make/cSZZR61VIvdkEErPISoQ94/Bergara-Antzoki-Web?p=f&t=oeZJ5F1ilhsOBIHI-0)
 
----
+<br>
 
 ## 8. Erabilgarritasunaren Azterketa
 
