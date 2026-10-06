@@ -160,9 +160,9 @@ Botoiek hierarkia bisual argia jarraitzen dute, erabiltzailea ekintza nagusira (
 
 | Botoi Mota | Itxura eta Koloreak (Tabla Ofizialaren Arabera) | Erabilera Interfazean |
 | :--- | :--- | :--- |
-| **CTA Nagusia** | Atzealdea: **Primary** (`#D91B42`)<br>Testua: Zuria (`#FFFFFF`)<br>Bordeak: Biribildu leunak | Hero ataleko botoi nagusia (`Sarrerak erosi →`) eta formularioetako akzioak (`Filtratu`). |
-| **Txartelak** | Atzealdea: **Secondary** (`#0F172A`)<br>Testua: Zuria (`#FFFFFF`)<br>Hover: Akzentuzko argitasuna | Ekitaldi-txartel bakoitzaren barruko botoia (`Sarrerak erosi`). |
-| **Header** | Atzealdea: Gardena<br>Bordea: Zuria (`#FFFFFF`)<br>Testua: Zuria | Goiburuko akzioak (`Erregistratu / Saioa`). |
+| **CTA Nagusia** | Atzealdea: **Primary** (#7A1C2C)<br>Testua: Zuria (#FFFFFF)<br>Bordeak: Biribildu leunak | Hero ataleko botoi nagusia (`Sarrerak erosi →`) eta formularioetako akzioak (`Filtratu`). |
+| **Txartelak** | Atzealdea: **Secondary** (#260F10)<br>Testua: Zuria (#FFFFFF)<br>Hover: Akzentuzko argitasuna | Ekitaldi-txartel bakoitzaren barruko botoia (`Sarrerak erosi`). |
+| **Header** | Atzealdea: Gardena<br>Bordea: Zuria (#FFFFFF)<br>Testua: Zuria | Goiburuko akzioak (`Erregistratu / Saioa`). |
 | **Text link** | Atzealdea: Gardena<br>Testua: Zuria / **Primary** | Navigazio simplerako estekak (`Ekitaldiak`). |
 
 
