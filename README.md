@@ -129,6 +129,7 @@ Urre zaharra, distira eta ospakizunari lotua.Iikuskizunaren "estreinaldia", sarr
 More iluna,  multzoko kolore "zaratatsuena" da. Sormena, misterioa eta ikuskizunaren fantasia transmititzen ditu, eta webgunea tradizionalegi geratzea saihesten du. Granatearekin eta urrearekin batera erabilita, antzoki-giro klasiko hori eguneratzen du, eta gazteagoentzat erakargarriagoa egiten du. 
 
 ![Kolore paleta](diseinua/img/BergarakoAntzokiaKOLOREAK.jpg)
+
 ![Kolore paleta Realtimes Colors ](diseinua/img/EstiloGidaKoloreak.png)
 
 ### 6.2. Tipografia
@@ -243,7 +244,7 @@ Hobekuntzak eta berriz probatzea: emaitzen arabera diseinua doitu eta aldaketak 
 
 ## 10. Bibliografia eta webgrafia
 
-KatuEtxetik webgunearen diseinua burutzerako orduan, ondorengo iturriak kontsultatu dira:
+Bergarako antzokiko webgunearen diseinua burutzerako orduan, ondorengo iturriak kontsultatu dira:
 
 - Erabilgarritasuna, diseinu-printzipioak, irisgarritasuna, estilo-gida, tipografia eta baliabide teknikoak:
 
