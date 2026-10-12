@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+//Breeze-k sortu dauena komentau eta taula egokirako modeloa sortu:
+// #[Fillable(['name', 'email', 'password'])]
+#[Fillable(['user_izena', 'email', 'password', 'alta_data', 'baja_data', 'izena', 'abizena', 'rola', 'nan'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -27,6 +29,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            //modu honetara datubasetik irakurritako datu hauek string moduan tratatu beharrean datetime bezela tratatuko ditu:
+            'alta_data' => 'datetime',
+            'baja_data' => 'datetime',
         ];
     }
 }

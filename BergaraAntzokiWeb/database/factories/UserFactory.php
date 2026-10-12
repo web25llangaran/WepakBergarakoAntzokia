@@ -23,12 +23,19 @@ class UserFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {   
         return [
-            'name' => fake()->name(),
+            // users taula aldatu da, beraz hau be aldatu ein biher da:
+            // 'name' => fake()->name(),   
+            'izena' => fake()->firstName(),
+            'abizena' => fake()->lastName(),
+            'user_izena' => fake()->unique()->userName(),
+            'nan' => fake()->unique()->numerify('########') . fake()->randomLetter(),
+            'rola' => 'arrunta',
+            'alta_data' =>  now(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('12345678'),
             'remember_token' => Str::random(10),
         ];
     }

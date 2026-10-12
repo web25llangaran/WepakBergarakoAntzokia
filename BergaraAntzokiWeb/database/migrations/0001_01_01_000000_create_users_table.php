@@ -11,12 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //kode hau aldatu users taula behar den bezala jartzeko. Berez hau breeze-kin sortu bait da.
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            // $table->string('name');
+            $table->string('user_izena')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->dateTime('alta_data');
+            $table->dateTime('baja_data')->nullable();
+            $table->string('izena');
+            $table->string('abizena');
+            $table->enum('rola', ['admin', 'arrunta'])->default('arrunta');
+            $table->string('nan', 9)->nullable()->unique();
             $table->rememberToken();
             $table->timestamps();
         });
