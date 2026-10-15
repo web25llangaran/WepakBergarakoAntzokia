@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('izan', function (Blueprint $table) {
-            $table->foreignId('id_ekitaldia')->constrained('ekitaldiak')->cascadeOnDelete();
-            $table->foreignId('id_aretoa')->constrained('aretoak')->cascadeOnDelete();
-            $table->primary(['id_ekitaldia', 'id_aretoa']);
+        Schema::create('erosi_sarrera', function (Blueprint $table) {
+            $table->foreignId('id_sarrera')->constrained('sarrerak')->cascadeOnDelete();
+            $table->foreignId('id_user')->constrained('users')->cascadeOnDelete();
+            $table->primary(['id_sarrera', 'id_user']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('izan');
+        Schema::dropIfExists('erosi_sarrera');
     }
 };
