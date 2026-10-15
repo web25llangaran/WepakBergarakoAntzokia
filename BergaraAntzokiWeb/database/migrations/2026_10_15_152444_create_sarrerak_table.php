@@ -15,14 +15,13 @@ return new class extends Migration
             $table->id();
             // Taulan entitate erlazio ereduan definitutako zutabeak gehitu:
             $table->foreignId('id_ekitaldia')->constrained('ekitaldiak')->cascadeOnDelete();
+            $table->foreignId('id_aretoa')->constrained('aretoak')->cascadeOnDelete();
+            $table->foreignId('id_eserlekua')->constrained('eserlekuak')->cascadeOnDelete();
             $table->dateTime('data');
-            $table->unsignedSmallInteger('lerro_zenb');
-            $table->unsignedSmallInteger('exerleku_zenb');
-            $table->enum('mota', ['arrunta','silver_economy'])->default('arrunta');
             $table->decimal('prezioa',8,2);
             $table->timestamps();
             //hau seguridade kontue da: Ez dadila butaka bera behin baino gehiagotan erosi ekitaldi berean.
-            $table->unique(['id_ekitaldia', 'lerro_zenb', 'exerleku_zenb']);
+            $table->unique(['id_ekitaldia', 'id_aretoa', 'id_eserlekua']);
         });
     }
 

@@ -8,7 +8,6 @@ class Sarrera extends Model
 {
     //sarrerak taulakin bat datorren klasea sortu:
     // protected $table = 'sarrerak';
-    protected $fillable = ['id_ekitaldia', 'data', 'lerro_zenb', 'exerleku_zenb', 'mota', 'prezioa'];
-    protected $casts =['data'=>'datetime',
-                        'prezioa'=>'decimal:2'];
+    protected $fillable = ['id_ekitaldia', 'id_aretoa', 'id_eserlekua', 'data','prezioa'];
+    protected $casts =['prezioa'=>'decimal:2'];
 }
