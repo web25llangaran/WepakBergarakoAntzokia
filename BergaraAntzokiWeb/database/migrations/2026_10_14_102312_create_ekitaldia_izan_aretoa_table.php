@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('izan');
+        Schema::dropIfExists('ekitaldia_izan_aretoa');
     }
 };

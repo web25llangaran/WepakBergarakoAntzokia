@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('erosi_sarrera', function (Blueprint $table) {
             $table->foreignId('id_sarrera')->constrained('sarrerak')->cascadeOnDelete();
             $table->foreignId('id_user')->constrained('users')->cascadeOnDelete();
-            $table->primary(['id_sarrera', 'id_user']);
+            $table->primary(['id_sarrera']);
             $table->timestamps();
         });
     }

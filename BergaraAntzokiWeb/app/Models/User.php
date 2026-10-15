@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 //Breeze-k sortu dauena komentau eta taula egokirako modeloa sortu:
 // #[Fillable(['name', 'email', 'password'])]
@@ -34,4 +35,26 @@ class User extends Authenticatable
             'baja_data' => 'datetime',
         ];
     }
+
+    //User batek kudeatu dituen sarrerak ezagutzeko:
+    public function kudeatutako_sarrerak()
+    {
+        return $this->belongsToMany(Sarrera::class, 'kudeatu_sarrera', 'id_user', 'id_sarrera')
+            ->withTimestamps();
+    }
+
+    //User batek erosi dituen sarrerak ezagutzeko: 
+    public function erositako_sarrerak()
+    {
+        return $this->belongsToMany(Sarrera::class, 'erosi_sarrera', 'id_user', 'id_sarrera')
+        ->withTimestamps();
+    }
+
+    //User batek kudeatu dituen ekitaldiak ezagutzeko:
+    public function kudeatutako_ekitaldiak()
+    {
+        return $this->belongsToMany(Sarrera::class, 'kudeatu_ekitaldia', 'id_user', 'id_ekitaldia')
+            ->withTimestamps();
+    }
+
 }
