@@ -1,355 +1,661 @@
+/* Define variables CSS globales en :root para reutilizar los mismos valores en diferentes partes de la hoja de estilos. */
 :root {
+    /* --primary: Guarda el color principal de la web en una variable reutilizable. Valor aplicado: #7a1c2c. */
     --primary: #7a1c2c;
+    /* --primary-dark: Guarda una versión más oscura del color principal, útil para estados como hover. Valor aplicado: #5f1321. */
     --primary-dark: #5f1321;
+    /* --slate: Guarda el color gris oscuro principal de la interfaz. Valor aplicado: #1e242b. */
     --slate: #1e242b;
+    /* --slate-soft: Guarda una versión más suave del gris oscuro. Valor aplicado: #303943. */
     --slate-soft: #303943;
+    /* --gold: Guarda el color dorado de las etiquetas destacadas. Valor aplicado: #d4af37. */
     --gold: #d4af37;
+    /* --violet: Guarda un color violeta reutilizable. Valor aplicado: #5b21b6. */
     --violet: #5b21b6;
+    /* --violet-soft: Guarda una versión clara del violeta reutilizable. Valor aplicado: #f2edff. */
     --violet-soft: #f2edff;
+    /* --bg: Guarda el color de fondo general de la página. Valor aplicado: #f9f9fb. */
     --bg: #f9f9fb;
+    /* --surface: Guarda el color de las superficies, como tarjetas y campos. Valor aplicado: #fff. */
     --surface: #fff;
+    /* --text: Guarda el color general del texto. Valor aplicado: #25272b. */
     --text: #25272b;
+    /* --muted: Guarda un color de texto secundario, menos llamativo. Valor aplicado: #6d7077. */
     --muted: #6d7077;
+    /* --line: Guarda el color usado en bordes y separadores. Valor aplicado: #e5e4e7. */
     --line: #e5e4e7;
+    /* --shadow: Guarda una sombra reutilizable para dar profundidad a elementos. Valor aplicado: 0 18px 50px rgba(30, 36, 43, 0.11). */
     --shadow: 0 18px 50px rgba(30, 36, 43, 0.11);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona todos los elementos de la página para aplicarles reglas comunes. */
 * {
+    /* box-sizing: Hace que el ancho y alto incluyan el contenido, el relleno y el borde; así resulta más sencillo calcular tamaños. Valor aplicado: border-box. */
     box-sizing: border-box;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el cuerpo de la página, donde se configuran las dimensiones mínimas, el fondo, el texto y la tipografía general. */
 body {
+    /* min-width: Establece el ancho mínimo permitido para evitar que el diseño se comprima demasiado. Valor aplicado: 320px. */
     min-width: 320px;
+    /* min-height: Establece la altura mínima del elemento. Valor aplicado: 100vh. */
     min-height: 100vh;
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0. */
     margin: 0;
+    /* overflow-x: Controla qué ocurre con el contenido que sobresale horizontalmente; hidden evita que aparezca una barra de desplazamiento horizontal. Valor aplicado: hidden. */
     overflow-x: hidden;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--bg). */
     background: var(--bg);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--text). */
     color: var(--text);
+    /* font-family: Define las fuentes en orden de preferencia; si una no está disponible, el navegador prueba la siguiente. Valor aplicado: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif. */
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 button,
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 input,
+/* Selecciona select, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
 select {
+    /* font: Hace que el control herede la tipografía del elemento que lo contiene. Valor aplicado: inherit. */
     font: inherit;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 button,
+/* Selecciona select, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
 select {
+    /* cursor: Cambia el aspecto del puntero para indicar que el elemento es interactivo. Valor aplicado: pointer. */
     cursor: pointer;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* button: Configura la propiedad CSS button, usando el valor focus-visible,; esta propiedad controla un aspecto visual o de disposición del elemento. Valor aplicado: focus-visible,. */
 button:focus-visible,
+/* input: Configura la propiedad CSS input, usando el valor focus-visible,; esta propiedad controla un aspecto visual o de disposición del elemento. Valor aplicado: focus-visible,. */
 input:focus-visible,
+/* Selecciona select:focus-visible, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
 select:focus-visible {
+    /* outline: Dibuja un contorno visible para ayudar a identificar el elemento enfocado. Valor aplicado: 3px solid rgba(122, 28, 44, 0.28). */
     outline: 3px solid rgba(122, 28, 44, 0.28);
+    /* outline-offset: Separa el contorno del borde del elemento. Valor aplicado: 2px. */
     outline-offset: 2px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el contenedor general del contenido. */
 .page-content {
+    /* width: Define el ancho del elemento. Valor aplicado: 100%. */
     width: 100%;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona la sección del catálogo para controlar su anchura y el espacio alrededor. */
 .catalog-section {
+    /* width: Define el ancho del elemento. Valor aplicado: min(100% - 48px, 1200px). */
     width: min(100% - 48px, 1200px);
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0 auto. */
     margin: 0 auto;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 64px 0 80px. */
     padding: 64px 0 80px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona la zona del encabezado de la sección y organiza sus elementos. */
 .section-heading {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: flex. */
     display: flex;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: end. */
     align-items: end;
+    /* justify-content: Distribuye o alinea los elementos internos en el eje principal. Valor aplicado: space-between. */
     justify-content: space-between;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 24px. */
     gap: 24px;
+    /* margin-bottom: Añade espacio por debajo del elemento. Valor aplicado: 28px. */
     margin-bottom: 28px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el pequeño rótulo situado encima del título. */
 .eyebrow {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: inline-block. */
     display: inline-block;
+    /* margin-bottom: Añade espacio por debajo del elemento. Valor aplicado: 8px. */
     margin-bottom: 8px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--primary). */
     color: var(--primary);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.75rem. */
     font-size: 0.75rem;
+    /* font-weight: Define el grosor del texto; valores altos producen texto más grueso. Valor aplicado: 800. */
     font-weight: 800;
+    /* letter-spacing: Aumenta o reduce el espacio entre letras. Valor aplicado: 0.12em. */
     letter-spacing: 0.12em;
+    /* text-transform: Transforma visualmente las letras; uppercase las muestra en mayúsculas. Valor aplicado: uppercase. */
     text-transform: uppercase;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el título h2 dentro del encabezado de sección. */
 .section-heading h2 {
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0. */
     margin: 0;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--slate). */
     color: var(--slate);
+    /* font-size: Define el tamaño del texto. Valor aplicado: clamp(1.8rem, 4vw, 2.5rem). */
     font-size: clamp(1.8rem, 4vw, 2.5rem);
+    /* line-height: Define la altura de línea, mejorando el espaciado vertical del texto. Valor aplicado: 1.15. */
     line-height: 1.15;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona solo el párrafo que es hijo directo del encabezado de sección. */
 .section-heading > p {
+    /* max-width: Limita el ancho máximo del elemento. Valor aplicado: 360px. */
     max-width: 360px;
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0 0 4px. */
     margin: 0 0 4px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--muted). */
     color: var(--muted);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el conjunto de controles de búsqueda y filtros. */
 .filter-bar {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: grid. */
     display: grid;
+    /* grid-template-columns: Define cuántas columnas tiene la cuadrícula y qué ancho ocupa cada una. Valor aplicado: minmax(220px, 1fr) minmax(150px, 0.55fr) minmax(180px, 0.7fr) auto. */
     grid-template-columns: minmax(220px, 1fr) minmax(150px, 0.55fr) minmax(180px, 0.7fr) auto;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: center. */
     align-items: center;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 12px. */
     gap: 12px;
+    /* margin-bottom: Añade espacio por debajo del elemento. Valor aplicado: 28px. */
     margin-bottom: 28px;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 14px. */
     padding: 14px;
+    /* border: Define el borde: grosor, estilo y color. Valor aplicado: 1px solid var(--line). */
     border: 1px solid var(--line);
+    /* border-radius: Redondea las esquinas del elemento. Valor aplicado: 16px. */
     border-radius: 16px;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--surface). */
     background: var(--surface);
+    /* box-shadow: Añade una sombra para crear sensación de profundidad. Valor aplicado: 0 8px 24px rgba(30, 36, 43, 0.04). */
     box-shadow: 0 8px 24px rgba(30, 36, 43, 0.04);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 .search-field,
+/* Selecciona .date-field, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
 .date-field {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: flex. */
     display: flex;
+    /* min-width: Establece el ancho mínimo permitido para evitar que el diseño se comprima demasiado. Valor aplicado: 0. */
     min-width: 0;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: center. */
     align-items: center;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 10px. */
     gap: 10px;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 0 12px. */
     padding: 0 12px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--muted). */
     color: var(--muted);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 .search-field input,
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 .date-field input,
+/* Selecciona el desplegable de categoría. */
 .field select {
+    /* width: Define el ancho del elemento. Valor aplicado: 100%. */
     width: 100%;
+    /* min-width: Establece el ancho mínimo permitido para evitar que el diseño se comprima demasiado. Valor aplicado: 0. */
     min-width: 0;
+    /* min-height: Establece la altura mínima del elemento. Valor aplicado: 44px. */
     min-height: 44px;
+    /* border: Define el borde: grosor, estilo y color. Valor aplicado: 1px solid var(--line). */
     border: 1px solid var(--line);
+    /* border-radius: Redondea las esquinas del elemento. Valor aplicado: 10px. */
     border-radius: 10px;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--surface). */
     background: var(--surface);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--text). */
     color: var(--text);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 .search-field input,
+/* Selecciona .date-field input, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
 .date-field input {
+    /* border: Define el borde: grosor, estilo y color. Valor aplicado: 0. */
     border: 0;
+    /* outline-offset: Separa el contorno del borde del elemento. Valor aplicado: 4px. */
     outline-offset: 4px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona el desplegable de categoría. */
 .field select {
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 0 36px 0 12px. */
     padding: 0 36px 0 12px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona los iconos SVG y define cómo se dibujan sus líneas. */
 .icon {
+    /* flex: Controla cómo crece o se encoge el elemento flex; 0 0 auto impide que se encoja o crezca. Valor aplicado: 0 0 auto. */
     flex: 0 0 auto;
+    /* fill: Define el relleno de una forma SVG; none indica que no se rellena. Valor aplicado: none. */
     fill: none;
+    /* stroke: Define el color de las líneas de una forma SVG. Valor aplicado: currentColor. */
     stroke: currentColor;
+    /* stroke-linecap: Define la forma de los extremos de las líneas SVG. Valor aplicado: round. */
     stroke-linecap: round;
+    /* stroke-linejoin: Define cómo se unen las líneas en las esquinas de una forma SVG. Valor aplicado: round. */
     stroke-linejoin: round;
+    /* stroke-width: Define el grosor de las líneas SVG. Valor aplicado: 1.8. */
     stroke-width: 1.8;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Define el aspecto común de los botones con clase btn. */
 .btn {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: inline-flex. */
     display: inline-flex;
+    /* min-height: Establece la altura mínima del elemento. Valor aplicado: 44px. */
     min-height: 44px;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: center. */
     align-items: center;
+    /* justify-content: Distribuye o alinea los elementos internos en el eje principal. Valor aplicado: center. */
     justify-content: center;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 0 18px. */
     padding: 0 18px;
+    /* border: Define el borde: grosor, estilo y color. Valor aplicado: 1px solid transparent. */
     border: 1px solid transparent;
+    /* border-radius: Redondea las esquinas del elemento. Valor aplicado: 10px. */
     border-radius: 10px;
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.9rem. */
     font-size: 0.9rem;
+    /* font-weight: Define el grosor del texto; valores altos producen texto más grueso. Valor aplicado: 700. */
     font-weight: 700;
+    /* transition: Suaviza el cambio entre estados CSS durante el tiempo indicado. Valor aplicado: background-color 150ms ease, transform 150ms ease. */
     transition: background-color 150ms ease, transform 150ms ease;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Aplica un pequeño efecto visual cuando el cursor está sobre un botón. */
 .btn:hover {
+    /* transform: Aplica una transformación visual, como mover o escalar el elemento. Valor aplicado: translateY(-1px). */
     transform: translateY(-1px);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Define el color de fondo y texto del botón principal de filtrado. */
 .btn-primary {
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--primary). */
     background: var(--primary);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: #fff. */
     color: #fff;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Cambia el fondo del botón principal al pasar el cursor por encima. */
 .btn-primary:hover {
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--primary-dark). */
     background: var(--primary-dark);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Define el aspecto oscuro de los botones de compra. */
 .btn-dark {
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--slate). */
     background: var(--slate);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: #fff. */
     color: #fff;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Aclara el fondo de los botones oscuros al pasar el cursor por encima. */
 .btn-dark:hover {
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--slate-soft). */
     background: var(--slate-soft);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Selecciona la cuadrícula que organiza las tarjetas de eventos. */
 .event-grid {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: grid. */
     display: grid;
+    /* grid-template-columns: Define cuántas columnas tiene la cuadrícula y qué ancho ocupa cada una. Valor aplicado: repeat(3, minmax(0, 1fr)). */
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: stretch. */
     align-items: stretch;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 22px. */
     gap: 22px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Define el contenedor visual de cada tarjeta de evento. */
 .event-card {
+    /* min-width: Establece el ancho mínimo permitido para evitar que el diseño se comprima demasiado. Valor aplicado: 0. */
     min-width: 0;
+    /* overflow: Configura la propiedad CSS overflow, usando el valor hidden; esta propiedad controla un aspecto visual o de disposición del elemento. Valor aplicado: hidden. */
     overflow: hidden;
+    /* border: Define el borde: grosor, estilo y color. Valor aplicado: 1px solid var(--line). */
     border: 1px solid var(--line);
+    /* border-radius: Redondea las esquinas del elemento. Valor aplicado: 18px. */
     border-radius: 18px;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--surface). */
     background: var(--surface);
+    /* box-shadow: Añade una sombra para crear sensación de profundidad. Valor aplicado: 0 8px 24px rgba(30, 36, 43, 0.05). */
     box-shadow: 0 8px 24px rgba(30, 36, 43, 0.05);
+    /* transition: Suaviza el cambio entre estados CSS durante el tiempo indicado. Valor aplicado: box-shadow 180ms ease, transform 180ms ease. */
     transition: box-shadow 180ms ease, transform 180ms ease;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Eleva ligeramente la tarjeta y refuerza su sombra cuando el cursor está encima. */
 .event-card:hover {
+    /* transform: Aplica una transformación visual, como mover o escalar el elemento. Valor aplicado: translateY(-4px). */
     transform: translateY(-4px);
+    /* box-shadow: Añade una sombra para crear sensación de profundidad. Valor aplicado: var(--shadow). */
     box-shadow: var(--shadow);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Define el botón que sirve de marco para la imagen y las etiquetas del evento. */
 .event-image {
+    /* position: Define el método de posicionamiento; relative permite posicionar elementos hijos absolutos respecto a este contenedor. Valor aplicado: relative. */
     position: relative;
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: block. */
     display: block;
+    /* width: Define el ancho del elemento. Valor aplicado: 100%. */
     width: 100%;
+    /* height: Define la altura del elemento. Valor aplicado: 230px. */
     height: 230px;
+    /* overflow: Configura la propiedad CSS overflow, usando el valor hidden; esta propiedad controla un aspecto visual o de disposición del elemento. Valor aplicado: hidden. */
     overflow: hidden;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 0. */
     padding: 0;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: #e8e5e5. */
     background: #e8e5e5;
+    /* text-align: Alinea horizontalmente el texto. Valor aplicado: left. */
     text-align: left;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Controla cómo se ajusta la imagen dentro del marco de la tarjeta. */
 .event-image img {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: block. */
     display: block;
+    /* width: Define el ancho del elemento. Valor aplicado: 100%. */
     width: 100%;
+    /* height: Define la altura del elemento. Valor aplicado: 100%. */
     height: 100%;
+    /* object-fit: Indica cómo encaja una imagen en su caja; cover llena la caja y recorta lo necesario sin deformarla. Valor aplicado: cover. */
     object-fit: cover;
+    /* transition: Suaviza el cambio entre estados CSS durante el tiempo indicado. Valor aplicado: transform 250ms ease. */
     transition: transform 250ms ease;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Amplía ligeramente la imagen cuando el cursor está sobre la tarjeta. */
 .event-card:hover .event-image img {
+    /* transform: Aplica una transformación visual, como mover o escalar el elemento. Valor aplicado: scale(1.04). */
     transform: scale(1.04);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
 .event-image span,
+/* Coloca la etiqueta de recomendación en el lado derecho de la imagen. */
 .event-image b {
+    /* position: Define el método de posicionamiento; relative permite posicionar elementos hijos absolutos respecto a este contenedor. Valor aplicado: absolute. */
     position: absolute;
+    /* top: Fija la distancia desde el borde superior del contenedor de referencia. Valor aplicado: 14px. */
     top: 14px;
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: inline-flex. */
     display: inline-flex;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: center. */
     align-items: center;
+    /* min-height: Establece la altura mínima del elemento. Valor aplicado: 28px. */
     min-height: 28px;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 4px 10px. */
     padding: 4px 10px;
+    /* border-radius: Redondea las esquinas del elemento. Valor aplicado: 999px. */
     border-radius: 999px;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: rgba(255, 255, 255, 0.94). */
     background: rgba(255, 255, 255, 0.94);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--slate). */
     color: var(--slate);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.72rem. */
     font-size: 0.72rem;
+    /* font-weight: Define el grosor del texto; valores altos producen texto más grueso. Valor aplicado: 800. */
     font-weight: 800;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Coloca la etiqueta de categoría en el lado izquierdo de la imagen. */
 .event-image span {
+    /* left: Fija la distancia desde el borde izquierdo del contenedor de referencia. Valor aplicado: 14px. */
     left: 14px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Coloca la etiqueta de recomendación en el lado derecho de la imagen. */
 .event-image b {
+    /* right: Fija la distancia desde el borde derecho del contenedor de referencia. Valor aplicado: 14px. */
     right: 14px;
+    /* background: Define el fondo del elemento, que puede ser un color o una variable CSS. Valor aplicado: var(--gold). */
     background: var(--gold);
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: #27200d. */
     color: #27200d;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Organiza la información interna de la tarjeta en columna y establece su espacio interior. */
 .event-body {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: flex. */
     display: flex;
+    /* min-height: Establece la altura mínima del elemento. Valor aplicado: 220px. */
     min-height: 220px;
+    /* flex-direction: Define la dirección en la que se colocan los elementos flex. Valor aplicado: column. */
     flex-direction: column;
+    /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 20px. */
     padding: 20px;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Da estilo a la fecha y hora del evento. */
 .event-body .date {
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0 0 8px. */
     margin: 0 0 8px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--primary). */
     color: var(--primary);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.78rem. */
     font-size: 0.78rem;
+    /* font-weight: Define el grosor del texto; valores altos producen texto más grueso. Valor aplicado: 800. */
     font-weight: 800;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Da estilo al nombre del evento. */
 .event-body h3 {
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0 0 14px. */
     margin: 0 0 14px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--slate). */
     color: var(--slate);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 1.15rem. */
     font-size: 1.15rem;
+    /* line-height: Define la altura de línea, mejorando el espaciado vertical del texto. Valor aplicado: 1.35. */
     line-height: 1.35;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Alinea el icono y el texto que indican la sala. */
 .event-body .hall {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: flex. */
     display: flex;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: center. */
     align-items: center;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 8px. */
     gap: 8px;
+    /* margin: Controla el espacio exterior del elemento. Valor aplicado: 0 0 18px. */
     margin: 0 0 18px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--muted). */
     color: var(--muted);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.88rem. */
     font-size: 0.88rem;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Organiza horizontalmente el precio y el botón en la parte inferior de la tarjeta. */
 .event-bottom {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: flex. */
     display: flex;
+    /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: end. */
     align-items: end;
+    /* justify-content: Distribuye o alinea los elementos internos en el eje principal. Valor aplicado: space-between. */
     justify-content: space-between;
+    /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 12px. */
     gap: 12px;
+    /* margin-top: Añade espacio por encima del elemento. Valor aplicado: auto. */
     margin-top: auto;
+    /* padding-top: Añade espacio interior por encima del contenido. Valor aplicado: 16px. */
     padding-top: 16px;
+    /* border-top: Define el borde superior del elemento. Valor aplicado: 1px solid var(--line). */
     border-top: 1px solid var(--line);
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Da estilo al texto pequeño que precede al precio. */
 .event-bottom small {
+    /* display: Define cómo participa el elemento en el diseño; flex y grid permiten organizar sus elementos internos. Valor aplicado: block. */
     display: block;
+    /* margin-bottom: Añade espacio por debajo del elemento. Valor aplicado: 2px. */
     margin-bottom: 2px;
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--muted). */
     color: var(--muted);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 0.72rem. */
     font-size: 0.72rem;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Da estilo al importe del precio. */
 .event-bottom strong {
+    /* color: Define el color del texto o, en SVG, el color heredable usado por currentColor. Valor aplicado: var(--slate). */
     color: var(--slate);
+    /* font-size: Define el tamaño del texto. Valor aplicado: 1.1rem. */
     font-size: 1.1rem;
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Aplica las reglas que siguen cuando la ventana tiene 900 píxeles de ancho o menos; sirve para adaptar el diseño a pantallas medianas. */
 @media (max-width: 900px) {
+    /* Selecciona la cuadrícula que organiza las tarjetas de eventos. */
     .event-grid {
+        /* grid-template-columns: Define cuántas columnas tiene la cuadrícula y qué ancho ocupa cada una. Valor aplicado: repeat(2, minmax(0, 1fr)). */
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Selecciona el conjunto de controles de búsqueda y filtros. */
     .filter-bar {
+        /* grid-template-columns: Define cuántas columnas tiene la cuadrícula y qué ancho ocupa cada una. Valor aplicado: repeat(2, minmax(0, 1fr)). */
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Selecciona la zona del encabezado de la sección y organiza sus elementos. */
     .section-heading {
+        /* align-items: Alinea los elementos internos en el eje transversal del diseño flex o grid. Valor aplicado: start. */
         align-items: start;
+        /* flex-direction: Define la dirección en la que se colocan los elementos flex. Valor aplicado: column. */
         flex-direction: column;
+        /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 12px. */
         gap: 12px;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Aplica las reglas que siguen cuando la ventana tiene 600 píxeles de ancho o menos; sirve para adaptar el diseño a móviles. */
 @media (max-width: 600px) {
+    /* Selecciona la sección del catálogo para controlar su anchura y el espacio alrededor. */
     .catalog-section {
+        /* width: Define el ancho del elemento. Valor aplicado: min(100% - 32px, 1200px). */
         width: min(100% - 32px, 1200px);
+        /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 40px 0 56px. */
         padding: 40px 0 56px;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
     .filter-bar,
+    /* Selecciona la cuadrícula que organiza las tarjetas de eventos. */
     .event-grid {
+        /* grid-template-columns: Define cuántas columnas tiene la cuadrícula y qué ancho ocupa cada una. Valor aplicado: 1fr. */
         grid-template-columns: 1fr;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Selecciona el conjunto de controles de búsqueda y filtros. */
     .filter-bar {
+        /* gap: Define el espacio entre los elementos hijos de un diseño flex o grid. Valor aplicado: 10px. */
         gap: 10px;
+        /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 12px. */
         padding: 12px;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Esta línea forma parte de la regla CSS y contribuye a definir la apariencia o adaptación del diseño. */
     .search-field,
+    /* Selecciona .date-field, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
     .date-field {
+        /* min-height: Establece la altura mínima del elemento. Valor aplicado: 44px. */
         min-height: 44px;
+        /* padding: Añade espacio interior entre el contenido y los bordes. Valor aplicado: 0 8px. */
         padding: 0 8px;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Define el botón que sirve de marco para la imagen y las etiquetas del evento. */
     .event-image {
+        /* height: Define la altura del elemento. Valor aplicado: 210px. */
         height: 210px;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
 
+    /* Organiza la información interna de la tarjeta en columna y establece su espacio interior. */
     .event-body {
+        /* min-height: Establece la altura mínima del elemento. Valor aplicado: 0. */
         min-height: 0;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
+/* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Aplica las reglas que siguen solo cuando se cumple la condición indicada por esta consulta de medios. */
 @media (prefers-reduced-motion: reduce) {
+    /* Comentario o selector universal: en CSS, * selecciona todos los elementos (y ::before/::after seleccionan sus pseudo-elementos). */
     *,
+    /* Comentario o selector universal: en CSS, * selecciona todos los elementos (y ::before/::after seleccionan sus pseudo-elementos). */
     *::before,
+    /* Selecciona *::after, es decir, el elemento o grupo de elementos al que se aplicarán las propiedades que aparecen dentro de este bloque. */
     *::after {
+        /* scroll-behavior: Controla el comportamiento del desplazamiento; auto evita el desplazamiento suave. Valor aplicado: auto !important. */
         scroll-behavior: auto !important;
+        /* transition-duration: Define cuánto dura la transición; un valor casi cero reduce la animación. Valor aplicado: 0.01ms !important. */
         transition-duration: 0.01ms !important;
+    /* Cierra el bloque CSS abierto anteriormente. */
     }
+/* Cierra el bloque CSS abierto anteriormente. */
 }
