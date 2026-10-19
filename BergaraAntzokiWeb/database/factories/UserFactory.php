@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\Rola;
+
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +33,7 @@ class UserFactory extends Factory
             'abizena' => fake()->lastName(),
             'user_izena' => fake()->unique()->userName(),
             'nan' => fake()->unique()->numerify('########') . fake()->randomLetter(),
-            'rola' => 'arrunta',
+            'rola' => Rola::Arrunta->value,
             'alta_data' =>  now(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

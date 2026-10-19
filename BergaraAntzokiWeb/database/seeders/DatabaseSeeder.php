@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Rola;
+
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'user_izena' => 'admin',
             'email' => 'admin@gmail.com',  
             'nan' => null,
-            'rola' => 'admin',          
+            'rola' => Rola::Admin,          
         ]);
         User::factory()->create([
             // users taula aldatu da, beraz hau be aldatu ein biher da:

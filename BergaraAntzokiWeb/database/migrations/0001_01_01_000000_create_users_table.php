@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Rola;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->dateTime('baja_data')->nullable();
             $table->string('izena');
             $table->string('abizena');
-            $table->enum('rola', ['admin', 'arrunta'])->default('arrunta');
+            $table->string('rola')->default(Rola::Arrunta->value);
             $table->string('nan', 9)->nullable()->unique();
             $table->rememberToken();
             $table->timestamps();
