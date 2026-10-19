@@ -16,5 +16,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+// Zona de administración: solo usuarios logueados Y admin
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
 
+    // Aquí irán el resto de rutas de admin
+});
 require __DIR__.'/auth.php';
