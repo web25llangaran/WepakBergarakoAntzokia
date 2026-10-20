@@ -2,7 +2,7 @@
 <!-- @vite(['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources/js/app.js']) -->
 
 <!-- Explicación: Indica que esta vista Blade utiliza 'plantilla' como plantilla base, heredando su estructura compartida. -->
-@extends('plantilla.arrunta.blade.php')
+    @extends('plantilla.arrunta')
 <!-- Explicación: Abre la sección Blade llamada content1; su contenido se insertará en el lugar correspondiente de la plantilla base. -->
 @section('content1')
 
