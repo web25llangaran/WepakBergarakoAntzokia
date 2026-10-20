@@ -14,18 +14,18 @@ class Ekitaldia extends Model
     protected $casts = ['data' => 'datetime'];
 
    
-    //Ekitaldia zein user-ek kudeatu duen ezagutzeko:
-    public function kudeatzaileak()
-    {
-        return $this->belongsToMany(User::class, 'kudeatu_ekitaldia', 'id_user', 'id_ekitaldia')
-            ->withTimestamps();
-    }
+    // //Ekitaldia zein user-ek kudeatu duen ezagutzeko:
+    // public function kudeatzaileak()
+    // {
+    //     return $this->belongsToMany(User::class, 'kudeatu_ekitaldia', 'id_user', 'id_ekitaldia')
+    //         ->withTimestamps();
+    // }
 
-    //Ekitaldiak zein areto dituen ezagutzeko:
-    public function aretoak()
-    {
-        return $this->belongsToMany(Aretoa::class, 'ekitaldia_izan_aretoa', 'id_aretoa', 'id_ekitaldia')
-            ->withTimestamps();
-    }
+    // //Ekitaldiak zein areto dituen ezagutzeko:
+    // public function aretoak()
+    // {
+    //     return $this->belongsToMany(Aretoa::class, 'ekitaldia_izan_aretoa', 'id_aretoa', 'id_ekitaldia')
+    //         ->withTimestamps();
+    // }
 
 }
