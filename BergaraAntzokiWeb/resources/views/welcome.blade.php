@@ -1,5 +1,3 @@
-<!-- La directiva @vite de Laravel carga los recursos CSS y JavaScript indicados y permite que Vite los procese durante el desarrollo y la compilación. -->
-<!-- @vite(['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources/js/app.js']) -->
 
 <!-- Explicación: Indica que esta vista Blade utiliza 'plantilla' como plantilla base, heredando su estructura compartida. -->
     @extends('plantilla.arrunta')
@@ -219,5 +217,4 @@
     <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
     </div>
 
-<!-- Explicación: Cierra la sección content1. Todo lo comprendido entre @section y @endsection pertenece a esa sección Blade. -->
 @endsection

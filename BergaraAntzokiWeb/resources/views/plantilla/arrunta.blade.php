@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Bergarako Antzoki Web')</title>
 
+    @vite(['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources/js/app.js'])
+
     <style>
         /* Reset general */
         * {
@@ -36,7 +38,6 @@
             align-items: center;
         }
 
-        /* Logo Izquierda */
         .brand-logo {
             display: flex;
             align-items: center;
@@ -111,7 +112,6 @@
             border-color: #ffffff;
         }
 
-        /* NUEVO: botón Admin (relleno para destacarlo del resto) */
         .nav-btn-admin {
             background-color: #ffffff;
             color: #701920;
@@ -127,7 +127,7 @@
             flex: 1;
         }
 
-        /* ---------- NUEVO: FOOTER ---------- */
+        /* ---------- FOOTER ---------- */
         .main-footer {
             background-color: #1f262d;
             color: #b8bec5;
@@ -176,7 +176,6 @@
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="main-header">
         <div class="header-container">
             <a href="{{ url('/') }}" class="brand-logo">
@@ -190,18 +189,16 @@
             </a>
 
             <nav class="main-nav">
-                <a href="#" class="nav-link">Ekitaldiak</a>
+                <a href="#ekitaldiak" class="nav-link">Ekitaldiak</a>
 
-                {{-- Bakarrik ikusten da sesio hasita baldin badadgo eta admin bada --}}
                 @auth
                     @if(auth()->user()->rola === 'admin')
-                        <a href="{{ route('#') }}" class="nav-btn nav-btn-admin">Admin</a>
+                        <a href="#" class="nav-btn nav-btn-admin">Admin</a>
                     @endif
                 @endauth
 
-                {{-- Bakarrik ikusten da sesioa hasita baldin badadgo eta erabiltzailea ez bada admin --}}
                 @guest
-                    <a href="{{ route('#') }}" class="nav-btn">Erregistratu / Saioa</a>
+                    <a href="#" class="nav-btn">Erregistratu / Saioa</a>
                 @endguest
             </nav>
         </div>
@@ -211,7 +208,6 @@
         @yield('content1')
     </main>
 
-    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand">
