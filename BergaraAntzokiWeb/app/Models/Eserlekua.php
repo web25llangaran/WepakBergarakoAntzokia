@@ -10,6 +10,6 @@ class Eserlekua extends Model
 {
     protected $table = 'eserlekuak';
 
-    protected $fillable = ['id_aretoa', 'lerro_zenb', 'exerleku_zenb', 'mota'];
+    protected $fillable = ['id_aretoa', 'lerro_zenb', 'exerleku_zenb', 'eserleku_mota'];
 
 }

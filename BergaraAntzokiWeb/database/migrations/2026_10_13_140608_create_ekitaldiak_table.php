@@ -1,5 +1,8 @@
 <?php
 
+
+
+use App\Enums\EkitaldiMota;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +19,7 @@ return new class extends Migration
             // Taulan entitate erlazio ereduan definitutako zutabeak gehitu:
             $table->string('izena');
             $table->text('deskripzioa')->nullable();
-            $table->enum('mota',['zinema','antzerkia','hitzaldia','kontzertua'])->default('zinema');
+            $table->string('ekitaldi_mota')->default(EkitaldiMota::Zinema->value);
             $table->dateTime('data');
             $table->timestamps();
         });

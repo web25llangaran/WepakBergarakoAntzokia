@@ -10,7 +10,7 @@ class Ekitaldia extends Model
 {
     protected $table = 'ekitaldiak';
 
-    protected $fillable = ['izena', 'deskripzioa', 'mota', 'data'];
+    protected $fillable = ['izena', 'deskripzioa', 'ekitaldi_mota', 'data'];
     protected $casts = ['data' => 'datetime'];
 
    

@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\EserlekuMota;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_aretoa')->constrained('aretoak')->cascadeOnDelete();
             $table->unsignedSmallInteger('lerro_zenb');
             $table->unsignedSmallInteger('eserleku_zenb');
-            $table->enum('mota', ['arrunta','silver_economy'])->default('arrunta');
+            $table->string('eserleku_mota')->default (EserlekuMota::Arrunta->value);
             $table->timestamps();
             $table->unique(['id_aretoa', 'lerro_zenb', 'eserleku_zenb']);
         });
