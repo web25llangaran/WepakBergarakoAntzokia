@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Ekitaldia;
+use App\Models\Aretoa;
 use App\Enums\EkitaldiMota;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,7 @@ class EkitaldiaFactory extends Factory
     public function definition(): array
     {   
         return [
+            'id_aretoa' => Aretoa::factory(),
             'izena' => fake()->word(),
             'deskripzioa' => fake()->text(200),
             'ekitaldi_mota'=> EkitaldiMota::Zinema,

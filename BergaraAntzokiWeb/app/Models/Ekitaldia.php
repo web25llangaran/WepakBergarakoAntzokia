@@ -27,5 +27,4 @@ class Ekitaldia extends Model
     {
         return $this->hasMany(Sarrera::class, 'id_ekitaldia');
     }
-
 }
