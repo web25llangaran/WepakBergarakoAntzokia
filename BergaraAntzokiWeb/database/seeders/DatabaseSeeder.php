@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Enums\Rola;
-
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,9 +24,9 @@ class DatabaseSeeder extends Seeder
             'izena' => 'Admin',
             'abizena' => 'Erabiltzailea',
             'user_izena' => 'admin',
-            'email' => 'admin@gmail.com',  
+            'email' => 'admin@gmail.com',
             'nan' => null,
-            'rola' => Rola::Admin,          
+            'rola' => Rola::Admin,
         ]);
         User::factory()->create([
             // users taula aldatu da, beraz hau be aldatu ein biher da:
@@ -35,7 +34,16 @@ class DatabaseSeeder extends Seeder
             'izena' => 'Arrunta',
             'abizena' => 'Erabiltzailea',
             'user_izena' => 'arrunta',
-            'email' => 'arrunta@gmail.com',         
+            'email' => 'arrunta@gmail.com',
+        ]);
+
+        $this->call([
+            AretoaSeeder::class,
+            EserlekuaSeeder::class,
+            EkitaldiaSeeder::class,
+            EkitaldiaIzanAretoaSeeder::class,
+            SarreraSeeder::class,
+            ErosiSarreraSeeder::class,
         ]);
     }
 }
