@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('ekitaldiak', function (Blueprint $table) {
             $table->id();
-            // Taulan entitate erlazio ereduan definitutako zutabeak gehitu:
+            $table->foreignId('id_aretoa')->constrained('aretoak')->cascadeOnDelete();
             $table->string('izena');
             $table->text('deskripzioa')->nullable();
             $table->string('ekitaldi_mota')->default(EkitaldiMota::Zinema->value);

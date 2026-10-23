@@ -12,7 +12,7 @@ class Ekitaldia extends Model
     use HasFactory;
     protected $table = 'ekitaldiak';
 
-    protected $fillable = ['izena', 'deskripzioa', 'ekitaldi_mota', 'data', 'irudia'];
+    protected $fillable = ['id_aretoa', 'izena', 'deskripzioa', 'ekitaldi_mota', 'data', 'irudia'];
     protected $casts = ['data' => 'datetime'];
 
    

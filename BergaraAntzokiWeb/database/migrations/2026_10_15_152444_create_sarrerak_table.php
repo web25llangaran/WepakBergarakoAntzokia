@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('id_ekitaldia')->constrained('ekitaldiak')->cascadeOnDelete();
             $table->foreignId('id_aretoa')->constrained('aretoak')->cascadeOnDelete();
             $table->foreignId('id_eserlekua')->constrained('eserlekuak')->cascadeOnDelete();
+            $table->foreignId('id_user')->constrained('users')->cascadeOnDelete();
             $table->dateTime('data');
             $table->decimal('prezioa',8,2);
             $table->timestamps();

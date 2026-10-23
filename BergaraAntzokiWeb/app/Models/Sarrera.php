@@ -13,7 +13,7 @@ class Sarrera extends Model
     use HasFactory;
     protected $table = 'sarrerak';
 
-    protected $fillable = ['id_ekitaldia', 'id_aretoa', 'id_eserlekua', 'data', 'prezioa'];
+    protected $fillable = ['id_ekitaldia', 'id_aretoa', 'id_eserlekua', 'id_user', 'data', 'prezioa'];
     protected $casts = ['prezioa' => 'decimal:2'];
 
     // // Sarrera bat zein erabiltzailek kudeatu duten ezagutzeko:
