@@ -36,25 +36,10 @@ class User extends Authenticatable
         ];
     }
 
-    // //User batek kudeatu dituen sarrerak ezagutzeko:
-    // public function kudeatutako_sarrerak()
-    // {
-    //     return $this->belongsToMany(Sarrera::class, 'kudeatu_sarrera', 'id_user', 'id_sarrera')
-    //         ->withTimestamps();
-    // }
-
-    // //User batek erosi dituen sarrerak ezagutzeko: 
-    // public function erositako_sarrerak()
-    // {
-    //     return $this->belongsToMany(Sarrera::class, 'erosi_sarrera', 'id_user', 'id_sarrera')
-    //     ->withTimestamps();
-    // }
-
-    // //User batek kudeatu dituen ekitaldiak ezagutzeko:
-    // public function kudeatutako_ekitaldiak()
-    // {
-    //     return $this->belongsToMany(Sarrera::class, 'kudeatu_ekitaldia', 'id_user', 'id_ekitaldia')
-    //         ->withTimestamps();
-    // }
-
+    //User batek erosi dituen sarrerak ezagutzeko: 
+    public function erositako_sarrerak()
+    {
+        return $this->hasMany(Sarrera::class, 'id_user')
+        ->withTimestamps();
+    }
 }

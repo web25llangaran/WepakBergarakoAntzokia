@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('prezioa',8,2);
             $table->timestamps();
             //hau seguridade kontue da: Ez dadila butaka bera behin baino gehiagotan erosi ekitaldi berean.
-            $table->unique(['id_ekitaldia', 'id_aretoa', 'id_eserlekua']);
+            // $table->unique(['id_ekitaldia', 'id_aretoa', 'id_eserlekua']);
         });
     }
 

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('eserleku_zenb');
             $table->string('eserleku_mota')->default (EserlekuMota::Arrunta->value);
             $table->timestamps();
-            $table->unique(['id_aretoa', 'lerro_zenb', 'eserleku_zenb']);
+            // $table->unique(['id_aretoa', 'lerro_zenb', 'eserleku_zenb']);
         });
     }
 

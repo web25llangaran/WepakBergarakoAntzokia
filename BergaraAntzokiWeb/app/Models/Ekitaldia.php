@@ -15,19 +15,17 @@ class Ekitaldia extends Model
     protected $fillable = ['id_aretoa', 'izena', 'deskripzioa', 'ekitaldi_mota', 'data', 'irudia'];
     protected $casts = ['data' => 'datetime'];
 
-   
-    // //Ekitaldia zein user-ek kudeatu duen ezagutzeko:
-    // public function kudeatzaileak()
-    // {
-    //     return $this->belongsToMany(User::class, 'kudeatu_ekitaldia', 'id_user', 'id_ekitaldia')
-    //         ->withTimestamps();
-    // }
 
-    // //Ekitaldiak zein areto dituen ezagutzeko:
-    // public function aretoak()
-    // {
-    //     return $this->belongsToMany(Aretoa::class, 'ekitaldia_izan_aretoa', 'id_aretoa', 'id_ekitaldia')
-    //         ->withTimestamps();
-    // }
+    //Ekitaldiak zein areto duen ezagutzeko:
+    public function aretoa()
+    {
+        return $this->belongsTo(Aretoa::class, 'id_aretoa');
+    }
+
+    //Ekitaldiak zenbat sarrera dituen ezagutzeko:
+    public function sarrerak()
+    {
+        return $this->hasMany(Sarrera::class, 'id_ekitaldia');
+    }
 
 }

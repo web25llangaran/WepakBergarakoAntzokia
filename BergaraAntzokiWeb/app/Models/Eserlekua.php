@@ -14,4 +14,16 @@ class Eserlekua extends Model
 
     protected $fillable = ['id_aretoa', 'lerro_zenb', 'exerleku_zenb', 'eserleku_mota'];
 
+
+    //Eserlekua ze aretotakoa den ezagutzeko:
+    public function aretoa()
+    {
+        return $this->belongsTo(Aretoa::class, 'id_aretoa');
+    }
+    
+    //Eserlekuak dituen sarrerak ezagutzeko:
+    public function sarrerak()
+    {
+        return $this->hasMany(Sarrera::class, 'id_eserlekua');
+    }
 }
