@@ -44,16 +44,5 @@ class EserlekuaSeeder extends Seeder
                 }
             }
         }
-
-
-
-        for ($eserleku_zenb = 1; $eserleku_zenb <= 10; $eserleku_zenb++) {
-            Eserlekua::factory()->create([
-                'id_aretoa' => "3",
-                'lerro_zenb' => "1",
-                'eserleku_zenb' => $eserleku_zenb,
-                'eserleku_mota' => EserlekuMota::Silver_economy,
-            ]);
-        }
     }
 }
