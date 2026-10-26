@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\EkitaldiaController;
 
 class Ekitaldia extends Model
 {
@@ -24,8 +25,7 @@ class Ekitaldia extends Model
     //Ekitaldiak zein areto dituen ezagutzeko:
     public function aretoak()
     {
-        return $this->belongsToMany(Aretoa::class, 'ekitaldia_izan_aretoa', 'id_aretoa', 'id_ekitaldia')
+        return $this->belongsTo(Aretoa::class, 'ekitaldia_izan_aretoa', 'id_aretoa', 'id_ekitaldia')
             ->withTimestamps();
     }
-
 }

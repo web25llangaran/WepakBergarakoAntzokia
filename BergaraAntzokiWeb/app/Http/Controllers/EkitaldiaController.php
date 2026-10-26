@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\EkitaldiaController;
+use App\Models\Ekitaldia;
 
 
 class EkitaldiaController extends Controller
