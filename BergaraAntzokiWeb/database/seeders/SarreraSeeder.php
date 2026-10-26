@@ -2,46 +2,50 @@
 
 namespace Database\Seeders;
 
-
-use App\Models\Sarrera;
 use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Sarrera;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class SarreraSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
         $ekitaldiak = Ekitaldia::all();
-        $eserlekuak = Eserlekua::all();
+        $users = User::all();
 
-        // Si no existen registros previo en las tablas relacionadas, los creamos
+        // Crear usuarios si la tabla está vacía
+        if ($users->isEmpty()) {
+            $users = User::factory(10)->create();
+        }
+
+        // Crear eventos si la tabla está vacía
         if ($ekitaldiak->isEmpty()) {
             $ekitaldiak = Ekitaldia::factory(3)->create();
         }
 
-        if ($eserlekuak->isEmpty()) {
-            $this->call(EserlekuaSeeder::class);
-            $eserlekuak = Eserlekua::all();
-        }
-
-        // Generamos entradas para cada evento vendiendo varios asientos
         foreach ($ekitaldiak as $ekitaldia) {
-            // Selecciona hasta 10 asientos aleatorios existentes
-            $asientosVendidos = $eserlekuak->random(min(10, $eserlekuak->count()));
+            // Ekitaldiari dagokion eserlekuak lortu:
+            $eserlekuak = Eserlekua::where('id_aretoa', $ekitaldia->id_aretoa)->get();
 
-            foreach ($asientosVendidos as $eserlekua) {
-                Sarrera::factory()->create([
-                    'id_ekitaldia' => $ekitaldia->id,
-                    'id_aretoa' => $eserlekua->id_aretoa, // Coincide con la sala del asiento
-                    'id_eserlekua' => $eserlekua->id,
-                ]);
+            if ($eserlekuak->isNotEmpty()) {
+                // eskatu zenbaki aleatorio bat saldutako sarrera gisa:
+                $saldutakoEserlekuak = $eserlekuak->random(min(rand(3, 10), $eserlekuak->count()));
+
+                foreach ($saldutakoEserlekuak as $eserlekua) {
+                    Sarrera::create([
+                        'id_ekitaldia' => $ekitaldia->id,
+                        'id_aretoa'    => $ekitaldia->id_aretoa,
+                        'id_eserlekua' => $eserlekua->id,
+                        'id_user'      => $users->random()->id,
+                        'data'         => now(),
+                        'prezioa'      => rand(10, 30) + 0.50,
+                    ]);
+                }
             }
         }
     }

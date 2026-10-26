@@ -41,9 +41,7 @@ class DatabaseSeeder extends Seeder
             AretoaSeeder::class,
             EserlekuaSeeder::class,
             EkitaldiaSeeder::class,
-            EkitaldiaIzanAretoaSeeder::class,
             SarreraSeeder::class,
-            ErosiSarreraSeeder::class,
         ]);
     }
 }

@@ -18,21 +18,34 @@ class EserlekuaSeeder extends Seeder
         }
 
         foreach ($aretoak as $aretoa) {
-            $lerroak = 5;
-            $eserlekuLerroko = 10;
+            $lerroKopurua = $aretoa->lerro_kopurua ?? 5;
+            $totalEserlekuak = $aretoa->eserleku_kopurua ?? 50;
 
-            if ($aretoa->id != 3) {
-                for ($lerroa = 1; $lerroa <= $lerroak; $lerroa++) {
-                    for ($eserlekua = 2; $eserlekua <= $eserlekuLerroko; $eserlekua++) {
-                        Eserlekua::factory()->create([
-                            'id_aretoa' => $aretoa->id,
-                            'lerro_zenb' => $lerroa,
-                            'eserleku_zenb' => $eserlekua,
-                        ]);
-                    }
+            // Eserlekuak lerroko:
+            $eserlekuakLerroko = (int) ceil($totalEserlekuak / $lerroKopurua);
+
+            for ($asiento = 1; $asiento <= $eserlekuakLerroko; $asiento++) {
+                Eserlekua::create([
+                    'id_aretoa' => $aretoa->id,
+                    'lerro_zenb' => "1",
+                    'eserleku_zenb' => $asiento,
+                    'eserleku_mota' => EserlekuMota::Silver_economy,
+                ]);
+            }
+
+            for ($fila = 2; $fila <= $lerroKopurua; $fila++) {
+                for ($asiento = 1; $asiento <= $eserlekuakLerroko; $asiento++) {
+                    Eserlekua::create([
+                        'id_aretoa' => $aretoa->id,
+                        'lerro_zenb' => $fila,
+                        'eserleku_zenb' => $asiento,
+                        'eserleku_mota' => EserlekuMota::Arrunta,
+                    ]);
                 }
             }
         }
+
+
 
         for ($eserleku_zenb = 1; $eserleku_zenb <= 10; $eserleku_zenb++) {
             Eserlekua::factory()->create([

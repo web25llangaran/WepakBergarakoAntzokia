@@ -12,7 +12,7 @@ class Eserlekua extends Model
     use HasFactory;
     protected $table = 'eserlekuak';
 
-    protected $fillable = ['id_aretoa', 'lerro_zenb', 'exerleku_zenb', 'eserleku_mota'];
+    protected $fillable = ['id_aretoa', 'lerro_zenb', 'eserleku_zenb', 'eserleku_mota'];
 
 
     //Eserlekua ze aretotakoa den ezagutzeko:
