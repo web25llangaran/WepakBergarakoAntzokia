@@ -1,15 +1,27 @@
 <?php
 
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/',[EkitaldiaController::class, 'index']);  // "index" rutan, EkitaldiaController klasea erabiliko da.
+
+
+Route::get('/sarrera_erosi/{id_ekitaldia}', [EkitaldiaController::class, 'sarrera_erosi'])->middleware(['auth', 'verified'])->name('ekitaldia.sarrera_erosi');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,6 +34,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.dashboard');
     })->name('dashboard');
 
+
     // Aquí irán el resto de rutas de admin
 });
 require __DIR__.'/auth.php';
+
+
+

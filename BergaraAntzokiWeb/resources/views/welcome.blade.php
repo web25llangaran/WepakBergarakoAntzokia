@@ -1,8 +1,10 @@
 
+
 <!-- Explicación: Indica que esta vista Blade utiliza 'plantilla' como plantilla base, heredando su estructura compartida. -->
     @extends('plantilla.arrunta')
 <!-- Explicación: Abre la sección Blade llamada content1; su contenido se insertará en el lugar correspondiente de la plantilla base. -->
 @section('content1')
+
 
     <!-- Explicación: Crea un contenedor general del contenido; page-content permite aplicarle estilos desde CSS. -->
     <div class="page-content">
@@ -72,114 +74,78 @@
                         </div>
                         <!-- Explicación: Crea el contenedor en cuadrícula que organiza las tarjetas de eventos. -->
                         <div class="event-grid">
-                            <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
-                            <article class="event-card">
-                                <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
-                                <button class="event-image" aria-label="Erresuma: Shakespeareren Tragediak ekitaldiaren xehetasunak ikusi">
-                                    <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->
-                                    <img alt="Erresuma: Shakespeareren Tragediak ikuskizuna" src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&amp;fit=crop&amp;w=1600&amp;q=88">
-                                    <!-- Explicación: Muestra una etiqueta de categoría encima de la imagen. -->
-                                    <span>Antzerkia</span>
-                                    <!-- Explicación: Muestra en negrita la etiqueta que marca el evento como recomendado. -->
-                                    <b>Gomendatua</b>
-                                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                </button>
-                                <!-- Explicación: Agrupa los detalles textuales del evento: fecha, título, sala, precio y botón. -->
-                                <div class="event-body">
-                                    <!-- Explicación: Muestra la fecha y la hora previstas para este evento. -->
-                                    <p class="date">2026/10/24 · 20:00</p>
-                                    <!-- Explicación: Define el nombre del evento dentro de su tarjeta. -->
-                                    <h3>Erresuma: Shakespeareren Tragediak</h3>
-                                    <!-- Explicación: Muestra el lugar donde se celebra el evento e incluye un icono SVG decorativo. -->
-                                    <p class="hall">
-                                        <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
-                                        <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
-                                            <!-- Explicación: Muestra un párrafo de texto. -->
-                                            <path d="M6 11v7M18 11v7M4 18h16v3H4z"></path>
-                                            <!-- Explicación: Muestra un párrafo de texto. -->
-                                            <path d="M7 14V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v8"></path>
-                                        <!-- Explicación: Cierra el icono SVG. -->
-                                        </svg>
-                                     <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                     Areto Nagusia</p>
-                                     <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
-                                     <div class="event-bottom">
-                                        <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                        <div>
-                                            <!-- Explicación: Muestra un texto secundario de menor tamaño; aquí indica que el precio mostrado es el precio inicial. -->
-                                            <small>Preziotik</small>
-                                            <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
-                                            <strong>22,00€</strong>
-                                        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                        </div>
-                                        <!-- Explicación: Crea el botón visual para comprar entradas; aquí no se define por sí solo el proceso de compra. -->
-                                        <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
-                                    <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                    </div>
-                                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                </div>
-                            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                            </article>
-                            <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
-                            <article class="event-card">
-                                <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
-                                <button class="event-image" aria-label="Izaro: Cerodenero ekitaldiaren xehetasunak ikusi">
-                                    <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->
-                                    <img alt="Izaro: Cerodenero ikuskizuna" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
-                                    <!-- Explicación: Muestra una etiqueta de categoría encima de la imagen. -->
-                                    <span>Musika</span>
-                                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                </button>
-                                <!-- Explicación: Agrupa los detalles textuales del evento: fecha, título, sala, precio y botón. -->
-                                <div class="event-body">
-                                    <!-- Explicación: Muestra la fecha y la hora previstas para este evento. -->
-                                    <p class="date">2026/11/07 · 21:00</p>
-                                    <!-- Explicación: Define el nombre del evento dentro de su tarjeta. -->
-                                    <h3>Izaro: Cerodenero</h3>
-                                    <!-- Explicación: Muestra el lugar donde se celebra el evento e incluye un icono SVG decorativo. -->
-                                    <p class="hall">
-                                        <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
-                                        <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
-                                            <!-- Explicación: Muestra un párrafo de texto. -->
-                                            <path d="M6 11v7M18 11v7M4 18h16v3H4z"></path>
-                                            <!-- Explicación: Muestra un párrafo de texto. -->
-                                            <path d="M7 14V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v8"></path>
-                                        <!-- Explicación: Cierra el icono SVG. -->
-                                        </svg>
-                                     <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                     Areto Nagusia</p>
-                                    <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
-                                    <div class="event-bottom"><div>
-                                        <!-- Explicación: Muestra un texto secundario de menor tamaño; aquí indica que el precio mostrado es el precio inicial. -->
-                                        <small>Preziotik</small>
-                                        <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
-                                        <strong>18,00€</strong>
-                                    <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                    </div>
-                                    <!-- Explicación: Crea el botón visual para comprar entradas; aquí no se define por sí solo el proceso de compra. -->
-                                    <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
-                                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                </div>
-                            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                            </div>
-                        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                        </article>
+
+
+
+
+
+
+
+
+                        @foreach($ekitaldiak as $ekitaldia) <!-- ⭐ -->
+
+
+
+
+
+
+
+
                         <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
                         <article class="event-card">
                             <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
                             <button class="event-image" aria-label="Oskara: Sustraien Dantza ekitaldiaren xehetasunak ikusi">
-                                <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->
+
+
+
+                                <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->                               
                                 <img alt="Oskara: Sustraien Dantza ikuskizuna" src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+                                <!-- ❌ img karpetaren ruta/{id_ekitaldia} -->
+                               
+                               
                                 <!-- Explicación: Muestra una etiqueta de categoría encima de la imagen. -->
-                                <span>Dantza</span>
+                                <span>
+                                    {{ $ekitaldia->ekitaldi_mota }} <!-- ⭐ -->
+                                </span>
+
+
+
+
+
+
+                               
                             <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                             </button>
                             <!-- Explicación: Agrupa los detalles textuales del evento: fecha, título, sala, precio y botón. -->
                             <div class="event-body">
+
+
+
+
+
+
                                 <!-- Explicación: Muestra la fecha y la hora previstas para este evento. -->
-                                <p class="date">2026/11/15 · 19:00</p>
+                                <p class="date">
+                                    {{ $ekitaldia->data }} <!-- ⭐ -->
+                                </p>
+
+
+
+
+
+
+
+
                                 <!-- Explicación: Define el nombre del evento dentro de su tarjeta. -->
-                                <h3>Oskara: Sustraien Dantza</h3>
+                                <h3>
+                                    {{ $ekitaldia->izena }} <!-- ⭐ -->
+                                </h3>
+
+
+
+
+
+
                                 <!-- Explicación: Muestra el lugar donde se celebra el evento e incluye un icono SVG decorativo. -->
                                 <p class="hall">
                                     <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
@@ -191,19 +157,51 @@
                                     <!-- Explicación: Cierra el icono SVG. -->
                                     </svg>
                                  <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                 Areto Nagusia</p>
+                                {{ $aretoa->izena }} <!-- ⭐⭐ -->
+                                <!-- {{ $ekitaldia_izan_aretoa->id_aretoa }} --> <!-- ❔❔ -->
+                                </p>
+
+
+
+
+
+
+
+
                                 <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
                                 <div class="event-bottom"><div>
                                     <!-- Explicación: Muestra un texto secundario de menor tamaño; aquí indica que el precio mostrado es el precio inicial. -->
                                     <small>Preziotik</small>
+
+
+
+
+
+
                                     <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
-                                    <strong>16,00€</strong>
+                                    <strong>
+                                        {{ sarrera->prezioa }} <!-- ⭐⭐⭐ -->
+                                    </strong>
+
+
+
+
+
+
                                 <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                                 </div>
                                 <!-- Explicación: Crea el botón visual para comprar entradas; aquí no se define por sí solo el proceso de compra. -->
                                 <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
                             <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                             </div>
+                           
+
+
+                            @endforeach <!-- ⭐ -->
+
+
+
+
                         <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                         </div>
                     <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
@@ -217,4 +215,8 @@
     <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
     </div>
 
+
 @endsection
+
+
+
