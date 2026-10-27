@@ -157,8 +157,7 @@
                                     <!-- Explicación: Cierra el icono SVG. -->
                                     </svg>
                                  <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                {{ $aretoa->izena }} <!-- ⭐⭐ -->
-                                <!-- {{ $ekitaldia_izan_aretoa->id_aretoa }} --> <!-- ❔❔ -->
+                                {{ $ekitaldia->id_aretoa }} <!-- ⭐⭐ -->
                                 </p>
 
 
@@ -180,7 +179,7 @@
 
                                     <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
                                     <strong>
-                                        {{ sarrera->prezioa }} <!-- ⭐⭐⭐ -->
+                                        {{ $ekitaldia->sarrerak.prezioa }} <!-- ⭐⭐⭐ -->
                                     </strong>
 
 
