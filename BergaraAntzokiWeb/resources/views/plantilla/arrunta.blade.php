@@ -28,6 +28,7 @@
             color: #ffffff;
             padding: 16px 24px;
             width: 100%;
+            box-shadow: 0px 10px 15px -3px rgba(0, 113, 188, 1);
         }
 
         .header-container {

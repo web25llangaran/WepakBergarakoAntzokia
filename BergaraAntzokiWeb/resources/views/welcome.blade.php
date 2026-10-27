@@ -77,26 +77,12 @@
 
 
 
-
-
-
-
-
                         @foreach($ekitaldiak as $ekitaldia) <!-- ⭐ -->
-
-
-
-
-
-
-
 
                         <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
                         <article class="event-card">
                             <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
                             <button class="event-image" aria-label="Oskara: Sustraien Dantza ekitaldiaren xehetasunak ikusi">
-
-
 
                                 <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->                               
                                 <img alt="Oskara: Sustraien Dantza ikuskizuna" src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
@@ -107,44 +93,21 @@
                                 <span>
                                     {{ $ekitaldia->ekitaldi_mota }} <!-- ⭐ -->
                                 </span>
-
-
-
-
-
-
                                
                             <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                             </button>
                             <!-- Explicación: Agrupa los detalles textuales del evento: fecha, título, sala, precio y botón. -->
                             <div class="event-body">
 
-
-
-
-
-
                                 <!-- Explicación: Muestra la fecha y la hora previstas para este evento. -->
                                 <p class="date">
                                     {{ $ekitaldia->data }} <!-- ⭐ -->
                                 </p>
 
-
-
-
-
-
-
-
                                 <!-- Explicación: Define el nombre del evento dentro de su tarjeta. -->
                                 <h3>
                                     {{ $ekitaldia->izena }} <!-- ⭐ -->
                                 </h3>
-
-
-
-
-
 
                                 <!-- Explicación: Muestra el lugar donde se celebra el evento e incluye un icono SVG decorativo. -->
                                 <p class="hall">
@@ -160,32 +123,16 @@
                                 {{ $ekitaldia->id_aretoa }} <!-- ⭐⭐ -->
                                 </p>
 
-
-
-
-
-
-
-
                                 <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
                                 <div class="event-bottom"><div>
                                     <!-- Explicación: Muestra un texto secundario de menor tamaño; aquí indica que el precio mostrado es el precio inicial. -->
                                     <small>Preziotik</small>
 
-
-
-
-
-
                                     <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
+
                                     <strong>
-                                        {{ $ekitaldia->sarrerak.prezioa }} <!-- ⭐⭐⭐ -->
+                                        {{ $ekitaldia->sarrerak->min('prezioa') }} <!-- ⭐⭐⭐ -->
                                     </strong>
-
-
-
-
-
 
                                 <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                                 </div>
@@ -193,11 +140,9 @@
                                 <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
                             <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                             </div>
+                        </div>
                            
-
-
                             @endforeach <!-- ⭐ -->
-
 
 
 

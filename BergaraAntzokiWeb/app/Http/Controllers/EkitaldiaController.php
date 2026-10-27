@@ -13,6 +13,7 @@ class EkitaldiaController extends Controller
 {
     function index(){
         $ekitaldiak = Ekitaldia::all(); // Datu basetik Ekitaldia taulako datu GUZTIAK hartzen ditugu.
+        // echo $ekitaldiak;
         return view('welcome', ['ekitaldiak' => $ekitaldiak]); // "Ekitaldien zerrenda "Welcome" orrian sartzen ditugu, eta gainera, orria ikusi ahal izateko eskatzen dugu.
     }
 }
