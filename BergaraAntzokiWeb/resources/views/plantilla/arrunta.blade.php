@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Bergarako Antzoki Web')</title>
 
-    @vite(['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources\css\bootstrap.min.css', 'resources/js/app.js', 'resources/js/bootstrap.bundle.min.js'])
+
+    
 
     <style>
         /* Reset general */
@@ -28,7 +30,7 @@
             color: #ffffff;
             padding: 16px 24px;
             width: 100%;
-            box-shadow: 0px 10px 15px -3px rgba(0, 113, 188, 1);
+            box-shadow: 0px -10px 15px -3px rgba(0, 113, 188, 1);
         }
 
         .header-container {

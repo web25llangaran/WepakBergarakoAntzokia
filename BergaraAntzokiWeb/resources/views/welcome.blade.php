@@ -72,10 +72,13 @@
                             <button type="button" class="btn btn-primary ">Filtratu</button>
                         <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                         </div>
+                        
+                        
+                        
+                        
+                        
                         <!-- Explicación: Crea el contenedor en cuadrícula que organiza las tarjetas de eventos. -->
                         <div class="event-grid">
-
-
 
                         @foreach($ekitaldiak as $ekitaldia) <!-- ⭐ -->
 
@@ -120,7 +123,7 @@
                                     <!-- Explicación: Cierra el icono SVG. -->
                                     </svg>
                                  <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                {{ $ekitaldia->id_aretoa }} <!-- ⭐⭐ -->
+                                {{ $ekitaldia->aretoa->izena }} <!-- ⭐⭐ -->
                                 </p>
 
                                 <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
@@ -131,7 +134,7 @@
                                     <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
 
                                     <strong>
-                                        {{ $ekitaldia->sarrerak->min('prezioa') }} <!-- ⭐⭐⭐ -->
+                                        <p class="prezioa">{{ $ekitaldia->sarrerak->min('prezioa')}} € </p> <!-- ⭐⭐⭐ -->
                                     </strong>
 
                                 <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
