@@ -78,12 +78,13 @@
                         
                         
                         <!-- Explicación: Crea el contenedor en cuadrícula que organiza las tarjetas de eventos. -->
-                        <div class="event-grid">
+                        <div class="row row-cols-1 md:row-cols-3 g-4">
 
                         @foreach($ekitaldiak as $ekitaldia) <!-- ⭐ -->
 
                         <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
-                        <article class="event-card">
+                        <div class="col">
+                        <article class="event-card card h-100">
                             <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
                             <button class="event-image" aria-label="Oskara: Sustraien Dantza ekitaldiaren xehetasunak ikusi">
 
@@ -153,6 +154,7 @@
                         </div>
                     <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                     </article>
+</div>
                 <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
                 </div>
             <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
