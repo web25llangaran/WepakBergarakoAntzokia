@@ -7,6 +7,7 @@ use App\Models\Eserlekua;
 use App\Models\Sarrera;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Enums\Rola;
 
 class SarreraSeeder extends Seeder
 {
@@ -16,17 +17,9 @@ class SarreraSeeder extends Seeder
     public function run(): void
     {
         $ekitaldiak = Ekitaldia::all();
-        $users = User::all();
-
-        // Crear usuarios si la tabla está vacía
-        if ($users->isEmpty()) {
-            $users = User::factory(10)->create();
-        }
-
-        // Crear eventos si la tabla está vacía
-        if ($ekitaldiak->isEmpty()) {
-            $ekitaldiak = Ekitaldia::factory(3)->create();
-        }
+        // User arruntek bakarrik erosi dezakete sarrerak: 
+        $users = User::all();       
+        $erabiltzaileak = $users->where('rola', '!=', Rola::Admin->value);
 
         foreach ($ekitaldiak as $ekitaldia) {
             // Ekitaldiari dagokion eserlekuak lortu:
@@ -39,11 +32,11 @@ class SarreraSeeder extends Seeder
                 foreach ($saldutakoEserlekuak as $eserlekua) {
                     Sarrera::create([
                         'id_ekitaldia' => $ekitaldia->id,
-                        'id_aretoa'    => $ekitaldia->id_aretoa,
+                        // 'id_aretoa'    => $ekitaldia->id_aretoa,
                         'id_eserlekua' => $eserlekua->id,
-                        'id_user'      => $users->random()->id,
-                        'data'         => now(),
-                        'prezioa'      => rand(10, 30) + 0.50,
+                        'id_user'      => $erabiltzaileak->random()->id,
+                        // 'data'         => $ekitaldia->data,
+                        'prezioa'      => $ekitaldia->id + 20,
                     ]);
                 }
             }

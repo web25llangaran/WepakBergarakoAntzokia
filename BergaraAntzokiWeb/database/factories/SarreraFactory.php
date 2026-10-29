@@ -23,10 +23,10 @@ class SarreraFactory extends Factory
     {
         return [
             'id_ekitaldia' => Ekitaldia::factory(),
-            'id_aretoa' => Aretoa::factory(),
+            // 'id_aretoa' => Aretoa::factory(),
             'id_eserlekua' => Eserlekua::factory(),
             'id_user' => User::factory(),
-            'data' => fake()->dateTimeBetween('-1 month', '+1 months'),
+            // 'data' => fake()->dateTimeBetween('-1 month', '+1 months'),
             'prezioa' => fake()->randomFloat(2, 5, 50),
         ];
     }

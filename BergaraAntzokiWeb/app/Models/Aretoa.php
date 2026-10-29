@@ -24,9 +24,9 @@ class Aretoa extends Model
         return $this->hasMany(Ekitaldia::class, 'id_aretoa');
     }
 
-    // Aretoak zein sarrera dituen ezagutzeko:
-    public function sarrerak()
-    {
-        return $this->hasMany(Sarrera::class, 'id_aretoa');
-    }
+    // // Aretoak zein sarrera dituen ezagutzeko:
+    // public function sarrerak()
+    // {
+    //     return $this->hasMany(Sarrera::class, 'id_aretoa');
+    // }
 }

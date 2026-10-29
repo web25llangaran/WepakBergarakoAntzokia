@@ -12,8 +12,8 @@ class Sarrera extends Model
     use HasFactory;
     protected $table = 'sarrerak';
 
-    protected $fillable = ['id_ekitaldia', 'id_aretoa', 'id_eserlekua', 'id_user', 'data', 'prezioa'];
-    protected $casts = ['prezioa' => 'decimal:2', 'data' => 'datetime',];
+    protected $fillable = ['id_ekitaldia', 'id_eserlekua', 'id_user', 'prezioa'];
+    protected $casts = ['prezioa' => 'decimal:2'];
 
 
     //Sarrera zein erabiltzailek erosi duen ezagutzeko.
@@ -34,9 +34,9 @@ class Sarrera extends Model
         return $this->belongsTo(Eserlekua::class, 'id_eserlekua');
     }
 
-    //Sarrera zein aretotarako den ezagutzeko
-    public function aretoa()
-    {
-        return $this->belongsTo(Aretoa::class, 'id_aretoa');
-    }
+    // //Sarrera zein aretotarako den ezagutzeko
+    // public function aretoa()
+    // {
+    //     return $this->belongsTo(Aretoa::class, 'id_aretoa');
+    // }
 }

@@ -16,11 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(6)->create();
+        // User::factory(6)->create();
 
         User::factory()->create([
-            // users taula aldatu da, beraz hau be aldatu ein biher da:
-            // Hemen, goian sortzen diren 6 usuario arruntez gain admin usuario sortuko da:
             'izena' => 'Admin',
             'abizena' => 'Erabiltzailea',
             'user_izena' => 'admin',
@@ -29,14 +27,30 @@ class DatabaseSeeder extends Seeder
             'rola' => Rola::Admin,
         ]);
         User::factory()->create([
-            // users taula aldatu da, beraz hau be aldatu ein biher da:
-            // Hemen, goian sortzen diren 6 usuario arruntez gain arrunta usuario sortuko da:
             'izena' => 'Arrunta',
             'abizena' => 'Erabiltzailea',
             'user_izena' => 'arrunta',
             'email' => 'arrunta@gmail.com',
         ]);
 
+         User::factory()->create([
+            'izena' => 'Lide',
+            'abizena' => 'Errasti',
+            'user_izena' => 'lerrasti',
+            'email' => 'lide@gmail.com',
+        ]);
+         User::factory()->create([
+            'izena' => 'Jon',
+            'abizena' => 'Goiko',
+            'user_izena' => 'jgoiko',
+            'email' => 'goiko@gmail.com',
+        ]);
+         User::factory()->create([
+            'izena' => 'Ander',
+            'abizena' => 'Etxabe',
+            'user_izena' => 'aetxabe',
+            'email' => 'ander@gmail.com',
+        ]);
         $this->call([
             AretoaSeeder::class,
             EserlekuaSeeder::class,

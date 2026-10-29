@@ -20,33 +20,58 @@ class EkitaldiaSeeder extends Seeder
     {
         // Ekitaldia::factory(4)->create();
 
-        $aretoak = Aretoa::all();
+        // $aretoak = Aretoa::all();
 
-        if ($aretoak->isEmpty()) {
-            $aretoak = Aretoa::factory(3)->create();
-        }
+        // if ($aretoak->isEmpty()) {
+        //     $aretoak = Aretoa::factory(3)->create();
+        // }
 
-        foreach ($aretoak as $aretoa) {
-            Ekitaldia::factory(2)->create([
-                'id_aretoa' => $aretoa->id,
-            ]);
-        }
+        // foreach ($aretoak as $aretoa) {
+        //     Ekitaldia::factory(2)->create([
+        //         'id_aretoa' => $aretoa->id,
+        //     ]);
+        // }
 
-        // Ekitaldia::factory()->create([
-        //     'izena' => 'Behiak',
-        //     'deskripzioa' => 'Antzerki garaikidea. Benetan gomendatua',
-        //     'ekitaldi_mota'=> EkitaldiMota::Antzezlana,  
-        // ]);
-        // Ekitaldia::factory()->create([
-        //     'izena' => 'Hezten',
-        //     'deskripzioa' => 'Familia berriak, hezkuntza etxean',
-        //     'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
-        // ]);
-        // Ekitaldia::factory()->create([ 
-        //     'izena' => 'Autoak. Zein erosi?',
-        //     'deskripzioa' => 'Teknologia izugarri aldatu da. Zer izan behar da kontuan auto berri bat erosterakoan?',
-        //     'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
-        // ]);
+        Ekitaldia::factory()->create([
+            'izena' => 'Erresuma: Shakespeareren Tragediak',
+            'deskripzioa' => 'Antzerki garaikidea. Benetan gomendatua',
+            'ekitaldi_mota'=> EkitaldiMota::Antzezlana,
+            'id_aretoa'=> '1',
+            'data' => "2026-12-04 16:30:00",
+            'irudia' => "",
+        ]);
+        Ekitaldia::factory()->create([
+            'izena' => 'Hezten',
+            'deskripzioa' => 'Familia berriak, hezkuntza etxean',
+            'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
+            'id_aretoa'=> '2',
+            'data' => "2026-12-01 17:30:00",
+            'irudia' => "",
+        ]);
+        Ekitaldia::factory()->create([ 
+            'izena' => '"Irati" (2022): Euskal Zinema ',
+            'deskripzioa' => 'Euskal zinema.',
+            'ekitaldi_mota'=> EkitaldiMota::Zinema,  
+            'id_aretoa'=> '1', 
+            'data' => "2026-12-03 16:30:00",
+            'irudia' => "",
+        ]);
+        Ekitaldia::factory()->create([
+            'izena' => 'Euskara: norena da?',
+            'deskripzioa' => 'Euskarari buruzko hitzaldia',
+            'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
+            'id_aretoa'=> '2',
+            'data' => "2026-12-03 17:30:00",
+            'irudia' => "",
+        ]);
+        Ekitaldia::factory()->create([
+            'izena' => 'Izaro: Cerodenero',
+            'deskripzioa' => 'Euskarari buruzko hitzaldia',
+            'ekitaldi_mota'=> EkitaldiMota::Kontzertua,    
+            'id_aretoa'=> '1',
+            'data' => "2026-12-03 19:30:00",
+            'irudia' => "",
+        ]);
 
     }
 }

@@ -1,168 +1,108 @@
+{{-- Ze plantila erabili behar den definitu: --}}
+@extends('plantilla.arrunta')
+
+{{-- Webgune honen estiloa kargatu --}}
+@push('styles')
+@vite('resources/css/hasieraorria.css')
+@endpush
 
 
-<!-- Explicación: Indica que esta vista Blade utiliza 'plantilla' como plantilla base, heredando su estructura compartida. -->
-    @extends('plantilla.arrunta')
-<!-- Explicación: Abre la sección Blade llamada content1; su contenido se insertará en el lugar correspondiente de la plantilla base. -->
+{{-- Plantilan txertatuko dena garatu: --}}
 @section('content1')
 
-
-    <!-- Explicación: Crea un contenedor general del contenido; page-content permite aplicarle estilos desde CSS. -->
-    <div class="page-content">
-        <!-- Explicación: Marca el contenido principal de la página, aportando una estructura semántica clara. -->
-        <main>
-            <!-- Explicación: Abre la sección del catálogo de eventos. La clase permite darle estilo con CSS y el id ekitaldiak permite identificarla mediante enlaces o código. -->
-            <section class="catalog-section" id="ekitaldiak">
-                <!-- Explicación: Agrupa el encabezado de la sección, con el rótulo, el título y el texto descriptivo. -->
-                <div class="section-heading">
-                    <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                    <div>
-                        <!-- Explicación: Muestra un rótulo breve que aparece encima del título principal. -->
-                        <span class="eyebrow">Programazioa</span>
-                        <!-- Explicación: Define el título de nivel 2 de esta sección: el encabezado de los próximos eventos. -->
-                        <h2>Datozen ekitaldiak</h2>
-                    <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                    </div>
-                    <!-- Explicación: Muestra un párrafo de texto. -->
-                    <p>Aurkitu zure hurrengo kultura-plana Bergaran.</p>
-                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                </div>
-                <!-- Explicación: Agrupa los controles visuales de búsqueda y filtrado de los eventos. -->
-                <div class="filter-bar">
-                    <!-- Explicación: Agrupa el icono de búsqueda y el campo de texto. -->
-                    <label class="search-field">
-                        <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
-                        <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
-                            <!-- Explicación: Dibuja un círculo dentro del icono SVG. -->
-                            <circle cx="11" cy="11" r="7"></circle>
-                            <!-- Explicación: Muestra un párrafo de texto. -->
-                            <path d="m20 20-4-4"></path>
-                        <!-- Explicación: Cierra el icono SVG. -->
-                        </svg>
-                        <!-- Explicación: Crea el campo donde se puede escribir una búsqueda. placeholder muestra una pista y value="" lo deja inicialmente vacío. -->
-                        <input placeholder="Bilatu..." value=""></label>
-                        <!-- Explicación: Agrupa el selector de categoría para aplicarle estilos. -->
-                        <label class="field">
-                            <!-- Explicación: Crea una lista desplegable para elegir la categoría de un evento. -->
-                            <select>
-                                <!-- Explicación: Define una de las opciones que aparecen en la lista desplegable. -->
-                                <option>Guztiak</option>
-                                <!-- Explicación: Define una de las opciones que aparecen en la lista desplegable. -->
-                                <option>Antzerkia</option>
-                                <!-- Explicación: Define una de las opciones que aparecen en la lista desplegable. -->
-                                <option>Musika</option>
-                                <!-- Explicación: Define una de las opciones que aparecen en la lista desplegable. -->
-                                <option>Dantza</option>
-                            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                            </select>
-                        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                        </label>
-                        <!-- Explicación: Agrupa el icono del calendario y el campo para seleccionar una fecha. -->
-                        <label class="date-field">
-                            <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
-                            <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
-                                <!-- Explicación: Dibuja un rectángulo dentro del icono SVG. -->
-                                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
-                                <!-- Explicación: Muestra un párrafo de texto. -->
-                                <path d="M16 3v4M8 3v4M3 10h18"></path>
-                            <!-- Explicación: Cierra el icono SVG. -->
-                            </svg>
-                            <!-- Explicación: Crea un control para elegir una fecha. aria-label proporciona una descripción accesible. -->
-                            <input aria-label="Data filtratu" type="date"></label>
-                            <!-- Explicación: Crea el botón de filtrado. type="button" hace que no actúe como botón de envío de formulario. -->
-                            <button type="button" class="btn btn-primary ">Filtratu</button>
-                        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                        </div>
-                        
-                        
-                        
-                        
-                        
-                        <!-- Explicación: Crea el contenedor en cuadrícula que organiza las tarjetas de eventos. -->
-                        <div class="row row-cols-1 md:row-cols-3 g-4">
-
-                        @foreach($ekitaldiak as $ekitaldia) <!-- ⭐ -->
-
-                        <!-- Explicación: Abre una tarjeta de evento independiente; article representa una unidad de contenido que tiene sentido por sí sola. -->
-                        <div class="col">
-                        <article class="event-card card h-100">
-                            <!-- Explicación: Crea un botón que contiene la imagen y las etiquetas del evento. aria-label describe su finalidad a lectores de pantalla. -->
-                            <button class="event-image" aria-label="Oskara: Sustraien Dantza ekitaldiaren xehetasunak ikusi">
-
-                                <!-- Explicación: Inserta la imagen del evento. alt ofrece una descripción textual y src indica la dirección desde la que se carga la imagen. -->                               
-                                <img alt="Oskara: Sustraien Dantza ikuskizuna" src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
-                                <!-- ❌ img karpetaren ruta/{id_ekitaldia} -->
-                               
-                               
-                                <!-- Explicación: Muestra una etiqueta de categoría encima de la imagen. -->
-                                <span>
-                                    {{ $ekitaldia->ekitaldi_mota }} <!-- ⭐ -->
-                                </span>
-                               
-                            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                            </button>
-                            <!-- Explicación: Agrupa los detalles textuales del evento: fecha, título, sala, precio y botón. -->
-                            <div class="event-body">
-
-                                <!-- Explicación: Muestra la fecha y la hora previstas para este evento. -->
-                                <p class="date">
-                                    {{ $ekitaldia->data }} <!-- ⭐ -->
-                                </p>
-
-                                <!-- Explicación: Define el nombre del evento dentro de su tarjeta. -->
-                                <h3>
-                                    {{ $ekitaldia->izena }} <!-- ⭐ -->
-                                </h3>
-
-                                <!-- Explicación: Muestra el lugar donde se celebra el evento e incluye un icono SVG decorativo. -->
-                                <p class="hall">
-                                    <!-- Explicación: Inicia un icono vectorial SVG. aria-hidden="true" lo marca como decorativo para tecnologías de asistencia; viewBox define sus coordenadas y width/height su tamaño. -->
-                                    <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
-                                        <!-- Explicación: Muestra un párrafo de texto. -->
-                                        <path d="M6 11v7M18 11v7M4 18h16v3H4z"></path>
-                                        <!-- Explicación: Muestra un párrafo de texto. -->
-                                        <path d="M7 14V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v8"></path>
-                                    <!-- Explicación: Cierra el icono SVG. -->
-                                    </svg>
-                                 <!-- Explicación: Esta línea forma parte de la estructura de la vista Blade/HTML y define contenido, organización o atributos de un elemento. -->
-                                {{ $ekitaldia->aretoa->izena }} <!-- ⭐⭐ -->
-                                </p>
-
-                                <!-- Explicación: Agrupa la parte inferior de la tarjeta, donde se muestran el precio y el botón de compra. -->
-                                <div class="event-bottom"><div>
-                                    <!-- Explicación: Muestra un texto secundario de menor tamaño; aquí indica que el precio mostrado es el precio inicial. -->
-                                    <small>Preziotik</small>
-
-                                    <!-- Explicación: Resalta el precio para darle mayor importancia visual y semántica. -->
-
-                                    <strong>
-                                        <p class="prezioa">{{ $ekitaldia->sarrerak->min('prezioa')}} € </p> <!-- ⭐⭐⭐ -->
-                                    </strong>
-
-                                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                                </div>
-                                <!-- Explicación: Crea el botón visual para comprar entradas; aquí no se define por sí solo el proceso de compra. -->
-                                <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
-                            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                            </div>
-                        </div>
-                           
-                            @endforeach <!-- ⭐ -->
-
-
-
-                        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                        </div>
-                    <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                    </article>
-</div>
-                <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-                </div>
-            <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-            </section>
-        <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
-        </main>
-    <!-- Explicación: Cierra el elemento HTML abierto anteriormente; debe corresponder al elemento adecuado. -->
+<section class="hero"
+    style="background-image: linear-gradient(90deg, rgba(20, 16, 18, 0.9), rgba(20, 16, 18, 0.2)), url(&quot;https://images.unsplash.com/photo-1514306191717-452ec28c7814?auto=format&amp;fit=crop&amp;w=1800&amp;q=88&quot;);">
+    <div class="hero-content">
+        <span class="eyebrow light">Bergarako kultura agenda · 2026</span>
+        <p class="hero-kicker">Kultura Bizia Bergaran</p>
+        <h1>Erresuma: <em>Shakespeareren Tragediak</em></h1>
+        <p>Boterea, traizioa eta maitasuna. Antzerki klasikoa gaur egungo begiradatik, eszenaratze zirraragarri batean.</p>
+        <div class="hero-meta">
+            <span>
+                <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                    <path d="M16 3v4M8 3v4M3 10h18"></path>
+                </svg>
+                Urriak 24
+            </span>
+            <span>
+                <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                </svg>
+                20:00
+            </span>
+        </div>
+        <button type="button" class="btn btn-primary ">Sarrerak erosi
+            <svg
+                aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                <path d="M5 12h14"></path>
+                <path d="m13 6 6 6-6 6"></path>
+            </svg>
+        </button>
     </div>
+</section>
+<section class="catalog-section" id="ekitaldiak">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">Programazioa</span>
+            <h2>Datozen ekitaldiak</h2>
+        </div>
+        <p>Aurkitu zure hurrengo kultura-plana Bergaran.</p>
+    </div>
+    <div class="filter-bar">
+        <label class="search-field">
+            <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m20 20-4-4"></path>
+            </svg>
+            <input placeholder="Bilatu..." value="">
+        </label>
+        <label class="field">
+            <select>
+                <option>Guztiak</option>
+                <option>Antzerkia</option>
+                <option>Musika</option>
+                <option>Dantza</option>
+            </select>
+        </label>
+        <label class="date-field">
+            <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                <path d="M16 3v4M8 3v4M3 10h18"></path>
+            </svg>
+            <input aria-label="Data filtratu" type="date">
+        </label>
+        <button type="button" class="btn btn-primary ">Filtratu</button>
+    </div>
+    <div class="event-grid">
+        @foreach ($ekitaldiak as $ekitaldia)
+        <article class="event-card">
+            <button class="event-image">
+                <img alt="Oskara: Sustraien Dantza ikuskizuna" src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+                <span>{{$ekitaldia->ekitaldi_mota}}</span>
+            </button>
+            <div class="event-body">
+                <p class="date">{{$ekitaldia->data}}</p>
+                <h3>{{$ekitaldia->izena}}</h3>
+                <p class="hall">
+                    <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M6 11v7M18 11v7M4 18h16v3H4z"></path>
+                        <path d="M7 14V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v8"></path>
+                    </svg> {{ $ekitaldia->aretoa->izena }}
+                </p>
+                <div class="event-bottom">
+                    <div>
+                        <small>Preziotik</small>
+                        <strong>{{$ekitaldia->sarrerak->min('prezioa')}} €</strong>
+                    </div>
+                    <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
+                </div>
+            </div>
+        </article>
+        @endforeach
+    </div>
+</section>
 
 
 @endsection

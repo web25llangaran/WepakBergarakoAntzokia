@@ -10,7 +10,11 @@ export default defineConfig({
         // Configura el complemento de Laravel para Vite; las opciones siguientes describen qué archivos debe procesar y cómo actualizar la página.
         laravel({
             // Enumera los archivos de entrada que Vite debe procesar: las hojas CSS y el JavaScript de la aplicación. Las rutas son relativas a la raíz del proyecto.
-            input: ['resources/css/app.css', 'resources/css/hasieraorria.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/css/hasieraorria.css',
+                'resources/css/arrunta.css',
+                'resources/js/app.js'],
             // Activa la actualización automática del navegador cuando cambian archivos relevantes durante el desarrollo.
             refresh: true,
         // Cierra la llamada o estructura de configuración que se abrió anteriormente; los paréntesis, corchetes y llaves deben quedar equilibrados.
