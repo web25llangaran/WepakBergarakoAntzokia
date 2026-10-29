@@ -660,6 +660,8 @@ select:focus-visible {
 /* Cierra el bloque CSS abierto anteriormente. */
 }
 
-.prezioa {
+.prezioa strong {
     color: var(--gold);
 }
+
+
