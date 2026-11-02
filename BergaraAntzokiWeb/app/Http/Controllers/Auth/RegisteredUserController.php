@@ -36,11 +36,11 @@ class RegisteredUserController extends Controller
             // 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_izena' => ['required', 'string', 'max:20', 'unique:users'],
-            'izena'      => ['required', 'string', 'max:50'],
-            'abizena'    => ['required', 'string', 'max:50'],
-            'email'      => ['required', 'email', 'max:255', 'unique:users'],
-            'nan'        => ['nullable', 'string', 'size:9', 'unique:users'],
-            'password'   => ['required', 'confirmed', Rules\Password::defaults()],
+            'izena' => ['required', 'string', 'max:50'],
+            'abizena' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
+            'nan' => ['nullable', 'string', 'size:9', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
@@ -49,19 +49,19 @@ class RegisteredUserController extends Controller
             // 'email' => $request->email,
             // 'password' => Hash::make($request->password),
             // 'user_izena' => $request->user_izena,
-            'izena'      => $request->izena,
-            'abizena'    => $request->abizena,
-            'email'      => $request->email,
-            'nan'        => $request->nan,
-            'password'   => Hash::make($request->password),
-            'alta_data'  => now(),
-            'rola'       => 'arrunta', // erabiltzailea defectuz arrunta izango da.
+            'izena' => $request->izena,
+            'abizena' => $request->abizena,
+            'email' => $request->email,
+            'nan' => $request->nan,
+            'password' => Hash::make($request->password),
+            'alta_data' => now(),
+            'rola' => 'arrunta', // erabiltzailea defectuz arrunta izango da.
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('home', absolute: false));
     }
 }

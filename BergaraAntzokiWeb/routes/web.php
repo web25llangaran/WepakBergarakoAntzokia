@@ -1,23 +1,11 @@
 <?php
 
-
+use App\Http\Controllers\EkitaldiaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EkitaldiaController;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-Route::get('/',[EkitaldiaController::class, 'index']);  // "index" rutan, EkitaldiaController klasea erabiliko da.
-
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,10 +18,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.dashboard');
     })->name('dashboard');
 
-
     // Aquí irán el resto de rutas de admin
 });
 require __DIR__.'/auth.php';
-
-
-

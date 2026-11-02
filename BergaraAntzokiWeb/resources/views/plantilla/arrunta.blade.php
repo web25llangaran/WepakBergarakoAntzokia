@@ -8,13 +8,13 @@
 
     {{-- Plantilako estiloak kargatu --}}
     @vite(['resources/css/app.css', 'resources/css/arrunta.css', 'resources/js/app.js'])
-    
-     {{-- Plantilan kargatuko diren webguneen estiloa kargatzeko deia --}}
+
+    {{-- Plantilan kargatuko diren webguneen estiloa kargatzeko deia --}}
     @stack('styles')
 </head>
 
 <body>
-    kk
+    
     <header class="main-header">
         <div class="header-container">
             <a href="{{ url('/') }}" class="brand-logo">
@@ -31,13 +31,16 @@
                 <a href="#ekitaldiak" class="nav-link">Ekitaldiak</a>
 
                 @auth
-                @if(auth()->user()->rola === 'admin')
-                <a href="#" class="nav-btn nav-btn-admin">Admin</a>
-                @endif
+                <span class="nav-link">Kaixo, {{ auth()->user()->izena }}!</span>
+
+                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                    @csrf
+                    <button type="submit" class="nav-btn">Saioa itxi</button>
+                </form>
                 @endauth
 
                 @guest
-                <a href="#" class="nav-btn">Erregistratu / Saioa</a>
+                <a href="{{ route('login') }}" class="nav-btn">Erregistratu / Saioa</a>
                 @endguest
             </nav>
         </div>

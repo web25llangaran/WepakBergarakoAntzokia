@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-</head>
-<body>
-    
-</body>
-</html>
+{{-- Ze plantila erabili behar den definitu: --}}
+@extends('plantilla.admin')
+
+{{-- Webgune honen estiloa kargatu --}}
+@push('styles')
+@vite('resources/css/hasieraorria.css')
+@endpush
+
+
+{{-- Plantilan txertatuko dena garatu: --}}
+@section('contentAdmin')
+
+<div>kaka ZAHARRAAAAA!!!!!!!!!!</div>
+
+
+@endsection
