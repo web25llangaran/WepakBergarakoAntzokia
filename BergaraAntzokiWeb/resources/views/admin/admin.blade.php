@@ -13,6 +13,7 @@
     @stack('styles')
 </head>
 
+
 <body class="d-flex flex-column vh-100 overflow-hidden">
     <header>
         <div class="container-fluid">
@@ -45,7 +46,7 @@
         </div>
     </header>
     <main class="flex-grow-1 d-flex overflow-hidden">
-        <div class="d-flex flex-grow-1 bg-light">
+        <div class="d-flex flex-grow-1 bg-light" style="min-height:0;">
             <div class="nav flex-column nav-pills col-2 bg-dark p-3" style="--bs-nav-pills-link-active-bg: var(--bs-danger);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link text-white text-start active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">Dashboard</button>
                 <button class="nav-link text-white text-start" id="v-pills-ekitaldiak-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ekitaldiak" type="button" role="tab" aria-controls="v-pills-ekitaldiak" aria-selected="false">Ekitaldiak</button>
@@ -55,7 +56,7 @@
                     <span>Publikora joan</span><span>→</span>
                 </a>
             </div>
-            <div class="tab-content admin-main flex-grow-1 p-4" id="v-pills-tabContent">
+            <div class="tab-content admin-main flex-grow-1 p-4 d-flex flex-column overflow-hidden" id="v-pills-tabContent">
                 {{-- DASHBOARD --}}
                 @include('admin.dashboard')
                 {{-- EKITALDIAK --}}

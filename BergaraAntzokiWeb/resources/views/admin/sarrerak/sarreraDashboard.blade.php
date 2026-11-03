@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between align-items-end mb-3">
+<div class="d-flex justify-content-between align-items-end mb-3 flex-shrink-0">
     <div>
         <h2 class="mb-0">Sarrerak</h2>
         <small class="text-muted">Salmentak eta erreserbak egiaztatu.</small>
@@ -6,15 +6,15 @@
     <small class="text-muted">Azken eguneraketa: {{ collect($sarrerak)->max('updated_at') }}</small>
 </div>
 
-<div class="card">
-    <div class="card-body d-flex justify-content-between align-items-center">
+<div class="card flex-grow-1 d-flex flex-column" style="min-height:0;">
+    <div class="card-body d-flex justify-content-between align-items-center flex-shrink-0">
         <div>
             <h4 class="mb-0">Sarrerak eta erreserbak</h4>
             <small class="text-muted">Azken salmenten jarraipena.</small>
         </div>
         <button type="button" class="btn btn-danger">+ Sarrera gehitu</button>
     </div>
-    <div class="table-responsive overflow-auto" style="max-height: 60vh;">
+    <div class="table-responsive overflow-auto flex-grow-1" style="min-height:0;">
         <table class="table table-hover align-middle mb-0">
             <thead class="sticky-top bg-white">
                 <tr>
