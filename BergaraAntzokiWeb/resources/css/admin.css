@@ -1,6 +1,16 @@
-.textGranatea{
+/* .textGranatea{
     color: #701920;
+} */
+:root {
+    --bs-danger: #701920;
+    --bs-danger-rgb: 112, 25, 32;
 }
-.btnGranatea{
-    background-color: #701920;
+
+.btn-danger {
+    --bs-btn-bg: #701920;
+    --bs-btn-border-color: #701920;
+    --bs-btn-hover-bg: #5a141a;
+    --bs-btn-hover-border-color: #5a141a;
+    --bs-btn-active-bg: #5a141a;
+    --bs-btn-active-border-color: #5a141a;
 }

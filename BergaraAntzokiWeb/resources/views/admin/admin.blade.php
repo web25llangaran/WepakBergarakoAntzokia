@@ -13,7 +13,7 @@
     @stack('styles')
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <div class="container-fluid">
             <div class="row border-bottom">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-9 bg-white d-flex justify-content-between align-items-center p-4">
                     <div class="d-flex flex-column">
-                        <small class="fw-bold textGranatea">ADMINISTRAZIOA</small>
+                        <small class="fw-bold text-danger">ADMINISTRAZIOA</small>
                         @auth
                         <span class="fs-4 fw-semibold">Egun on, {{ auth()->user()->izena }}</span>
                         @endauth
