@@ -16,4 +16,9 @@ class EkitaldiaController extends Controller
         // echo $ekitaldiak;
         return view('welcome', ['ekitaldiak' => $ekitaldiak]); // "Ekitaldien zerrenda "Welcome" orrian sartzen ditugu, eta gainera, orria ikusi ahal izateko eskatzen dugu.
     }
+    function show(Ekitaldia $ekitaldia){
+        return view('ekitaldiak.show', ['ekitaldia' => $ekitaldia]);
+    }
+
+
 }

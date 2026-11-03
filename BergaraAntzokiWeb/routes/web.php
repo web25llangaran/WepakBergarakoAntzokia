@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
+Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

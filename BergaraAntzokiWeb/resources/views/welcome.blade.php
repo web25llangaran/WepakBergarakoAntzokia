@@ -94,7 +94,8 @@
                         <small>Preziotik</small>
                         <p class="prezioa "><strong>{{$ekitaldia->sarrerak->min('prezioa')}} €</strong></p>
                     </div>
-                    <button type="button" class="btn btn-dark ">Sarrerak erosi</button>
+                    <a href="{{ route('ekitaldiak.show', [$ekitaldia->id]) }}" class="btn btn-dark">Sarrerak erosi</a>
+                    <!-- <button onclick="window.location.href='{{ route('ekitaldiak.show', [$ekitaldia->id]) }}'" type="button" class="btn btn-dark">Sarrerak erosi</button> -->
                 </div>
             </div>
         </article>
