@@ -17,11 +17,40 @@
         @csrf
         @method('patch')
 
-        <div>
+        <!-- Users taula aldatu da beraz parte hau aldatu beharra dago: -->
+        <!-- IADA EZ DA Name ERABILIKO EZ BAIT DAGO GURE DATU BASEAN. -->
+        <!-- <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div> -->
+         <!-- ORAIN HAUEK BEHAR DIRA: -->
+        <!-- ************************************************************** -->
+        <!-- user_izena -->
+        <div>
+            <x-input-label for="user_izena" :value="__('User Izena')" />
+            <x-text-input id="user_izena" name="user_izena" type="text" class="mt-1 block w-full" :value="old('user_izena', $user->user_izena)" required autofocus autocomplete="user_izena" />
+            <x-input-error class="mt-2" :messages="$errors->get('user_izena')" />
         </div>
+        <!-- izena -->
+        <div>
+            <x-input-label for="izena" :value="__('Izena')" />
+            <x-text-input id="izena" name="izena" type="text" class="mt-1 block w-full" :value="old('izena', $user->izena)" required autofocus autocomplete="izena" />
+            <x-input-error class="mt-2" :messages="$errors->get('izena')" />
+        </div>
+        <!-- abizena -->
+        <div>
+            <x-input-label for="abizena" :value="__('Abizena')" />
+            <x-text-input id="abizena" name="abizena" type="text" class="mt-1 block w-full" :value="old('abizena', $user->abizena)" required autofocus autocomplete="abizena" />
+            <x-input-error class="mt-2" :messages="$errors->get('abizena')" />
+        </div>
+        <!-- nan -->
+        <div>
+            <x-input-label for="nan" :value="__('NAN')" />
+            <x-text-input id="nan" name="nan" type="text" class="mt-1 block w-full" :value="old('nan', $user->nan)"  autofocus autocomplete="nan" />
+            <x-input-error class="mt-2" :messages="$errors->get('nan')" />
+        </div>
+        <!-- ************************************************************** -->
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
