@@ -199,7 +199,7 @@
                 @endauth
 
                 @guest
-                    <a href="#" class="nav-btn">Erregistratu / Saioa</a>
+                    <button type="button" class="nav-btn" data-bs-toggle="modal" data-bs-target="#popup-saioa">Erregistratu / Saioa</button>
                 @endguest
             </nav>
         </div>
@@ -223,6 +223,10 @@
             </p>
         </div>
     </footer>
+
+    @guest
+        <x-popup />
+    @endguest
 
 </body>
 </html>

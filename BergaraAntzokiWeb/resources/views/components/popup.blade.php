@@ -1,89 +1,118 @@
-<!-- resources/views/components/popup.blade.php -->
+{{-- Saioa hasteko eta erregistratzeko popup-a (Bootstrap modal). --}}
+{{-- popup_fitxa eremu ezkutuak adierazten du zein formulario bidali den, erroreekin fitxa zuzena irekitzeko. --}}
+<div class="modal fade popup-saioa" id="popup-saioa" tabindex="-1" aria-labelledby="popup-titulua" aria-hidden="true" @if($errors->any() && old('popup_fitxa')) data-berriro-ireki @endif>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-<!-- Fondo oscuro superpuesto (Overlay) -->
-<div id="popup-overlay" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
-    
-    <!-- Contenedor del Modal (Color Azul Bergara oscuro) -->
-    <div class="bg-[#12243b] w-full max-w-md sm:max-w-lg rounded-lg shadow-2xl overflow-hidden relative transform transition-all">
-        
-        <!-- Botón de Cerrar -->
-        <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-300 hover:text-white transition">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <!-- Cabecera -->
-        <div class="px-8 pt-8 pb-4">
-            <p class="text-[#8b2234] text-xs font-bold tracking-widest uppercase mb-1">Bergarako Antzoki Web</p>
-            <h3 id="modal-title" class="text-2xl font-serif text-white">Hasi saioa</h3>
-        </div>
-
-        <!-- Pestañas de navegación -->
-        <div class="flex border-b border-gray-600 px-8">
-            <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-3 text-sm font-bold border-b-2 border-[#8b2234] text-white transition">
-                Saioa hasi
-            </button>
-            <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-gray-200 transition">
-                Erregistratu
-            </button>
-        </div>
-
-        <!-- Contenido del Formulario -->
-        <div class="p-8">
-            
-            <!-- FORMULARIO DE LOGIN -->
-            <form id="form-login" method="POST" action="{{ route('login') }}" class="space-y-4">
-                @csrf
+            {{-- Goiburua --}}
+            <div class="popup-goiburua">
                 <div>
-                    <label class="block text-sm font-medium text-gray-200 mb-1">Emaila *</label>
-                    <input type="email" name="email" required placeholder="zure@emaila.com" 
-                        class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
+                    <p class="popup-marka">Bergarako Antzoki Web</p>
+                    <h2 class="popup-titulua" id="popup-titulua">{{ old('popup_fitxa') === 'erregistroa' ? 'Sortu zure kontua' : 'Hasi saioa' }}</h2>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-200 mb-1">Pasahitza *</label>
-                    <input type="password" name="password" required placeholder="Zure pasahitza" 
-                        class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
-                </div>
-                <button type="submit" class="w-full mt-6 bg-[#8b2234] hover:bg-[#701b2a] text-white font-bold py-3 rounded-md transition flex justify-center items-center gap-2">
-                    Saioa hasi <i class="fa-solid fa-arrow-right"></i>
+                <button type="button" class="popup-itxi" data-bs-dismiss="modal" aria-label="Itxi">
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></svg>
                 </button>
-            </form>
+            </div>
 
-            <!-- FORMULARIO DE REGISTRO -->
-            <form id="form-register" method="POST" action="{{ route('register') }}" class="space-y-4 hidden">
-                @csrf
-                <div>
-                    <label class="block text-sm font-medium text-gray-200 mb-1">Erabiltzaile izena *</label>
-                    <input type="text" name="user_izena" required placeholder="Adib. maialen_g" 
-                        class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
+            {{-- Fitxak --}}
+            <ul class="nav nav-tabs nav-fill popup-fitxak">
+                <li class="nav-item">
+                    <button type="button" class="nav-link {{ old('popup_fitxa') === 'erregistroa' ? '' : 'active' }}" data-bs-toggle="tab" data-bs-target="#panela-login" data-titulua="Hasi saioa">
+                        Saioa hasi
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link {{ old('popup_fitxa') === 'erregistroa' ? 'active' : '' }}" data-bs-toggle="tab" data-bs-target="#panela-erregistroa" data-titulua="Sortu zure kontua">
+                        Erregistratu
+                    </button>
+                </li>
+            </ul>
+
+            {{-- Balidazio erroreak --}}
+            @if($errors->any() && old('popup_fitxa'))
+                <div class="alert alert-danger popup-alerta" role="alert">
+                    @foreach($errors->all() as $errorea)
+                        <div>{{ $errorea }}</div>
+                    @endforeach
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-200 mb-1">Izena *</label>
-                        <input type="text" name="izena" required placeholder="Ane" 
-                            class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-200 mb-1">Abizena *</label>
-                        <input type="text" name="abizena" required placeholder="Aranburu" 
-                            class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
-                    </div>
+            @endif
+
+            <div class="tab-content">
+
+                {{-- Saioa hasteko formularioa --}}
+                <div class="tab-pane fade {{ old('popup_fitxa') === 'erregistroa' ? '' : 'show active' }}" id="panela-login">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <input type="hidden" name="popup_fitxa" value="login">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="login-email">Emaila *</label>
+                            <input type="email" class="form-control" id="login-email" name="email" value="{{ old('popup_fitxa') === 'login' ? old('email') : '' }}" placeholder="zure@emaila.com" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label" for="login-password">Pasahitza *</label>
+                            <input type="password" class="form-control" id="login-password" name="password" placeholder="Zure pasahitza" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 popup-botoia">
+                            Saioa hasi
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </button>
+                    </form>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-200 mb-1">Emaila *</label>
-                    <input type="email" name="email" required placeholder="ane@email.eus" 
-                        class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
+
+                {{-- Erregistratzeko formularioa --}}
+                <div class="tab-pane fade {{ old('popup_fitxa') === 'erregistroa' ? 'show active' : '' }}" id="panela-erregistroa">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <input type="hidden" name="popup_fitxa" value="erregistroa">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="erregistro-user-izena">Erabiltzaile izena <span class="popup-derrigorrezkoa">*</span></label>
+                            <input type="text" class="form-control" id="erregistro-user-izena" name="user_izena" value="{{ old('user_izena') }}" placeholder="Adib. aaranburu" required>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label class="form-label" for="erregistro-izena">Izena <span class="popup-derrigorrezkoa">*</span></label>
+                                <input type="text" class="form-control" id="erregistro-izena" name="izena" value="{{ old('izena') }}" placeholder="Adib. Ane" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="erregistro-abizena">Abizena <span class="popup-derrigorrezkoa">*</span></label>
+                                <input type="text" class="form-control" id="erregistro-abizena" name="abizena" value="{{ old('abizena') }}" placeholder="Adib. Aranburu" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="erregistro-email">Emaila <span class="popup-derrigorrezkoa">*</span></label>
+                            <input type="email" class="form-control" id="erregistro-email" name="email" value="{{ old('popup_fitxa') === 'erregistroa' ? old('email') : '' }}" placeholder="ane@email.eus" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="erregistro-password">Pasahitza <span class="popup-derrigorrezkoa">*</span></label>
+                            <input type="password" class="form-control" id="erregistro-password" name="password" placeholder="Gutxienez 8 karaktere" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="erregistro-password-berretsi">Errepikatu pasahitza <span class="popup-derrigorrezkoa">*</span></label>
+                            <input type="password" class="form-control" id="erregistro-password-berretsi" name="password_confirmation" placeholder="Idatzi berriro pasahitza" required>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input type="checkbox" class="form-check-input" id="erregistro-baldintzak" required>
+                            <label class="form-check-label" for="erregistro-baldintzak">Baldintzak eta pribatutasuna onartzen ditut.</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 popup-botoia">
+                            Kontua sortu
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </button>
+                    </form>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-200 mb-1">Pasahitza *</label>
-                    <input type="password" name="password" required placeholder="Gutxienez 8 karaktere" 
-                        class="w-full px-4 py-2 bg-white text-gray-900 rounded-md focus:ring-2 focus:ring-[#8b2234] focus:outline-none">
-                </div>
-                <button type="submit" class="w-full mt-4 bg-[#8b2234] hover:bg-[#701b2a] text-white font-bold py-3 rounded-md transition flex justify-center items-center gap-2">
-                    Kontua sortu <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </form>
+
+            </div>
         </div>
     </div>
 </div>

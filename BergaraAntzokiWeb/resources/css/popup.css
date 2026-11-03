@@ -1,0 +1,192 @@
+/* Saioa hasteko eta erregistratzeko popup-aren estiloak. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap');
+
+/* Goiburuko botoia: <button> bat da, baina esteka bat bezala ikusi behar da. */
+button.nav-btn {
+    background: transparent;
+    cursor: pointer;
+}
+
+.popup-saioa {
+    /* Proiektuko koloreak */
+    --primary: #7a1c2c;
+    --primary-dark: #5f1321;
+    --text: #25272b;
+    --muted: #6d7077;
+    --line: #e5e4e7;
+    --bs-modal-width: 460px;
+    --bs-modal-border-width: 0;
+    --bs-modal-border-radius: 0;
+    font-family: Inter, sans-serif;
+}
+
+.popup-saioa .modal-content {
+    padding: 30px;
+    box-shadow: 0 18px 50px #1e242b1c;
+    color: var(--text);
+}
+
+/* Goiburua */
+.popup-goiburua {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.popup-marka {
+    margin-bottom: 4px;
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.popup-titulua {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.popup-itxi {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+    color: var(--muted);
+}
+
+.popup-itxi:hover {
+    color: var(--primary);
+}
+
+/* Fitxak */
+.popup-fitxak {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+}
+
+.popup-saioa .popup-fitxak .nav-link {
+    width: 100%;
+    padding: 10px 8px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.popup-saioa .popup-fitxak .nav-link:hover {
+    color: var(--primary);
+}
+
+.popup-saioa .popup-fitxak .nav-link.active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+}
+
+.popup-alerta {
+    border-radius: 3px;
+    font-size: 0.85rem;
+}
+
+/* Formularioak */
+.popup-saioa .form-label {
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.popup-derrigorrezkoa {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.popup-saioa .form-control {
+    min-height: 48px;
+    padding: 0 14px;
+    border-color: var(--line);
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.popup-saioa .form-control::placeholder {
+    color: var(--muted);
+}
+
+.popup-saioa .form-control:focus,
+.popup-saioa .form-check-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(122, 28, 44, 0.15);
+}
+
+.popup-saioa .form-check {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.popup-saioa .form-check .form-check-input {
+    float: none;
+    flex: 0 0 auto;
+    width: 19px;
+    height: 19px;
+    margin: 0 10px 0 0;
+    border-color: var(--line);
+    border-radius: 2px;
+}
+
+.popup-saioa .form-check-input:checked {
+    border-color: var(--primary);
+    background-color: var(--primary);
+}
+
+.popup-saioa .form-check-label {
+    font-size: 0.8rem;
+}
+
+/* Botoi nagusia: Bootstrap-en kolore urdinak marroiarekin ordezkatu. */
+.popup-saioa .popup-botoia {
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-bg: var(--primary-dark);
+    --bs-btn-hover-border-color: var(--primary-dark);
+    --bs-btn-active-bg: var(--primary-dark);
+    --bs-btn-active-border-color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.popup-botoia svg,
+.popup-itxi svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+/* Mugikorretan barneko tartea txikitu. */
+@media (max-width: 575.98px) {
+    .popup-saioa .modal-content {
+        padding: 20px;
+    }
+}
