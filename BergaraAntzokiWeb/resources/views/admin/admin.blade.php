@@ -13,7 +13,7 @@
     @stack('styles')
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column vh-100 overflow-hidden">
     <header>
         <div class="container-fluid">
             <div class="row border-bottom">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </header>
-    <main class="flex-grow-1 d-flex">
+    <main class="flex-grow-1 d-flex overflow-hidden">
         <div class="d-flex flex-grow-1 bg-light">
             <div class="nav flex-column nav-pills col-2 bg-dark p-3" style="--bs-nav-pills-link-active-bg: var(--bs-danger);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link text-white text-start active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">Dashboard</button>

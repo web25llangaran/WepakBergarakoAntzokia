@@ -3,7 +3,7 @@
         <h2 class="mb-0">Sarrerak</h2>
         <small class="text-muted">Salmentak eta erreserbak egiaztatu.</small>
     </div>
-    <small class="text-muted">Azken eguneraketa: gaur, 10:42</small>
+    <small class="text-muted">Azken eguneraketa: {{ collect($sarrerak)->max('updated_at') }}</small>
 </div>
 
 <div class="card">
@@ -14,9 +14,9 @@
         </div>
         <button type="button" class="btn btn-danger">+ Sarrera gehitu</button>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive overflow-auto" style="max-height: 60vh;">
         <table class="table table-hover align-middle mb-0">
-            <thead class="table-light text-uppercase small">
+            <thead class="sticky-top bg-white">
                 <tr>
                     <th>ID</th>
                     <th>Ekitaldia</th>
