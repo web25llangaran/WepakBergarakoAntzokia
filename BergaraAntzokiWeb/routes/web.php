@@ -15,7 +15,7 @@ Route::middleware('auth')->group(function () {
 // Zona de administración: solo usuarios logueados Y admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
-        return view('admin.dashboard');
+        return view('admin.admin');
     })->name('dashboard');
 
     // Aquí irán el resto de rutas de admin
