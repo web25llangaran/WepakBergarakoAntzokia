@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+
+.logo-circle {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.25;
+}
+
+.brand-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.brand-subtitle {
+    font-size: 9px;
+    color: #d4af37;
+}
+
+.admin-logo {
+    background-color: #1f262d;
+}
+
+.admin-user-info{
+    caret-color: white;
+}
+
+.user-title{
+    font-size: 9px;
+    color:  #701920;
+}
+
+.user-subtitle{
+    font-size: 22px;
+}
+
+
+/* ---------- LEFT NAV ---------- */
+
+.admin-menua{
+    background-color: #1f262d;
+    padding: 35px 16px 0;
+    --bs-nav-pills-link-active-bg: #701920;
+    --bs-nav-link-color: #e5e5eb;
+    --bs-nav-link-hover-color: #f9f9fb;
+}
+
+.admin-menua .nav-link{
+    text-align: left;
+}
+
+.admin-main{
+    background-color: #f9f9fb;
+}
