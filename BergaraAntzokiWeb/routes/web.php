@@ -5,7 +5,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
+Route::get('/', function () {
+    // Admin-a paneletik publikora irteten bada, saioa itxi (AuthenticatedSessionController@destroy bezala).
+    if (auth()->check() && auth()->user()->rola === 'admin') {
+        auth()->guard('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+    }
+
+    return app(EkitaldiaController::class)->index();
+})->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
