@@ -11,7 +11,16 @@ use App\Http\Controllers\EkitaldiaController;
 // });
 
 
-Route::get('/',[EkitaldiaController::class, 'index']);  // "index" rutan, EkitaldiaController klasea erabiliko da.
+Route::get('/', function () {
+    // Admin-a paneletik publikora irteten bada, saioa itxi (AuthenticatedSessionController@destroy bezala).
+    if (auth()->check() && auth()->user()->rola === 'admin') {
+        auth()->guard('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+    }
+
+    return app(EkitaldiaController::class)->index();
+})->name('welcome');
 
 
 // Route::get('/dashboard', function () {

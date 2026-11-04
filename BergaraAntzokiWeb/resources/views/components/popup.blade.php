@@ -1,5 +1,7 @@
 {{-- Saioa hasteko eta erregistratzeko popup-a (Bootstrap modal). --}}
 {{-- popup_fitxa eremu ezkutuak adierazten du zein formulario bidali den, erroreekin fitxa zuzena irekitzeko. --}}
+{{-- Saioa hasi ondoren erabiltzaile arrunta orri honetan gelditzeko (login-eko redirect()->intended-ek irakurtzen du). --}}
+@php(session(['url.intended' => url()->full()]))
 <div class="modal fade popup-saioa" id="popup-saioa" tabindex="-1" aria-labelledby="popup-titulua" aria-hidden="true" @if($errors->any() && old('popup_fitxa')) data-berriro-ireki @endif>
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
