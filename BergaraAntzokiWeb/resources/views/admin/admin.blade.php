@@ -7,7 +7,7 @@
     <title>@yield('title', 'Admin dashboard')</title>
 
     {{-- Plantilako estiloak kargatu --}}
-    @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js', 'resources/js/sarrera.js'])
 
     {{-- Plantilan kargatuko diren webguneen estiloa kargatzeko deia --}}
     @stack('styles')
@@ -45,6 +45,7 @@
             </div>
         </div>
     </header>
+    <!-- MAIN - DASHBOARD - EKITALDIAK- ERABILTZAILEAK - SALDUTAKO SARRERAK -->
     <main class="flex-grow-1 d-flex overflow-hidden">
         <div class="d-flex flex-grow-1 bg-light" style="min-height:0;">
             <div class="nav flex-column nav-pills col-2 bg-dark p-3" style="--bs-nav-pills-link-active-bg: var(--bs-danger);" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -69,7 +70,7 @@
                 </div>
                 {{-- SARRERAK --}}
                 <div class="tab-pane fade" id="v-pills-sarrerak" role="tabpanel" aria-labelledby="v-pills-sarrerak-tab" tabindex="0">
-                    @include('admin.sarrerak.sarreraDashboard', ['sarrerak' => $sarrerak])
+                    @include('admin.sarrerak.sarreraDashboard')
                 </div>
             </div>
         </div>
