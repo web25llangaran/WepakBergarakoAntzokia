@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Ekitaldia;
-use App\Models\User;
-use App\Models\Sarrera;
 use App\Enums\Rola;
+use App\Models\Ekitaldia;
+use App\Models\Sarrera;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-    function index(){
+    public function index()
+    {
         $ekitaldiak = Ekitaldia::all();
-        // $erabiltzaileak = User::where('rola', 'admin')->get();
-        // if ($request->user()->rola === Rola::Admin->value) {
-        //     return redirect()->route('admin.dashboard');
-        // }
-        // erabiltzaile arrunten zerrenda eskatu:
+
+        // erabiltzaile arrunten zerrenda eskatu, administratzaileak ezin bait du sarrerarik erosi.
         $erabiltzaileak = User::where('rola', Rola::Arrunta->value)->get();
-        $sarrerak = Sarrera::all();
+        // Erlazioak aldez aurretik kargatu. Honela orria kargatzen hasten danean datu guztiak eskura izango ditu. Bestela,
+        // orria kargatu bitartean kontsultak banan banan egingo ditu eta hau makal joango da:
+        // Hemen 5 kontsulta bakarrik egingo ditu. Dashboard-en tabla kargatzean egingo bagenitu, sarrera bakoitzeko
+        // 4 kontsulta egin beharko genituzke.
+        $sarrerak = Sarrera::with(['ekitaldia.aretoa', 'eroslea', 'eserlekua'])->get();
+
         return view('admin.admin', compact('ekitaldiak', 'erabiltzaileak', 'sarrerak'));
     }
 }

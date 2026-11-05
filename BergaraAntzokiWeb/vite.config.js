@@ -15,8 +15,7 @@ export default defineConfig({
                 'resources/css/hasieraorria.css',
                 'resources/css/arrunta.css',
                 'resources/css/admin.css',
-                'resources/js/app.js',
-                'resources/js/sarrera.js'],
+                'resources/js/app.js'],
             // Activa la actualización automática del navegador cuando cambian archivos relevantes durante el desarrollo.
             refresh: true,
         // Cierra la llamada o estructura de configuración que se abrió anteriormente; los paréntesis, corchetes y llaves deben quedar equilibrados.

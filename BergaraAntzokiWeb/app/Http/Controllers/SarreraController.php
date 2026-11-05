@@ -2,79 +2,102 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Rola;
+use App\Http\Requests\StoreSarreraRequest;
+use App\Http\Requests\UpdateSarreraRequest;
+use App\Models\Ekitaldia;
+use App\Models\Eserlekua;
 use App\Models\Sarrera;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class SarreraController extends Controller
 {
-   
-    // public function create()
-    // {
-    //     return view('admin.sarrerak.sarreraCreate');
-    // }
-
     /**
-     * Store a newly created resource in storage.
+     * Sarrera berria sortzeko formularioa erakutsi.
      */
-    public function store(Request $request)
+    public function create(): View
     {
-        // 1. Datuen balidazioa
-        // $validatedData = $request->validate([
-        //     'izenburua'    => 'required|string|max:255',
-        //     'deskribapena' => 'required|string',
-        //     'data'         => 'required|date',
-        //     'aretoa'       => 'required|string|max:255',
-        //     'edukiera'     => 'required|integer|min:1',
-        //     'prezioa'      => 'required|numeric|min:0',
-        //     'kategoria_id' => 'required|exists:kategoriak,id',
-        //     'irudia'       => 'nullable|image|mimes:jpg,png,jpeg,webp|max:2048',
-        // ]);
-
-        // if ($request->hasFile('irudia')) {
-        //     //Non gorde irudi berria:/storage/app/public/ekitaldiak
-        //     $path = $request->file('irudia')->store('ekitaldiak', 'public');
-        //     // /public/storage/ekitaldiak/*.jpg
-        //     $validatedData['irudia'] = Storage::url($path);
-        // }
-
-        // 2. Datu-basean ekitaldi berria sortu
-        Sarrera::create($request);
-
-
-        // 3. Ekitaldien zerrendara bideratu (flash mezu batekin)
-        return redirect()->route('dashboard')
-            ->with('success', 'Sarrera ondo sortu da!');
+        return view('admin.sarrerak.create', $this->formularioarenDatuak());
     }
 
     /**
-     * Display the specified resource.
+     * Sarrera berria datu-basean gorde.
      */
-    public function show(Sarrera $sarrera)
+    public function store(StoreSarreraRequest $request): RedirectResponse
     {
-        //
+        Sarrera::create($request->validated());
+
+        return $this->sarreretaraBideratu('Sarrera ondo sortu da!');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Sarrera baten xehetasunak erakutsi.
      */
-    public function edit(Sarrera $sarrera)
+    public function show(Sarrera $sarrera): View
     {
-        //
+        $sarrera->load(['ekitaldia.aretoa', 'eserlekua', 'eroslea']);
+
+        return view('admin.sarrerak.show', compact('sarrera'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Sarrera bat editatzeko formularioa erakutsi.
      */
-    public function update(Request $request, Sarrera $sarrera)
+    public function edit(Sarrera $sarrera): View
     {
-        //
+        return view('admin.sarrerak.edit', [
+            'sarrera' => $sarrera,
+            ...$this->formularioarenDatuak(),
+        ]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Sarrera baten datuak eguneratu.
      */
-    public function destroy(Sarrera $sarrera)
+    public function update(UpdateSarreraRequest $request, Sarrera $sarrera): RedirectResponse
     {
-        //
+        $sarrera->update($request->validated());
+
+        return $this->sarreretaraBideratu('Sarrera ondo eguneratu da!');
+    }
+
+    /**
+     * Sarrera bat ezabatu.
+     */
+    public function destroy(Sarrera $sarrera): RedirectResponse
+    {
+        $sarrera->delete();
+
+        return $this->sarreretaraBideratu('Sarrera ondo ezabatu da!');
+    }
+
+    /**
+     * Sortu eta editatu formularioek behar dituzten zerrendak.
+     *
+     * @return array{erabiltzaileak: Collection<int, User>, ekitaldiak: Collection<int, Ekitaldia>, eserlekuak: Collection<int, Eserlekua>, saldutakoEserlekuak: Collection<int, Collection<int, int>>}
+     */
+    private function formularioarenDatuak(): array
+    {
+        return [
+            'erabiltzaileak' => User::where('rola', Rola::Arrunta->value)->orderBy('user_izena')->get(),
+            'ekitaldiak' => Ekitaldia::with('aretoa')->orderBy('data')->get(),
+            'eserlekuak' => Eserlekua::orderBy('id_aretoa')->orderBy('lerro_zenb')->orderBy('eserleku_zenb')->get(),
+            // Ekitaldi bakoitzean dagoeneko saldutako eserlekuak: [id_ekitaldia => [id_eserlekua => id_sarrera]].
+            'saldutakoEserlekuak' => Sarrera::get(['id', 'id_ekitaldia', 'id_eserlekua'])
+                ->groupBy('id_ekitaldia')
+                ->map(fn ($sarrerak) => $sarrerak->pluck('id', 'id_eserlekua')),
+        ];
+    }
+
+    /**
+     * Admin dashboard-eko sarreren fitxara bideratu, flash mezu batekin.
+     */
+    private function sarreretaraBideratu(string $mezua): RedirectResponse
+    {
+        return redirect()->to(route('admin.dashboard').'#sarrerak')
+            ->with('success', $mezua);
     }
 }
