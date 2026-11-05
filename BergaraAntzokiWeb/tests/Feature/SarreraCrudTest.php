@@ -85,6 +85,14 @@ test('the database rejects a duplicated seat for the same ekitaldia', function (
     Sarrera::factory()->create(sarreraDatuak($this));
 })->throws(UniqueConstraintViolationException::class);
 
+test('a sarrera cannot be assigned to an admin', function () {
+    $this->actingAs($this->admin)
+        ->post(route('admin.sarrera.store'), sarreraDatuak($this, ['id_user' => $this->admin->id]))
+        ->assertSessionHasErrors('id_user');
+
+    expect(Sarrera::count())->toBe(0);
+});
+
 test('the seat must belong to the aretoa of the ekitaldia', function () {
     $besteAretokoEserlekua = Eserlekua::factory()->create();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Rola;
 use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -27,7 +28,8 @@ class StoreSarreraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_user' => ['required', 'integer', Rule::exists('users', 'id')],
+            // Erabiltzaile arruntek bakarrik izan ditzakete sarrerak (administratzaileek ez).
+            'id_user' => ['required', 'integer', Rule::exists('users', 'id')->where('rola', Rola::Arrunta->value)],
             'id_ekitaldia' => ['required', 'integer', Rule::exists('ekitaldiak', 'id')],
             'id_eserlekua' => [
                 'required',
@@ -74,7 +76,7 @@ class StoreSarreraRequest extends FormRequest
     {
         return [
             'id_user.required' => 'Erabiltzailea aukeratu behar da.',
-            'id_user.exists' => 'Aukeratutako erabiltzailea ez da existitzen.',
+            'id_user.exists' => 'Aukeratutako erabiltzailea ez da existitzen edo ez da erabiltzaile arrunta (administratzaileek ezin dute sarrerarik izan).',
             'id_ekitaldia.required' => 'Ekitaldia aukeratu behar da.',
             'id_ekitaldia.exists' => 'Aukeratutako ekitaldia ez da existitzen.',
             'id_eserlekua.required' => 'Eserlekua aukeratu behar da.',

@@ -53,6 +53,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Itxi"></button>
     </div>
     @endif
+    @if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0 m-4 shadow" style="z-index:1080;" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Itxi"></button>
+    </div>
+    @endif
 
     {{--
       Alboko menua orri guztietan. Dashboard-ean fitxak aldatzen ditu (Bootstrap pills);

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EkitaldiaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SarreraController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
@@ -23,6 +24,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/sarrerak/{sarrera}/editatu', [SarreraController::class, 'edit'])->name('sarrera.edit');
     Route::put('/sarrerak/{sarrera}', [SarreraController::class, 'update'])->name('sarrera.update');
     Route::delete('/sarrerak/{sarrera}', [SarreraController::class, 'destroy'])->name('sarrera.destroy');
+
+    // Erabiltzaileen CRUD-a
+    Route::get('/erabiltzaileak/sortu', [UserController::class, 'create'])->name('erabiltzailea.sortu');
+    Route::post('/erabiltzaileak', [UserController::class, 'store'])->name('erabiltzailea.store');
+    Route::get('/erabiltzaileak/{erabiltzailea}', [UserController::class, 'show'])->name('erabiltzailea.show');
+    Route::get('/erabiltzaileak/{erabiltzailea}/editatu', [UserController::class, 'edit'])->name('erabiltzailea.edit');
+    Route::put('/erabiltzaileak/{erabiltzailea}', [UserController::class, 'update'])->name('erabiltzailea.update');
+    Route::delete('/erabiltzaileak/{erabiltzailea}', [UserController::class, 'destroy'])->name('erabiltzailea.destroy');
 
     // Aquí irán el resto de rutas de admin
 });
