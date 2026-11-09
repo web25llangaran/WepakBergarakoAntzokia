@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\EkitaldiaController;
 use App\Models\Ekitaldia;
-
+use Illuminate\Contracts\View\View;
+use Illuminate\validation\Rule;
+use App\Enums\EkitaldiMota;
+use Illuminate\Support\Facades\Storage;
 
 class EkitaldiaController extends Controller
 {
@@ -16,4 +18,35 @@ class EkitaldiaController extends Controller
         // echo $ekitaldiak;
         return view('welcome', ['ekitaldiak' => $ekitaldiak]); // "Ekitaldien zerrenda "Welcome" orrian sartzen ditugu, eta gainera, orria ikusi ahal izateko eskatzen dugu.
     }
+
+    /**
+     * Ekitaldi berria sortzeko formularioa erakutsi.
+     */
+    public function create()
+    {
+        $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
+        return view('admin.ekitaldiak.create', compact('ekitaldiak'));
+    }
+
+    /**
+     * Ekitaldi berria datubasean gorde.
+     */
+     public function store(Request $request)
+    {
+        $ekitaldi_berria = $request->validate([
+            'izena' => 'required|string|max:255',
+            'deskripzioa' => 'nullable|text',
+            'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
+            'data' => 'required|date',
+            'irudia' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+        $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
+        if($request->hasFile('irudia')){
+            $path = $request->file('irudia')->store('Ekitaldiak', 'public');
+            $ekitaldi_berria['irudia'] = Storage::url($path);
+        }
+        Ekitaldia::create($ekitaldi_berria);
+        return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo sortu da!');
+    }
+
 }

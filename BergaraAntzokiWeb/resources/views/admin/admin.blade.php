@@ -3,10 +3,10 @@
 @section('content')
 <div class="tab-content admin-main flex-grow-1 p-4 d-flex flex-column overflow-hidden" id="v-pills-tabContent">
     {{-- DASHBOARD --}}
-    @include('admin.dashboard')
+        @include('admin.dashboard')
     {{-- EKITALDIAK --}}
     <div class="tab-pane fade" id="v-pills-ekitaldiak" role="tabpanel" aria-labelledby="v-pills-ekitaldiak-tab" tabindex="0">
-        ...EKITALDIAK
+        @include('admin.ekitaldiak.dashboard')
     </div>
     {{-- ERABILTZAILEAK --}}
     <div class="tab-pane fade" id="v-pills-erabiltzaileak" role="tabpanel" aria-labelledby="v-pills-erabiltzaileak-tab" tabindex="0">
