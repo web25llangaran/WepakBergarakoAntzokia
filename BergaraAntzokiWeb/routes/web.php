@@ -28,8 +28,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/ekitaldiak/sortu', [EkitaldiaController::class, 'create'])->name('ekitaldia.sortu');
     Route::post('/ekitaldiak', [EkitaldiaController::class, 'store'])->name('ekitaldia.store');
     Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldia.show');
-    Route::get(('ekitaldiak/{ekitaldia}/editatu'), [EkitaldiaController::class, 'edit'])->name('sarrera.edit');
-    Route::put(('ekitaldiak/{ekitaldia}'), [EkitaldiaController::class, 'update'])->name('ekitaldia.update');
-    Route::delete(('ekitaldiak/{ekitaldiak}'), [EkitaldiaController::class, 'destroy'])->name('ekitaldia.destroy');
+    Route::get('/ekitaldiak/{ekitaldia}/editatu', [EkitaldiaController::class, 'edit'])->name('ekitaldia.edit');
+    Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'update'])->name('ekitaldia.update');
+    Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'destroy'])->name('ekitaldia.destroy');
 });
 require __DIR__.'/auth.php';

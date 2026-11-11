@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('deskripzioa')->nullable();
             $table->string('ekitaldi_mota')->default(EkitaldiMota::Zinema->value);
             $table->dateTime('data');
-            $table->string('irudia');
+            $table->string('irudia')->nullable();
             $table->timestamps();
         });
     }

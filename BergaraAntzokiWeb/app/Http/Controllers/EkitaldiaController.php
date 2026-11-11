@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\validation\Rule;
 use App\Enums\EkitaldiMota;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Aretoa;
 
 class EkitaldiaController extends Controller
 {
@@ -25,7 +26,8 @@ class EkitaldiaController extends Controller
     public function create()
     {
         $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
-        return view('admin.ekitaldiak.create', compact('ekitaldiak'));
+        $aretoak = Aretoa::all();
+        return view('admin.ekitaldiak.create', compact(['ekitaldiak', 'aretoak']));
     }
 
     /**
