@@ -40,7 +40,7 @@ class EkitaldiaController extends Controller
             'deskripzioa' => 'nullable|text',
             'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
             'data' => 'required|date',
-            'irudia' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
         if($request->hasFile('irudia')){
