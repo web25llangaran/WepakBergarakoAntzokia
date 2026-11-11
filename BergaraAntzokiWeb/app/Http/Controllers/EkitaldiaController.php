@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ekitaldia;
 use Illuminate\Contracts\View\View;
-use Illuminate\validation\Rule;
+use Illuminate\Validation\Rule;
 use App\Enums\EkitaldiMota;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Aretoa;
@@ -39,6 +39,7 @@ class EkitaldiaController extends Controller
             'izena' => 'required|string|max:255',
             'deskripzioa' => 'nullable|string',
             'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
+            'id_aretoa' => 'required|exists:aretoak,id',
             'data' => 'required|date',
             'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
@@ -79,6 +80,7 @@ class EkitaldiaController extends Controller
             'izena' => 'required|string|max:255',
             'deskripzioa' => 'nullable|string',
             'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
+            'id_aretoa' => 'required|exists:aretoak,id',
             'data' => 'required|date',
             'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
