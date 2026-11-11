@@ -33,7 +33,7 @@ class EkitaldiaController extends Controller
     /**
      * Ekitaldi berria datubasean gorde.
      */
-     public function store(Request $request)
+    public function store(Request $request)
     {
         $ekitaldi_berria = $request->validate([
             'izena' => 'required|string|max:255',
@@ -50,5 +50,6 @@ class EkitaldiaController extends Controller
         Ekitaldia::create($ekitaldi_berria);
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo sortu da!');
     }
+    
 
 }
