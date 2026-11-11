@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Rola;
-use App\Http\Requests\StoreSarreraRequest;
-use App\Http\Requests\UpdateSarreraRequest;
 use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
 use App\Models\Sarrera;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class SarreraController extends Controller
@@ -26,9 +27,9 @@ class SarreraController extends Controller
     /**
      * Sarrera berria datu-basean gorde.
      */
-    public function store(StoreSarreraRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        Sarrera::create($request->validated());
+        Sarrera::create($this->sarreraBalidatu($request));
 
         return $this->sarreretaraBideratu('Sarrera ondo sortu da!');
     }
@@ -57,9 +58,9 @@ class SarreraController extends Controller
     /**
      * Sarrera baten datuak eguneratu.
      */
-    public function update(UpdateSarreraRequest $request, Sarrera $sarrera): RedirectResponse
+    public function update(Request $request, Sarrera $sarrera): RedirectResponse
     {
-        $sarrera->update($request->validated());
+        $sarrera->update($this->sarreraBalidatu($request, $sarrera));
 
         return $this->sarreretaraBideratu('Sarrera ondo eguneratu da!');
     }
@@ -72,6 +73,55 @@ class SarreraController extends Controller
         $sarrera->delete();
 
         return $this->sarreretaraBideratu('Sarrera ondo ezabatu da!');
+    }
+
+    /**
+     * Sarrera baten datuak balidatu (sortzeko eta editatzeko).
+     * Editatzean, $sarrera pasatzen da unique arauak bere eserlekua ignora dezan.
+     *
+     * @return array{id_user: int, id_ekitaldia: int, id_eserlekua: int, prezioa: string}
+     */
+    private function sarreraBalidatu(Request $request, ?Sarrera $sarrera = null): array
+    {
+        $datuak = $request->validate([
+            'id_user' => ['required', 'integer', Rule::exists('users', 'id')],
+            'id_ekitaldia' => ['required', 'integer', Rule::exists('ekitaldiak', 'id')],
+            'id_eserlekua' => [
+                'required',
+                'integer',
+                Rule::exists('eserlekuak', 'id'),
+                // Eserleku bera ezin da bi aldiz saldu ekitaldi berean.
+                Rule::unique('sarrerak', 'id_eserlekua')
+                    ->where('id_ekitaldia', $request->integer('id_ekitaldia'))
+                    ->ignore($sarrera),
+            ],
+            'prezioa' => ['required', 'numeric', 'decimal:0,2', 'min:0', 'max:999999.99'],
+        ], [
+            'id_user.required' => 'Erabiltzailea aukeratu behar da.',
+            'id_user.exists' => 'Aukeratutako erabiltzailea ez da existitzen.',
+            'id_ekitaldia.required' => 'Ekitaldia aukeratu behar da.',
+            'id_ekitaldia.exists' => 'Aukeratutako ekitaldia ez da existitzen.',
+            'id_eserlekua.required' => 'Eserlekua aukeratu behar da.',
+            'id_eserlekua.exists' => 'Aukeratutako eserlekua ez da existitzen.',
+            'id_eserlekua.unique' => 'Eserleku hau dagoeneko salduta dago ekitaldi honetarako.',
+            'prezioa.required' => 'Prezioa derrigorrezkoa da.',
+            'prezioa.numeric' => 'Prezioak zenbaki bat izan behar du.',
+            'prezioa.decimal' => 'Prezioak gehienez 2 hamartar izan ditzake.',
+            'prezioa.min' => 'Prezioa ezin da negatiboa izan.',
+            'prezioa.max' => 'Prezioa handiegia da.',
+        ]);
+
+        // Eserlekua ekitaldiaren aretokoa dela egiaztatu.
+        $ekitaldia = Ekitaldia::find($datuak['id_ekitaldia']);
+        $eserlekua = Eserlekua::find($datuak['id_eserlekua']);
+
+        if ($ekitaldia->id_aretoa !== $eserlekua->id_aretoa) {
+            throw ValidationException::withMessages([
+                'id_eserlekua' => 'Eserlekua ez dago ekitaldiaren aretoan.',
+            ]);
+        }
+
+        return $datuak;
     }
 
     /**
