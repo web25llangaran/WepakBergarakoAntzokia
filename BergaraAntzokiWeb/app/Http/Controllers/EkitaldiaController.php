@@ -37,7 +37,7 @@ class EkitaldiaController extends Controller
     {
         $ekitaldi_berria = $request->validate([
             'izena' => 'required|string|max:255',
-            'deskripzioa' => 'nullable|text',
+            'deskripzioa' => 'nullable|string',
             'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
             'data' => 'required|date',
             'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
@@ -77,7 +77,7 @@ class EkitaldiaController extends Controller
     {
         $ekitaldi_aldatua = $request->validate([
             'izena' => 'required|string|max:255',
-            'deskripzioa' => 'nullable|text',
+            'deskripzioa' => 'nullable|string',
             'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
             'data' => 'required|date',
             'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
