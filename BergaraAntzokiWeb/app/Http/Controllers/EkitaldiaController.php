@@ -1,21 +1,20 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-use App\Models\Ekitaldia;
-use Illuminate\Contracts\View\View;
-use Illuminate\Validation\Rule;
 use App\Enums\EkitaldiMota;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Aretoa;
+use App\Models\Ekitaldia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class EkitaldiaController extends Controller
 {
-    function index(){
+    public function index()
+    {
         $ekitaldiak = Ekitaldia::all(); // Datu basetik Ekitaldia taulako datu GUZTIAK hartzen ditugu.
+
         // echo $ekitaldiak;
         return view('welcome', ['ekitaldiak' => $ekitaldiak]); // "Ekitaldien zerrenda "Welcome" orrian sartzen ditugu, eta gainera, orria ikusi ahal izateko eskatzen dugu.
     }
@@ -27,6 +26,7 @@ class EkitaldiaController extends Controller
     {
         $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
         $aretoak = Aretoa::all();
+
         return view('admin.ekitaldiak.create', compact(['ekitaldiak', 'aretoak']));
     }
 
@@ -35,23 +35,11 @@ class EkitaldiaController extends Controller
      */
     public function store(Request $request)
     {
-        $ekitaldi_berria = $request->validate([
-            'izena' => 'required|string|max:255',
-            'deskripzioa' => 'nullable|string',
-            'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
-            'id_aretoa' => 'required|exists:aretoak,id',
-            'data' => 'required|date',
-            'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
-        
-        if($request->hasFile('irudia')){
-            $path = $request->file('irudia')->store('Ekitaldiak', 'public');
-            $ekitaldi_berria['irudia'] = Storage::url($path);
-        }
-        Ekitaldia::create($ekitaldi_berria);
+        Ekitaldia::create($this->ekitaldiaBalidatu($request));
+
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo sortu da!');
     }
-    
+
     /**
      * Sarrera baten xehetasunak erakutsi.
      */
@@ -68,6 +56,7 @@ class EkitaldiaController extends Controller
     public function edit(Ekitaldia $ekitaldia)
     {
         $aretoak = Aretoa::all();
+
         return view('admin.ekitaldiak.edit', compact(['ekitaldia', 'aretoak']));
     }
 
@@ -76,21 +65,7 @@ class EkitaldiaController extends Controller
      */
     public function update(Request $request, Ekitaldia $ekitaldia)
     {
-        $ekitaldi_aldatua = $request->validate([
-            'izena' => 'required|string|max:255',
-            'deskripzioa' => 'nullable|string',
-            'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
-            'id_aretoa' => 'required|exists:aretoak,id',
-            'data' => 'required|date',
-            'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
-        
-        if($request->hasFile('irudia')){
-            $path = $request->file('irudia')->store('Ekitaldiak', 'public');
-            $ekitaldi_aldatua['irudia'] = Storage::url($path);
-        }
-
-        $ekitaldia->update($ekitaldi_aldatua);
+        $ekitaldia->update($this->ekitaldiaBalidatu($request));
 
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo eguneratu da!');
     }
@@ -105,4 +80,39 @@ class EkitaldiaController extends Controller
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo ezabatu da!');
     }
 
+    /**
+     * Ekitaldi baten datuak balidatu (sortzeko eta editatzeko) eta irudia gorde.
+     *
+     * @return array{izena: string, deskripzioa: ?string, ekitaldi_mota: string, id_aretoa: int, data: string, irudia?: string}
+     */
+    private function ekitaldiaBalidatu(Request $request): array
+    {
+        $datuak = $request->validate([
+            'izena' => 'required|string|max:255',
+            'deskripzioa' => 'nullable|string',
+            'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
+            'id_aretoa' => 'required|exists:aretoak,id',
+            'data' => 'required|date',
+            'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ], [
+            'izena.required' => 'Izena derrigorrezkoa da.',
+            'izena.max' => 'Izenak gehienez 255 karaktere izan ditzake.',
+            'ekitaldi_mota.required' => 'Mota aukeratu behar da.',
+            'ekitaldi_mota.enum' => 'Aukeratutako mota ez da zuzena.',
+            'id_aretoa.required' => 'Aretoa aukeratu behar da.',
+            'id_aretoa.exists' => 'Aukeratutako aretoa ez da existitzen.',
+            'data.required' => 'Data derrigorrezkoa da.',
+            'data.date' => 'Datak data zuzena izan behar du.',
+            'irudia.image' => 'Fitxategiak irudi bat izan behar du.',
+            'irudia.mimes' => 'Irudiak JPG, PNG edo WEBP izan behar du.',
+            'irudia.max' => 'Irudiak gehienez 2 MB izan ditzake.',
+        ]);
+
+        if ($request->hasFile('irudia')) {
+            $path = $request->file('irudia')->store('Ekitaldiak', 'public');
+            $datuak['irudia'] = Storage::url($path);
+        }
+
+        return $datuak;
+    }
 }
