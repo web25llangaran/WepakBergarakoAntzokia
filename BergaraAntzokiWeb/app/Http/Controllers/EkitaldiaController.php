@@ -42,7 +42,7 @@ class EkitaldiaController extends Controller
             'data' => 'required|date',
             'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
-        $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
+        
         if($request->hasFile('irudia')){
             $path = $request->file('irudia')->store('Ekitaldiak', 'public');
             $ekitaldi_berria['irudia'] = Storage::url($path);
@@ -51,5 +51,56 @@ class EkitaldiaController extends Controller
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo sortu da!');
     }
     
+    /**
+     * Sarrera baten xehetasunak erakutsi.
+     */
+    public function show(Ekitaldia $ekitaldia)
+    {
+        $ekitaldia->load(['ekitaldia.aretoa', 'ekitaldia.sarrerak']);
+
+        return view('admin.ekitaldiak.show', compact('ekitaldia'));
+    }
+
+    /**
+     * Sarrera bat editatzeko formularioa erakutsi.
+     */
+    public function edit(Ekitaldia $ekitaldia)
+    {
+        $aretoak = Aretoa::all();
+        return view('admin.ekitaldiak.edit', compact(['ekitaldia', 'aretoak']));
+    }
+
+    /**
+     * Sarrera baten datuak eguneratu.
+     */
+    public function update(Request $request, Ekitaldia $ekitaldia)
+    {
+        $ekitaldi_aldatua = $request->validate([
+            'izena' => 'required|string|max:255',
+            'deskripzioa' => 'nullable|text',
+            'ekitaldi_mota' => ['required', Rule::enum(EkitaldiMota::class)],
+            'data' => 'required|date',
+            'irudia' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+        
+        if($request->hasFile('irudia')){
+            $path = $request->file('irudia')->store('Ekitaldiak', 'public');
+            $ekitaldi_aldatua['irudia'] = Storage::url($path);
+        }
+
+        $ekitaldia->update($ekitaldi_aldatua);
+
+        return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo eguneratu da!');
+    }
+
+    /**
+     * Sarrera bat ezabatu.
+     */
+    public function destroy(Ekitaldia $ekitaldia)
+    {
+        $ekitaldia->delete();
+
+        return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo ezabatu da!');
+    }
 
 }
