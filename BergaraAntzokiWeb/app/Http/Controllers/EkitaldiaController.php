@@ -56,7 +56,7 @@ class EkitaldiaController extends Controller
      */
     public function show(Ekitaldia $ekitaldia)
     {
-        $ekitaldia->load(['ekitaldia.aretoa', 'ekitaldia.sarrerak']);
+        $ekitaldia->load(['aretoa', 'sarrerak']);
 
         return view('admin.ekitaldiak.show', compact('ekitaldia'));
     }
