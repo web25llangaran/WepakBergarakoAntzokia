@@ -14,6 +14,9 @@ Route::middleware('auth')->group(function () {
     // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
     Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
 
+    // Erosketaren berrespen orria (ordainketaren ondoren):
+    Route::get('/ekitaldiak/{ekitaldia}/berrespena', [EkitaldiaController::class, 'berrespena'])->name('ekitaldiak.berrespena');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
