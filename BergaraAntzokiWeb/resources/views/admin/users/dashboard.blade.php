@@ -13,7 +13,7 @@
       <small class="text-muted">{{ count($users) }} erabiltzaile erregistratuta.</small>
     </div>
 
-    <a href="{{ route('admin.user.create') }}" class="btn btn-danger">
+    <a href="{{ route('admin.user.sortu') }}" class="btn btn-danger">
       + Erabiltzailea gehitu
     </a>
   </div>
@@ -59,7 +59,7 @@
                   <path d="M12 20h9"></path>
                   <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path>
                 </svg></a>
-              <form action="{{ route('admin.user.destroy', $user) }}" method="POST" class="d-inline" onsubmit="return confirm('Ziur zaude «{{ $user->user_izena }}» erabiltzailea ezabatu nahi duzula?');">
+              <form action="{{ route('admin.user.destroy', $user) }}" method="POST" class="d-inline" onsubmit="return confirm('Ziur zaude «{{ $user->user_izena }}» erabiltzailea ezabatu nahi duzula? Bere sarrera guztiak ere ezabatuko dira.');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-outline-secondary rounded-start-0" aria-label="Ezabatu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

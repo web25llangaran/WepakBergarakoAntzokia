@@ -46,7 +46,7 @@
     </div>
 
     <div class="card-footer bg-white border-0 d-flex justify-content-end gap-2 pb-4 px-4">
-      <form action="{{ route('admin.user.destroy', $user) }}" method="POST" onsubmit="return confirm('Ziur zaude erabiltzaile hau ezabatu nahi duzula?');">
+      <form action="{{ route('admin.user.destroy', $user) }}" method="POST" onsubmit="return confirm('Ziur zaude erabiltzaile hau ezabatu nahi duzula? Bere sarrera guztiak ere ezabatuko dira.');">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-outline-danger py-2 px-4 fw-semibold">Ezabatu</button>
