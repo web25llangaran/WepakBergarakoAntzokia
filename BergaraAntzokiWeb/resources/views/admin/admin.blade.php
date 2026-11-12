@@ -10,7 +10,7 @@
     </div>
     {{-- ERABILTZAILEAK --}}
     <div class="tab-pane fade" id="v-pills-erabiltzaileak" role="tabpanel" aria-labelledby="v-pills-erabiltzaileak-tab" tabindex="0">
-        ...ERABILTZAILEAK
+        @include('admin.users.dashboard')
     </div>
     {{-- SARRERAK --}}
     <div class="tab-pane fade" id="v-pills-sarrerak" role="tabpanel" aria-labelledby="v-pills-sarrerak-tab" tabindex="0">
