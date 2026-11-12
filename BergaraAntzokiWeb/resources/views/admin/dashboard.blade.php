@@ -1,44 +1,31 @@
 {{-- DASHBOARD --}}
-<div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab" tabindex="0">
+@php
+    // Datak datu-basean ordu lokalean gordetzen dira (app.timezone = UTC), beraz "orain" ordu lokalean hartu.
+    $orain = now('Europe/Madrid')->shiftTimezone(config('app.timezone'));
+    $ekitaldiAktiboak = $ekitaldiak->filter(fn ($ekitaldia) => $ekitaldia->data->gte($orain));
+    $burututakoEkitaldiak = $ekitaldiak->filter(fn ($ekitaldia) => $ekitaldia->data->lt($orain));
+    $erabiltzaileArruntak = $users->where('rola', \App\Enums\Rola::Arrunta->value);
+    $silverSarrerak = $sarrerak->filter(fn ($sarrera) => $sarrera->eserlekua->eserleku_mota === \App\Enums\EserlekuMota::Silver_economy->value);
+
+    // Progress barren ehunekoak (zeroz ez zatitzeko max(..., 1)).
+    $aktiboEhunekoa = round(count($ekitaldiAktiboak) * 100 / max(count($ekitaldiak), 1));
+    $arruntEhunekoa = round(count($erabiltzaileArruntak) * 100 / max(count($users), 1));
+    $silverEhunekoa = round(count($silverSarrerak) * 100 / max(count($sarrerak), 1));
+
+    $hurrengoEkitaldiak = $ekitaldiAktiboak->sortBy('data')->take(5);
+    $azkenSalmentak = $sarrerak->sortByDesc('created_at')->take(5);
+@endphp
+<div class="tab-pane fade show active overflow-auto" style="min-height:0;" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab" tabindex="0">
     <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-            <h2 class="mb-0">Dashboard</h2>
+            <h2 class="mb-0">Bergarako Antzoki Web gunerako kudeaketa gunea</h2>
             <small class="text-muted">Hona hemen antzokiaren kudeaketarako gunea.</small>
         </div>
-        <small class="text-muted">Azken eguneraketa: gaur, 10:42</small>
+        <small class="text-muted">Azken eguneraketa: gaur, {{ now('Europe/Madrid')->format('H:i') }}</small>
     </div>
     <div class="row g-3 mb-4">
-        <div class="col-md-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <small class="text-uppercase text-muted">Salmentak guztira</small>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-                            <path d="M2 10h20"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mt-2 mb-1">48.240€</h3>
-                    <small class="text-success">+12,5%</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <small class="text-uppercase text-muted">Sarrera salduak</small>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 7a2 2 0 0 0 0 4v6h18v-6a2 2 0 0 0 0-4V5H3Z"></path>
-                            <path d="M13 5v12"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mt-2 mb-1">2.184</h3>
-                    <small class="text-success">+8,2%</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
+        {{-- EKITALDIAK --}}
+        <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -48,12 +35,16 @@
                             <path d="M16 3v4M8 3v4M3 10h18"></path>
                         </svg>
                     </div>
-                    <h3 class="mt-2 mb-1">12</h3>
-                    <small class="text-success">3 aste honetan</small>
+                    <h3 class="mt-2 mb-1">{{ count($ekitaldiAktiboak) }}</h3>
+                    <small class="text-muted">{{ count($burututakoEkitaldiak) }} burututa · {{ count($ekitaldiak) }} guztira</small>
+                    <div class="progress mt-3" style="height:6px;" role="progressbar" aria-label="Ekitaldi aktiboak" aria-valuenow="{{ $aktiboEhunekoa }}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-danger" style="width: {{ $aktiboEhunekoa }}%"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        {{-- ERABILTZAILEAK --}}
+        <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -64,10 +55,34 @@
                             <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <h3 class="mt-2 mb-1">4.892</h3>
-                    <small class="text-success">+156 hilabete honetan</small>
+                    <h3 class="mt-2 mb-1">{{ count($users) }}</h3>
+                    <small class="text-muted">{{ count($erabiltzaileArruntak) }} arrunta · {{ count($users) - count($erabiltzaileArruntak) }} admin</small>
+                    <div class="progress mt-3" style="height:6px;" role="progressbar" aria-label="Erabiltzaile arruntak" aria-valuenow="{{ $arruntEhunekoa }}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-danger" style="width: {{ $arruntEhunekoa }}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- SARRERAK --}}
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <small class="text-uppercase text-muted">Saldutako sarrerak</small>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 7a2 2 0 0 0 0 4v6h18v-6a2 2 0 0 0 0-4V5H3Z"></path>
+                            <path d="M13 5v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="mt-2 mb-1">{{ count($sarrerak) }}</h3>
+                    <small class="text-muted">{{ count($silverSarrerak) }} Silver economy ({{ $silverEhunekoa }}%)</small>
+                    <div class="progress mt-3" style="height:6px;" role="progressbar" aria-label="Silver economy sarrerak" aria-valuenow="{{ $silverEhunekoa }}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-danger" style="width: {{ $silverEhunekoa }}%"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
