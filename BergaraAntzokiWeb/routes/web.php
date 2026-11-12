@@ -7,8 +7,12 @@ use App\Http\Controllers\SarreraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
+Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
 Route::middleware('auth')->group(function () {
+    // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
+    Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

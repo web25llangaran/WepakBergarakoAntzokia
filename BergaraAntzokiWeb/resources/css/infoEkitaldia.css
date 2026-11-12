@@ -107,6 +107,7 @@ select:focus-visible {
     font-size: 12px;
     line-height: 1.5;
     text-align: left;
+    text-decoration: none;
     cursor: pointer;
 }
 

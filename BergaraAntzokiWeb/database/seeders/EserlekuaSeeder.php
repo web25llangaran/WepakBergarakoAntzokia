@@ -19,28 +19,25 @@ class EserlekuaSeeder extends Seeder
 
         foreach ($aretoak as $aretoa) {
             $lerroKopurua = $aretoa->lerro_kopurua ?? 5;
-            $totalEserlekuak = $aretoa->eserleku_kopurua ?? 50;
+            $totalEserlekuak = $aretoa->exerleku_kopurua ?? 50;
 
             // Eserlekuak lerroko:
             $eserlekuakLerroko = (int) ceil($totalEserlekuak / $lerroKopurua);
 
+            // firstOrCreate: eserlekua jada existitzen bada ez da berriz sortzen, falta direnak bakarrik gehitzen dira.
             for ($asiento = 1; $asiento <= $eserlekuakLerroko; $asiento++) {
-                Eserlekua::create([
-                    'id_aretoa' => $aretoa->id,
-                    'lerro_zenb' => "1",
-                    'eserleku_zenb' => $asiento,
-                    'eserleku_mota' => EserlekuMota::Silver_economy,
-                ]);
+                Eserlekua::firstOrCreate(
+                    ['id_aretoa' => $aretoa->id, 'lerro_zenb' => 1, 'eserleku_zenb' => $asiento],
+                    ['eserleku_mota' => EserlekuMota::Silver_economy],
+                );
             }
 
             for ($fila = 2; $fila <= $lerroKopurua; $fila++) {
                 for ($asiento = 1; $asiento <= $eserlekuakLerroko; $asiento++) {
-                    Eserlekua::create([
-                        'id_aretoa' => $aretoa->id,
-                        'lerro_zenb' => $fila,
-                        'eserleku_zenb' => $asiento,
-                        'eserleku_mota' => EserlekuMota::Arrunta,
-                    ]);
+                    Eserlekua::firstOrCreate(
+                        ['id_aretoa' => $aretoa->id, 'lerro_zenb' => $fila, 'eserleku_zenb' => $asiento],
+                        ['eserleku_mota' => EserlekuMota::Arrunta],
+                    );
                 }
             }
         }

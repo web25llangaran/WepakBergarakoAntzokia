@@ -1,0 +1,644 @@
+/* ==========================================================
+   ESERLEKUAK.CSS
+   Eserlekuak aukeratzeko orriaren estiloak (Figma-tik kopiatuak).
+   Maketazioa Bootstrap-ekin egiten da (container, row, col...),
+   hemen Figma-ren diseinuko xehetasunak bakarrik daude.
+   ========================================================== */
+
+/* 1. Letra-tipoak (infoEkitaldia.css-an erabilitako berak) */
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Playfair Display";
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_naUXtXA-W2r.woff2") format("woff2");
+}
+
+/* 2. Koloreak */
+:root {
+    --primary: #7a1c2c;
+    --primary-dark: #5f1321;
+    --slate: #1e242b;
+    --gold: #d4af37;
+    --violet: #5b21b6;
+    --violet-soft: #f2edff;
+    --text: #25272b;
+    --muted: #6d7077;
+    --line: #e5e4e7;
+}
+
+/* 3. Orriaren oinarria */
+.flow-page {
+    background: rgb(246, 245, 247);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.flow-page h1,
+.flow-page h2,
+.flow-page h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    line-height: 1.08;
+    margin-top: 0;
+}
+
+.flow-page p {
+    margin-top: 0;
+}
+
+.flow-page button {
+    cursor: pointer;
+}
+
+.flow-page button:disabled {
+    cursor: not-allowed;
+}
+
+.icon {
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* 4. Botoiak (Bootstrap-en .btn gainean) */
+.flow-page .btn {
+    min-height: 48px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 0 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.flow-page .btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.96);
+}
+
+.flow-page .btn:disabled {
+    background: rgb(199, 200, 202);
+    border-color: rgb(199, 200, 202);
+    color: rgb(245, 245, 245);
+    transform: none;
+    opacity: 1;
+}
+
+.flow-page .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.flow-page .btn-violet {
+    background: var(--violet);
+    border-color: var(--violet);
+    color: white;
+}
+
+.flow-page .btn-violet.selected-mode {
+    box-shadow: rgba(91, 33, 182, 0.16) 0 0 0 4px;
+}
+
+/* 5. Urratsak */
+.stepper {
+    max-width: 720px;
+    margin: 0 auto;
+    height: 86px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+.stepper > div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: rgb(155, 155, 159);
+    position: relative;
+}
+
+.stepper > div:not(:last-child)::after {
+    content: "";
+    width: 45%;
+    height: 1px;
+    background: rgb(213, 212, 215);
+    position: absolute;
+    right: 8px;
+}
+
+.stepper span {
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgb(198, 197, 201);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+.stepper b {
+    font-size: 11px;
+}
+
+.stepper .active {
+    color: var(--primary);
+}
+
+.stepper .active span {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* 6. Eserlekuen mapa */
+.seat-layout {
+    max-width: 1240px;
+    padding: 10px 28px 70px;
+}
+
+/* Bootstrap-en zutabeak edukiaren arabera ez zabaltzeko, eserlekuen mapa txikitu ahal izan dadin. */
+.seat-layout .col-md {
+    min-width: 0;
+}
+
+.seat-main,
+.summary-panel {
+    background: white;
+    border: 1px solid var(--line);
+}
+
+.seat-main {
+    padding: 32px;
+}
+
+.seat-heading h1 {
+    margin: 8px 0;
+    font-size: 34px;
+}
+
+.seat-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.seat-heading .btn {
+    text-align: left;
+}
+
+.seat-heading .btn small {
+    display: block;
+    font-size: 9px;
+    opacity: 0.8;
+}
+
+.plus-badge {
+    width: 34px;
+    height: 34px;
+    background: white;
+    color: var(--violet);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+.silver-note {
+    margin-top: 20px;
+    background: var(--violet-soft);
+    color: var(--violet);
+    padding: 13px 16px;
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+}
+
+.silver-note > div {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.silver-note span {
+    color: rgb(94, 84, 112);
+}
+
+.silver-quantity {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 700;
+}
+
+.silver-quantity .form-select {
+    width: 72px;
+    height: 36px;
+    border: 1px solid rgb(200, 184, 232);
+    border-radius: 0;
+    color: var(--violet);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.seat-map {
+    margin-top: 28px;
+    background: rgb(251, 251, 252);
+    border: 1px solid rgb(236, 235, 239);
+    padding: 20px 35px;
+    overflow: hidden;
+}
+
+.stage {
+    width: 75%;
+    min-width: 0;
+    height: 45px;
+    margin: 0 auto 38px;
+    border-top: 8px solid var(--slate);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+}
+
+.stage span {
+    position: relative;
+    top: 10px;
+}
+
+.seat-row {
+    min-width: 0;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.seat-row > div {
+    flex: 1 1 0%;
+    display: flex;
+    justify-content: center;
+    gap: clamp(2px, 0.7vw, 8px);
+}
+
+.row-label {
+    width: 55px;
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 800;
+}
+
+/* Eserleku bakoitza: lerroan dagoen tokiaren arabera txikitzen da (gehienez 38px), eserleku guztiak ikusteko. */
+.seat {
+    max-width: 38px;
+    aspect-ratio: 38 / 36;
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 0;
+    border: 0;
+    border-radius: 6px 6px 3px 3px;
+    background: rgb(216, 218, 222);
+    color: rgb(85, 91, 98);
+    position: relative;
+    box-shadow: rgb(196, 199, 203) 0 -4px 0 inset;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.seat.silver {
+    background: var(--violet);
+    color: white;
+    box-shadow: rgb(67, 21, 143) 0 -4px 0 inset;
+}
+
+.seat.selected:not(.silver) {
+    background: var(--gold);
+    color: rgb(34, 30, 16);
+    box-shadow: rgb(179, 143, 34) 0 -4px 0 inset;
+}
+
+.seat.booked {
+    background: var(--slate);
+    color: rgb(114, 121, 129);
+    box-shadow: none;
+}
+
+.seat.silver:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.seat:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 9px;
+    color: var(--muted);
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend i {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background: rgb(216, 218, 222);
+}
+
+.legend .chosen {
+    background: var(--gold);
+}
+
+.legend .occupied {
+    background: var(--slate);
+}
+
+.legend .silver {
+    background: var(--violet);
+}
+
+/* 7. Laburpena */
+.summary-col {
+    width: 345px;
+}
+
+.summary-panel {
+    padding: 28px;
+    position: sticky;
+    top: 20px;
+}
+
+.summary-panel h2 {
+    margin: 8px 0 22px;
+    font-size: 28px;
+}
+
+.summary-event {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    background: rgb(246, 245, 247);
+}
+
+.summary-event img {
+    width: 68px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.summary-event div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.summary-event b {
+    font: 600 13px "Playfair Display", Georgia, serif;
+}
+
+.summary-event span {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.selected-list {
+    min-height: 100px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.selected-list > div,
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 11px;
+}
+
+.empty-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 10px;
+}
+
+.summary-row {
+    padding: 16px 0;
+    color: var(--muted);
+}
+
+.summary-row b {
+    color: var(--text);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+}
+
+.summary-total span {
+    font-weight: 700;
+}
+
+.summary-total strong {
+    color: var(--gold);
+    font: 700 28px "Playfair Display", Georgia, serif;
+}
+
+.summary-panel .btn {
+    width: 100%;
+}
+
+.summary-panel > small {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* 8. Tableta */
+@media (min-width: 768px) and (max-width: 1100px) {
+    .summary-col {
+        width: 310px;
+    }
+
+    .seat-main {
+        padding: 24px;
+    }
+
+    .seat-map {
+        padding: 20px 16px;
+    }
+
+    .seat-row {
+        gap: 10px;
+    }
+
+    .row-label {
+        width: 40px;
+    }
+
+    .seat {
+        font-size: 8px;
+    }
+}
+
+/* 9. Mugikorra: eserleku guztiak ikusten dira eta laburpenaren txartela behean geratzen da */
+@media (max-width: 767.98px) {
+    .stepper {
+        height: 72px;
+        padding: 0 16px;
+    }
+
+    .stepper b {
+        display: none;
+    }
+
+    .stepper > div {
+        justify-content: center;
+    }
+
+    .stepper > div:not(:last-child)::after {
+        width: 55%;
+        right: -28%;
+    }
+
+    .seat-layout {
+        padding: 0 0 40px;
+    }
+
+    .seat-layout .row {
+        --bs-gutter-x: 0;
+    }
+
+    .summary-col {
+        width: 100%;
+    }
+
+    .seat-main {
+        border-left: 0;
+        border-right: 0;
+        padding: 23px 16px;
+    }
+
+    .seat-heading h1 {
+        font-size: 29px;
+    }
+
+    .seat-heading .btn {
+        width: 100%;
+    }
+
+    .silver-note {
+        display: block;
+        line-height: 1.6;
+    }
+
+    .silver-note span {
+        display: block;
+    }
+
+    .silver-quantity {
+        margin-top: 12px;
+        justify-content: space-between;
+    }
+
+    .seat-map {
+        margin: 20px -16px 0;
+        padding: 20px 8px;
+    }
+
+    .stage {
+        width: 88%;
+    }
+
+    .seat-row {
+        margin: 9px 0;
+        gap: 4px;
+    }
+
+    .seat-row > div {
+        gap: 2px;
+    }
+
+    .row-label {
+        width: 26px;
+        font-size: 6px;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+
+    .seat {
+        border-radius: 4px 4px 2px 2px;
+        font-size: 6px;
+        box-shadow: rgb(196, 199, 203) 0 -3px 0 inset;
+    }
+
+    .seat.silver {
+        box-shadow: rgb(67, 21, 143) 0 -3px 0 inset;
+    }
+
+    .seat.booked {
+        box-shadow: none;
+    }
+
+    .legend {
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+
+    /* Laburpena: txartel osoa, eserlekuen azpian */
+    .summary-panel {
+        position: static;
+        margin-top: 16px;
+        border-left: 0;
+        border-right: 0;
+        padding: 24px 16px;
+    }
+}
