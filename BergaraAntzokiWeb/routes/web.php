@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EkitaldiaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SarreraController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
@@ -31,5 +32,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/ekitaldiak/{ekitaldia}/editatu', [EkitaldiaController::class, 'edit'])->name('ekitaldia.edit');
     Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'update'])->name('ekitaldia.update');
     Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'destroy'])->name('ekitaldia.destroy');
+
+    // Usersen CRUD-a
+    Route::get('/users/sortu', [UserController::class, 'create'])->name('user.sortu');
+    Route::post('/users', [UserController::class, 'store'])->name('user.store');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/users/{user}/editatu', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 require __DIR__.'/auth.php';

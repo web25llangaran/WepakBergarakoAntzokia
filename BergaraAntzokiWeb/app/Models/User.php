@@ -39,7 +39,6 @@ class User extends Authenticatable
     //User batek erosi dituen sarrerak ezagutzeko: 
     public function erositako_sarrerak()
     {
-        return $this->hasMany(Sarrera::class, 'id_user')
-        ->withTimestamps();
+        return $this->hasMany(Sarrera::class, 'id_user');
     }
 }
