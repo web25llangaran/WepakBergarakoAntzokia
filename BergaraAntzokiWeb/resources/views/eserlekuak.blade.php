@@ -1,5 +1,5 @@
 {{-- Ze plantila erabili behar den definitu: --}}
-@extends('plantilla.arrunta')
+@extends('layouts.arrunta')
 
 {{-- Webgune honen estiloa eta JavaScript-a kargatu (JavaScript fitxategiak CSS-a berak inportatzen du, popup.js-ek egiten duen bezala) --}}
 @push('styles')

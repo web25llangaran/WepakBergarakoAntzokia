@@ -10,14 +10,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
 Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
-Route::middleware('auth')->group(function () {
-    // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
-    Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
 
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Hau Arrunta bezala logeatu dienak ein dezakete:
+Route::middleware(['auth', 'arrunta'])->group(function () {
+    // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
+    Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
+});
+
 // Hau Admin bezala logeatu dienak ein dezakete:
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
@@ -45,4 +50,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

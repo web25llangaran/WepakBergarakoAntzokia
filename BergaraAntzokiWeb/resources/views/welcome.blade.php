@@ -1,5 +1,5 @@
 {{-- Ze plantila erabili behar den definitu: --}}
-@extends('plantilla.arrunta')
+@extends('layouts.arrunta')
 
 {{-- Webgune honen estiloa kargatu --}}
 @push('styles')
