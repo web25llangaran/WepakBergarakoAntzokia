@@ -12,6 +12,18 @@
     --bs-btn-active-border-color: #5a141a;
 }
 
+.btn-outline-danger {
+    --bs-btn-color: #701920;
+    --bs-btn-border-color: #701920;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #701920;
+    --bs-btn-hover-border-color: #701920;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #5a141a;
+    --bs-btn-active-border-color: #5a141a;
+    --bs-btn-focus-shadow-rgb: 112, 25, 32;
+}
+
 .tab-pane.active {
     display: flex;
     flex-direction: column;
