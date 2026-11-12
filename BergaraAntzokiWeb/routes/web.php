@@ -7,8 +7,12 @@ use App\Http\Controllers\SarreraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
+Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
 Route::middleware('auth')->group(function () {
+    // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
+    Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -27,7 +31,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Ekitaldien CRUD-a
     Route::get('/ekitaldiak/sortu', [EkitaldiaController::class, 'create'])->name('ekitaldia.sortu');
     Route::post('/ekitaldiak', [EkitaldiaController::class, 'store'])->name('ekitaldia.store');
-    Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldia.show');
+    Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'showAdmin'])->name('ekitaldia.show');
     Route::get('/ekitaldiak/{ekitaldia}/editatu', [EkitaldiaController::class, 'edit'])->name('ekitaldia.edit');
     Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'update'])->name('ekitaldia.update');
     Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'destroy'])->name('ekitaldia.destroy');
