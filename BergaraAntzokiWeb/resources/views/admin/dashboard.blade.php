@@ -11,9 +11,6 @@
     $aktiboEhunekoa = round(count($ekitaldiAktiboak) * 100 / max(count($ekitaldiak), 1));
     $arruntEhunekoa = round(count($erabiltzaileArruntak) * 100 / max(count($users), 1));
     $silverEhunekoa = round(count($silverSarrerak) * 100 / max(count($sarrerak), 1));
-
-    $hurrengoEkitaldiak = $ekitaldiAktiboak->sortBy('data')->take(5);
-    $azkenSalmentak = $sarrerak->sortByDesc('created_at')->take(5);
 @endphp
 <div class="tab-pane fade show active overflow-auto" style="min-height:0;" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab" tabindex="0">
     <div class="d-flex justify-content-between align-items-end mb-3">
@@ -82,7 +79,9 @@
                 </div>
             </div>
         </div>
+        {{-- EKITALDIEN KUDEAKETA GEHITU: EKITALDIA.DASHBOARD --}}
+        <div class="col-12">
+            @include('admin.ekitaldiak.dashboard')
+        </div>
     </div>
-
-
 </div>
