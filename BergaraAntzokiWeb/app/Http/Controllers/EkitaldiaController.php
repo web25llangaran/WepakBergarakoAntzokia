@@ -6,6 +6,7 @@ use App\Enums\EkitaldiMota;
 use App\Enums\EserlekuMota;
 use App\Models\Aretoa;
 use App\Models\Ekitaldia;
+use App\Models\Eserlekua;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -150,6 +151,18 @@ class EkitaldiaController extends Controller
             'prezioa' => $prezioa,
             'silverPrezioa' => $silverPrezioa,
             'silverMota' => EserlekuMota::Silver_economy->value,
+        ]);
+    }
+
+    // Erosketaren berrespen orria (estetika bakarrik: QR-a eta erreferentzia geroago):
+    public function berrespena(Request $request, Ekitaldia $ekitaldia)
+    {
+        // Eserlekua "?eserlekua=ID" bidez jasotzen da (ordainketa orriak bidaliko du).
+        $eserlekua = Eserlekua::findOrFail($request->query('eserlekua'));
+
+        return view('berrespena', [
+            'ekitaldia' => $ekitaldia,
+            'eserlekua' => $eserlekua,
         ]);
     }
 }
