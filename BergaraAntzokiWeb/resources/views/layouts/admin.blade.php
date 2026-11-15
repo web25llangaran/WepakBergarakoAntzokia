@@ -84,10 +84,13 @@
                     @endif>{{ $izena }}</a>
                 @endforeach
                 {{-- Publikora joatean saioa itxi (POST logout); ondoren welcome orrira bideratzen du --}}
-                <form method="POST" action="{{ route('logout') }}" class="mt-auto pt-3 border-top border-secondary">
+                <!-- <form method="POST" action="{{ route('logout') }}" class="mt-auto pt-3 border-top border-secondary"> -->
+                {{-- Publikora joan (GET welcome); hasiera baten saioa ixten zen --}}
+                <form method="GET" action="{{ route('welcome') }}" class="mt-auto pt-3 border-top border-secondary">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 w-100 text-white text-decoration-none d-flex justify-content-between">
-                        <span>Publikora joan / Saioa itxi</span><span>→</span>
+                        <span>Publikora joan / Saioa itxi</span>
+                        <span>→</span>
                     </button>
                 </form>
             </nav>
