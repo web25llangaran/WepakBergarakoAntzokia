@@ -89,8 +89,8 @@
                 <form method="GET" action="{{ route('welcome') }}" class="mt-auto pt-3 border-top border-secondary">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 w-100 text-white text-decoration-none d-flex justify-content-between">
-                        <span>Publikora joan</span>
-                        <span>→</span>
+                        <span>App Kudeaketatik irten</span><span>→</span>
+                        
                     </button>
                 </form>
             </nav>
