@@ -29,7 +29,7 @@
                     <div class="d-flex flex-column">
                         <small class="fw-bold text-danger">ADMINISTRAZIOA</small>
                         @auth
-                        <span class="fs-4 fw-semibold">Egun on, {{ auth()->user()->izena }}</span>
+                        <span class="fs-4 fw-semibold">Kaixo, {{ auth()->user()->izena }}</span>
                         @endauth
                     </div>
                     @auth
