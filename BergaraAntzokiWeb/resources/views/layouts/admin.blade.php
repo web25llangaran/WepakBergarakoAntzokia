@@ -29,7 +29,7 @@
                     <div class="d-flex flex-column">
                         <small class="fw-bold text-danger">ADMINISTRAZIOA</small>
                         @auth
-                        <span class="fs-4 fw-semibold">Egun on, {{ auth()->user()->izena }}</span>
+                        <span class="fs-4 fw-semibold">Kaixo, {{ auth()->user()->izena }}</span>
                         @endauth
                     </div>
                     @auth
@@ -84,10 +84,13 @@
                     @endif>{{ $izena }}</a>
                 @endforeach
                 {{-- Publikora joatean saioa itxi (POST logout); ondoren welcome orrira bideratzen du --}}
-                <form method="POST" action="{{ route('logout') }}" class="mt-auto pt-3 border-top border-secondary">
+                <!-- <form method="POST" action="{{ route('logout') }}" class="mt-auto pt-3 border-top border-secondary"> -->
+                {{-- Publikora joan (GET welcome); hasiera baten saioa ixten zen --}}
+                <form method="GET" action="{{ route('welcome') }}" class="mt-auto pt-3 border-top border-secondary">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 w-100 text-white text-decoration-none d-flex justify-content-between">
-                        <span>Publikora joan / Saioa itxi</span><span>→</span>
+                        <span>App Kudeaketatik irten</span><span>→</span>
+                        
                     </button>
                 </form>
             </nav>
