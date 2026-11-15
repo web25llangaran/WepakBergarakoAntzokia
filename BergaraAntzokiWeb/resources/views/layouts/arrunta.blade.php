@@ -33,6 +33,10 @@
                 @auth
                 <span class="nav-link">Kaixo, {{ auth()->user()->izena }}!</span>
 
+                @if (auth()->user()->rola === \App\Enums\Rola::Admin->value)
+                <a href = "{{orute ('admin.dashboard')}}" class = "nav-link"> App Kudeaketa </a>
+                @endif
+
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
                     <button type="submit" class="nav-btn">Saioa itxi</button>
