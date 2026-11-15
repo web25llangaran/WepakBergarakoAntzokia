@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'arrunta'])->group(function () {
     // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
     Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
+
+    // Erosketaren berrespen orria eta "Onartu" botoia (oraingoz URL-a eskuz idatzita: /ekitaldiak/1/berrespena?eserlekuak=5,6):
+    Route::get('/ekitaldiak/{ekitaldia}/berrespena', [EkitaldiaController::class, 'berrespena'])->name('ekitaldiak.berrespena');
+    Route::post('/ekitaldiak/{ekitaldia}/berrespena', [EkitaldiaController::class, 'berrespenaOnartu'])->name('ekitaldiak.berrespena.onartu');
 });
 
 // Hau Admin bezala logeatu dienak ein dezakete:

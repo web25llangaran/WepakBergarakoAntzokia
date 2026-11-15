@@ -1,5 +1,5 @@
 {{-- Ze plantila erabili behar den definitu: --}}
-@extends('plantilla.arrunta')
+@extends('layouts.arrunta')
 
 {{-- Orri honen estiloa kargatu --}}
 @push('styles')
@@ -29,6 +29,14 @@
                     {{-- QR kodea (geroago automatikoki sortuko da) --}}
                     <div class="qr-box mx-auto" id="qr-kodea"></div>
 
+                    {{-- Sarrera bat baino gehiago badaude, QR-ak gainerakoak ere erakusten ditu --}}
+                    @if ($eserlekuak->count() > 1)
+                    <p class="qr-oharra">
+                        Eskaneatu zure QR-a gainerako sarrerak ikusteko<br>
+                        Escanea tu QR para ver las demás entradas
+                    </p>
+                    @endif
+
                     {{-- Erosketaren datuak --}}
                     <dl class="datuak text-start">
                         <div class="d-flex justify-content-between align-items-center gap-3">
@@ -36,22 +44,34 @@
                             <dd>{{ $ekitaldia->izena }}</dd>
                         </div>
                         <div class="d-flex justify-content-between align-items-center gap-3">
-                            <dt>Eserlekua</dt>
-                            <dd>{{ $eserlekua->lerro_zenb }}. ilara · {{ $eserlekua->eserleku_zenb }}. eserlekua</dd>
+                            <dt>{{ $eserlekuak->count() > 1 ? 'Eserlekuak' : 'Eserlekua' }}</dt>
+                            <dd>
+                                @foreach ($eserlekuak as $eserlekua)
+                                <span class="d-block">{{ $eserlekua->lerro_zenb }}. ilara · {{ $eserlekua->eserleku_zenb }}. eserlekua</span>
+                                @endforeach
+                            </dd>
                         </div>
                         <div class="d-flex justify-content-between align-items-center gap-3">
                             <dt>Erreferentzia</dt>
-                            <dd>BER-{{ date('Y') }}-{{ str_pad($ekitaldia->id, 4, '0', STR_PAD_LEFT) }}{{ $eserlekua->id }}</dd>
+                            <dd>BER-{{ date('Y') }}-{{ str_pad($ekitaldia->id, 4, '0', STR_PAD_LEFT) }}{{ $eserlekuak->first()->id }}</dd>
                         </div>
                     </dl>
 
-                    <button type="button" class="btn btn-primary w-100" id="onartu-botoia">
-                        Onartu / Aceptar
-                        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m13 6 6 6-6 6"></path>
-                        </svg>
-                    </button>
+                    {{-- Onartu: sarrerak gorde (eserlekuak okupatuta geratzen dira) eta hasierako orrira itzuli, saioa itxi gabe --}}
+                    <form method="POST" action="{{ route('ekitaldiak.berrespena.onartu', $ekitaldia) }}">
+                        @csrf
+                        @foreach ($eserlekuak as $eserlekua)
+                        <input type="hidden" name="eserlekuak[]" value="{{ $eserlekua->id }}">
+                        @endforeach
+
+                        <button type="submit" class="btn btn-primary w-100" id="onartu-botoia">
+                            Onartu / Aceptar
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m13 6 6 6-6 6"></path>
+                            </svg>
+                        </button>
+                    </form>
 
                     <small>Sarrerak eta faktura zure emailera bidali ditugu.</small>
                 </section>

@@ -28,7 +28,6 @@
 .berrespena-card {
     background: #fff;
     color: var(--text);
-    border-top: 6px solid var(--green);
     padding: 56px 48px 48px;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 }
@@ -75,6 +74,13 @@
     border: 1px solid var(--line);
     background: #fff;
     margin-bottom: 32px;
+}
+
+/* Sarrera bat baino gehiago daudenean QR azpian agertzen den mezua */
+.qr-oharra {
+    color: var(--muted);
+    font-size: 13px;
+    margin: -16px 0 32px;
 }
 
 /* Datuen taula: ezkerrean ertz urrezkoa */

@@ -7,6 +7,7 @@ use App\Enums\EserlekuMota;
 use App\Models\Aretoa;
 use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
+use App\Models\Sarrera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -154,15 +155,63 @@ class EkitaldiaController extends Controller
         ]);
     }
 
-    // Erosketaren berrespen orria (estetika bakarrik: QR-a eta erreferentzia geroago):
+    // Erosketaren berrespen orria (QR-a geroago automatikoki sortuko da):
     public function berrespena(Request $request, Ekitaldia $ekitaldia)
     {
-        // Eserlekua "?eserlekua=ID" bidez jasotzen da (ordainketa orriak bidaliko du).
-        $eserlekua = Eserlekua::findOrFail($request->query('eserlekua'));
+        // Eserlekuak "?eserlekuak=ID,ID" bidez jasotzen dira (ordainketa orriak bidaliko ditu).
+        $ids = explode(',', (string) $request->query('eserlekuak'));
+
+        // Ekitaldiaren aretoko eserlekuak bakarrik onartzen dira.
+        $eserlekuak = $ekitaldia->aretoa->eserlekuak()
+            ->whereIn('id', $ids)
+            ->orderBy('lerro_zenb')
+            ->orderBy('eserleku_zenb')
+            ->get();
+
+        if ($eserlekuak->isEmpty()) {
+            abort(404);
+        }
 
         return view('berrespena', [
             'ekitaldia' => $ekitaldia,
-            'eserlekua' => $eserlekua,
+            'eserlekuak' => $eserlekuak,
         ]);
+    }
+
+    // "Onartu" sakatzean: sarrerak datubasean gorde (eserlekuak okupatuta agertzeko) eta hasierako orrira itzuli.
+    public function berrespenaOnartu(Request $request, Ekitaldia $ekitaldia)
+    {
+        $datuak = $request->validate([
+            'eserlekuak' => 'required|array',
+            'eserlekuak.*' => [
+                'integer',
+                // Eserlekua ekitaldiaren aretokoa izan behar da.
+                Rule::exists('eserlekuak', 'id')->where('id_aretoa', $ekitaldia->id_aretoa),
+                // Eserleku bera ezin da bi aldiz saldu ekitaldi berean.
+                Rule::unique('sarrerak', 'id_eserlekua')->where('id_ekitaldia', $ekitaldia->id),
+            ],
+        ], [
+            'eserlekuak.required' => 'Eserleku bat aukeratu behar da gutxienez.',
+            'eserlekuak.*.exists' => 'Aukeratutako eserlekua ez da existitzen.',
+            'eserlekuak.*.unique' => 'Aukeratutako eserlekua dagoeneko salduta dago.',
+        ]);
+
+        // Prezioa: eserlekuak orrian erakusten den berbera.
+        $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
+        $silverPrezioa = max($prezioa - self::SILVER_ECONOMY_HOBARIA, 0);
+
+        $eserlekuak = Eserlekua::whereIn('id', $datuak['eserlekuak'])->get();
+
+        foreach ($eserlekuak as $eserlekua) {
+            Sarrera::create([
+                'id_ekitaldia' => $ekitaldia->id,
+                'id_eserlekua' => $eserlekua->id,
+                'id_user' => $request->user()->id,
+                'prezioa' => $eserlekua->eserleku_mota === EserlekuMota::Silver_economy->value ? $silverPrezioa : $prezioa,
+            ]);
+        }
+
+        // Saioa ez da ixten: erabiltzailea logeatuta jarraitzen du hasierako orrian.
+        return redirect()->route('welcome');
     }
 }
