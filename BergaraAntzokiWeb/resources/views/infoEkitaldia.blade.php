@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{{-- Ze plantila erabili behar den definitu: --}}
+@extends('layouts.arrunta')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{{-- Orri honen estiloa kargatu --}}
+@push('styles')
+@vite('resources/css/infoEkitaldia.css')
+@endpush
 
-    @vite('resources/css/infoEkitaldia.css')
-</head>
+{{-- Saioa hasi edo erregistratu ondoren popup-ak eserlekuak aukeratzeko orrira eramango du --}}
+@section('popup_hurrengoa', route('ekitaldiak.eserlekuak', $ekitaldia))
 
-<body>
+@section('content1')
 
     <section class="detail-hero"
         style="background-image: linear-gradient(90deg, rgba(20, 18, 20, 0.98) 0%, rgba(20, 18, 20, 0.7) 53%, rgba(20, 18, 20, 0.15)), url('{{ $ekitaldia->irudia ?: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1000&q=80' }}');">
@@ -25,7 +25,7 @@
     </section>
 
 
-    <main class="detail-layout">
+    <div class="detail-layout">
         <article class="detail-content"><span class="eyebrow">Ikuskizunari buruz</span>
             <h2>Tradizioa gorputz garaikidean</h2>
             <p>Erritual zaharren oihartzuna, herri-dantzen keinuak eta mugimendu garaikidea eszenan elkartzen dira.
@@ -42,15 +42,28 @@
             <h3>Aukeratu zure saioa</h3><label class="field"><span>Aukeratu data / ordua</span><select>
                     <option>{{ $ekitaldia->data->format('Y/m/d · H:i') }}</option>
                 </select></label>
-            <div class="availability"><span></span> Sarrerak eskuragarri <b>{{ number_format($ekitaldia->sarrerak->min('prezioa'), 2, ',', '.') }}€-tik</b></div><a href="{{ route('ekitaldiak.eserlekuak', $ekitaldia) }}" class="btn btn-primary">Aukeratu eserlekuak <svg aria-hidden="true" class="icon" width="20" height="20"
+            <div class="availability"><span></span> Sarrerak eskuragarri <b>{{ number_format($ekitaldia->sarrerak->min('prezioa'), 2, ',', '.') }}€-tik</b></div>
+
+            {{-- Saioa hasita badago eserlekuetara joan; bestela saioa hasteko / erregistratzeko popup-a ireki --}}
+            @auth
+            <a href="{{ route('ekitaldiak.eserlekuak', $ekitaldia) }}" class="btn btn-primary">
+            @else
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#popup-saioa">
+            @endauth
+                Aukeratu eserlekuak <svg aria-hidden="true" class="icon" width="20" height="20"
                     viewBox="0 0 24 24">
                     <path d="M5 12h14"></path>
                     <path d="m13 6 6 6-6 6"></path>
-                </svg></a><small><svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
+                </svg>
+            @auth
+            </a>
+            @else
+            </button>
+            @endauth
+            <small><svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                     <path d="m5 12 4 4L19 6"></path>
                 </svg> Aldaketak emanaldiaren 48 ordu lehenagora arte</small>
         </aside>
-    </main>
-</body>
+    </div>
 
-</html>
+@endsection

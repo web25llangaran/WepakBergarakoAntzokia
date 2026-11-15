@@ -26,8 +26,10 @@
                     <h1>Ordainketa ondo burutu da</h1>
                     <p class="subtitle">Su pago ha sido realizado / Zure ordainketa behar bezala egin da</p>
 
-                    {{-- QR kodea (geroago automatikoki sortuko da) --}}
-                    <div class="qr-box mx-auto" id="qr-kodea"></div>
+                    {{-- QR kodea (oraingoz irudi estatikoa, beti berbera) --}}
+                    <div class="qr-box mx-auto" id="qr-kodea">
+                        <img src="{{ asset('img/qr-sarrera.svg') }}" alt="Sarreraren QR kodea">
+                    </div>
 
                     {{-- Sarrera bat baino gehiago badaude, QR-ak gainerakoak ere erakusten ditu --}}
                     @if ($eserlekuak->count() > 1)

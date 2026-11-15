@@ -1,3 +1,6 @@
+/* Karruseleko izenburuaren letra (Figman erabilitakoa) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 /* Define variables CSS globales en :root para reutilizar los mismos valores en diferentes partes de la hoja de estilos. */
 :root {
     /* --primary: Guarda el color principal de la web en una variable reutilizable. Valor aplicado: #7a1c2c. */
@@ -26,6 +29,10 @@
     --line: #e5e4e7;
     /* --shadow: Guarda una sombra reutilizable para dar profundidad a elementos. Valor aplicado: 0 18px 50px rgba(30, 36, 43, 0.11). */
     --shadow: 0 18px 50px rgba(30, 36, 43, 0.11);
+    /* Urdinak (bergara.eus-etik hartuta) */
+    --urdina: #0c244e;
+    --urdina-iluna: #091a38;
+    --urdina-argia: #e9edf4;
 /* Cierra el bloque CSS abierto anteriormente. */
 }
 
@@ -664,4 +671,124 @@ select:focus-visible {
     color: var(--gold);
 }
 
+/* ---------- KARRUSELA ---------- */
 
+/* Argazkia atzean, pantaila osoan */
+.hero-karrusela .carousel-item {
+    height: min(80vh, 620px);
+    min-height: 460px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Testua behean ezkerrean, katalogoarekin lerroan */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 0 max(24px, calc((100% - 1200px) / 2)) 80px;
+    color: #fff;
+}
+
+/* Mota eta aretoa, urre kolorean */
+.hero-eyebrow {
+    color: #e9c85c;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* Ekitaldiaren izena, letra handian */
+.hero-content h2 {
+    max-width: 760px;
+    margin: 12px 0 14px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+.hero-data {
+    margin: 0 0 24px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.hero-content .btn {
+    min-height: 50px;
+    padding: 0 28px;
+    text-decoration: none;
+}
+
+/* Puntuen ordez marra finak */
+.hero-karrusela .carousel-indicators {
+    margin-bottom: 28px;
+}
+
+.hero-karrusela .carousel-indicators [data-bs-target] {
+    width: 32px;
+    height: 3px;
+    border: 0;
+    background-color: #fff;
+}
+
+/* Geziak estuago, testua ez tapatzeko */
+.hero-karrusela .carousel-control-prev,
+.hero-karrusela .carousel-control-next {
+    width: 6%;
+}
+
+/* ---------- URDINA ---------- */
+
+/* Sarrerak erosi botoiak */
+.hero-content .btn-primary,
+.event-bottom .btn-dark {
+    background: var(--urdina);
+    color: #fff;
+}
+
+.hero-content .btn-primary:hover,
+.event-bottom .btn-dark:hover {
+    background: var(--urdina-iluna);
+    color: #fff;
+}
+
+/* Filtroaren atzealdea */
+.filter-bar {
+    border-color: rgba(12, 36, 78, 0.18);
+    background: var(--urdina-argia);
+    box-shadow: 0 8px 24px rgba(12, 36, 78, 0.08);
+}
+
+.filter-bar .icon {
+    color: var(--urdina);
+}
+
+/* Filtroarekin ezer ez dagoenean */
+.emaitzarik-ez {
+    padding: 40px 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Mugikorra */
+@media (max-width: 600px) {
+    .hero-karrusela .carousel-item {
+        height: 70vh;
+        min-height: 420px;
+    }
+
+    .hero-content {
+        padding: 0 24px 64px;
+    }
+
+    /* Mugikorrean geziak kendu, hatzarekin pasatzen da */
+    .hero-karrusela .carousel-control-prev,
+    .hero-karrusela .carousel-control-next {
+        display: none;
+    }
+}

@@ -18,6 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => EnsureUserIsAdmin::class,
             'arrunta' => EnsureUserIsArrunta::class,
         ]);
+
+        // Saioa hasi gabe erosketa orri batera sartzean, ekitaldiaren orrira bidali (han popup-a dago), ez Breeze-ren login orrira.
+        $middleware->redirectGuestsTo(fn (Request $request) => $request->route('ekitaldia')
+            ? route('ekitaldiak.show', $request->route('ekitaldia'))
+            : route('welcome'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

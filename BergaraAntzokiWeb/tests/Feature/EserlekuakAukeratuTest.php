@@ -30,15 +30,50 @@ beforeEach(function () {
     $this->erabiltzailea = User::factory()->create();
 });
 
-test('guest is redirected to login from the seat selection page', function () {
+test('guest is redirected to the event page from the seat selection page', function () {
     $this->get(route('ekitaldiak.eserlekuak', $this->ekitaldia))
-        ->assertRedirect(route('login'));
+        ->assertRedirect(route('ekitaldiak.show', $this->ekitaldia));
 });
 
-test('event info page links to the seat selection page', function () {
+test('event info page opens the login popup for guests', function () {
     $this->get(route('ekitaldiak.show', $this->ekitaldia))
         ->assertOk()
-        ->assertSee(route('ekitaldiak.eserlekuak', $this->ekitaldia), false);
+        ->assertSee('data-bs-target="#popup-saioa"', false)
+        ->assertSee('id="popup-saioa"', false);
+});
+
+test('event info page links to the seat selection page for logged in users', function () {
+    $this->actingAs($this->erabiltzailea)
+        ->get(route('ekitaldiak.show', $this->ekitaldia))
+        ->assertOk()
+        ->assertSee('href="'.route('ekitaldiak.eserlekuak', $this->ekitaldia).'"', false)
+        ->assertDontSee('id="popup-saioa"', false);
+});
+
+test('guest who registers from the event popup goes to the seat selection page', function () {
+    $this->get(route('ekitaldiak.show', $this->ekitaldia))->assertOk();
+
+    $this->post(route('register'), [
+        'popup_fitxa' => 'erregistroa',
+        'user_izena' => 'aaranburu',
+        'izena' => 'Ane',
+        'abizena' => 'Aranburu',
+        'email' => 'ane@email.eus',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+    ])->assertRedirect(route('ekitaldiak.eserlekuak', $this->ekitaldia));
+
+    $this->assertAuthenticated();
+});
+
+test('guest who logs in from the event popup goes to the seat selection page', function () {
+    $this->get(route('ekitaldiak.show', $this->ekitaldia))->assertOk();
+
+    $this->post(route('login'), [
+        'popup_fitxa' => 'login',
+        'email' => $this->erabiltzailea->email,
+        'password' => '12345678',
+    ])->assertRedirect(route('ekitaldiak.eserlekuak', $this->ekitaldia));
 });
 
 test('seat page shows every seat of the hall and marks sold seats as booked', function () {

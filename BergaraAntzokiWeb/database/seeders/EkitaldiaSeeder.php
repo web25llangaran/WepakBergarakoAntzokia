@@ -38,7 +38,7 @@ class EkitaldiaSeeder extends Seeder
             'ekitaldi_mota'=> EkitaldiMota::Antzezlana,
             'id_aretoa'=> '1',
             'data' => "2026-12-04 16:30:00",
-            'irudia' => "",
+            'irudia' => '/img/ekitaldiak/erresuma.jpg',
         ]);
         Ekitaldia::factory()->create([
             'izena' => 'Hezten',
@@ -46,7 +46,7 @@ class EkitaldiaSeeder extends Seeder
             'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
             'id_aretoa'=> '2',
             'data' => "2026-12-01 17:30:00",
-            'irudia' => "",
+            'irudia' => '/img/ekitaldiak/hezten.jpg',
         ]);
         Ekitaldia::factory()->create([ 
             'izena' => '"Irati" (2022): Euskal Zinema ',
@@ -54,7 +54,7 @@ class EkitaldiaSeeder extends Seeder
             'ekitaldi_mota'=> EkitaldiMota::Zinema,  
             'id_aretoa'=> '1', 
             'data' => "2026-12-03 16:30:00",
-            'irudia' => "",
+            'irudia' => '/img/ekitaldiak/irati.jpg',
         ]);
         Ekitaldia::factory()->create([
             'izena' => 'Euskara: norena da?',
@@ -62,7 +62,7 @@ class EkitaldiaSeeder extends Seeder
             'ekitaldi_mota'=> EkitaldiMota::Hitzaldia,    
             'id_aretoa'=> '2',
             'data' => "2026-12-03 17:30:00",
-            'irudia' => "",
+            'irudia' => '/img/ekitaldiak/euskara.jpg',
         ]);
         Ekitaldia::factory()->create([
             'izena' => 'Izaro: Cerodenero',
@@ -70,7 +70,7 @@ class EkitaldiaSeeder extends Seeder
             'ekitaldi_mota'=> EkitaldiMota::Kontzertua,    
             'id_aretoa'=> '1',
             'data' => "2026-12-03 19:30:00",
-            'irudia' => "",
+            'irudia' => '/img/ekitaldiak/izaro.jpg',
         ]);
 
     }

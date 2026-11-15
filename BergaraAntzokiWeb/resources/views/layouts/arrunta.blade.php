@@ -66,7 +66,8 @@
     </footer>
 
     @guest
-        <x-popup />
+        {{-- Orri batek 'popup_hurrengoa' definitzen badu, saioa hasi ondoren hara joango da; bestela orri berean geratuko da --}}
+        <x-popup :hurrengoa="trim($__env->yieldContent('popup_hurrengoa')) ?: url()->full()" />
     @endguest
 
 </body>
