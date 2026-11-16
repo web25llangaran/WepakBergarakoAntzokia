@@ -57,7 +57,7 @@
                     </div>
                     <label class="field">
                         <span>Izen-abizenak<b> *</b></span>
-                        <input placeholder="Adib. Ane Aranburu" required="" type="text"name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}">
+                        <input placeholder="Adib. Ane Aranburu" required="" type="text"name="izena" value="{{ auth()->check() ? auth()->user()->izena : '' }}">
                     </label>
                     <div class="field-grid">
                         <label class="field">

@@ -122,13 +122,15 @@
                     <div class="summary-row"><span>Kopurua</span><b id="sarrera-kopurua">0 sarrera</b></div>
                     <div class="summary-total"><span>Guztira</span><strong id="guztira">0,00€</strong></div>
 
-                    <button type="button" class="btn btn-primary" id="ordaindu-botoia" disabled>
+                    <form action="{{ route('ekitaldiak.erosketaProzezuak', [$ekitaldia->id]) }}" method="GET">
+                    <button type="submit" class="btn btn-primary" id="ordaindu-botoia" disabled>
                         <span id="ordaindu-testua">Ordaindu (Online)</span>
                         <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                             <path d="M5 12h14"></path>
                             <path d="m13 6 6 6-6 6"></path>
                         </svg>
                     </button>
+                </form>
                     <small>
                         <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                             <path d="m5 12 4 4L19 6"></path>

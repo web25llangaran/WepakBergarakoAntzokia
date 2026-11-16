@@ -168,40 +168,31 @@ class EkitaldiaController extends Controller
 
 
         public function erosketaProzezuak(Request $request, Ekitaldia $ekitaldia)
-{
-    // Recibimos un array de IDs de asientos desde la URL o el formulario anterior
-    // Ejemplo: ?eserlekuak[]=1&eserlekuak[]=5&eserlekuak[]=12
-    $eserlekuIds = $request->query('eserlekuak', []); 
-
-    // Buscamos todos los asientos seleccionados
-    $aukeratutakoEserlekuak = Eserlekua::whereIn('id', $eserlekuIds)->get();
-
-    // Si no hay asientos, redirigir de vuelta (opcional, pero recomendado)
-    if ($aukeratutakoEserlekuak->isEmpty()) {
-        return redirect()->route('ekitaldia.eserlekuak', $ekitaldia->id)->with('error', 'Aukeratu gutxienez eserleku bat.');
+    {
+        $eserlekuIds = $request->query('eserlekuak', []); 
+        $aukeratutakoEserlekuak = Eserlekua::whereIn('id', $eserlekuIds)->get();
+        
+        if ($aukeratutakoEserlekuak->isEmpty()) {
+            return redirect()->route('ekitaldiak.eserlekuak', $ekitaldia->id)->with('error', 'Aukeratu gutxienez eserleku bat.');
+        } 
+        
+        $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
+        
+        $kopurua = $aukeratutakoEserlekuak->count();
+        $azpitotala = $prezioa * $kopurua;
+        
+        $kudeaketaGastuak = 1.50; 
+        
+        $guztira = $azpitotala + $kudeaketaGastuak;
+        
+        return view('erosketaProzezua', compact(
+            'ekitaldia',
+            'aukeratutakoEserlekuak',
+            'prezioa',
+            'kopurua',
+            'azpitotala',
+            'kudeaketaGastuak',
+            'guztira'
+        ));
     }
-
-    // Precio base por entrada
-    $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
-    
-    // Calculamos el subtotal (precio * cantidad de asientos)
-    $kopurua = $aukeratutakoEserlekuak->count();
-    $azpitotala = $prezioa * $kopurua;
-    
-    // Gastos de gestión (1.50€ TOTAL, o puedes multiplicarlo por entrada si así lo prefieres)
-    $kudeaketaGastuak = 1.50; 
-    
-    // Total a pagar
-    $guztira = $azpitotala + $kudeaketaGastuak;
-
-    return view('erosketaProzezua', compact(
-        'ekitaldia',
-        'aukeratutakoEserlekuak', // Pasamos la colección de asientos
-        'prezioa',
-        'kopurua',
-        'azpitotala',
-        'kudeaketaGastuak',
-        'guztira'
-    ));
-}
 }

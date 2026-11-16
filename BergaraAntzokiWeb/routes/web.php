@@ -22,7 +22,7 @@ Route::middleware(['auth', 'arrunta'])->group(function () {
     // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
     Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
     Route::get('/ekitaldiak/{ekitaldia}/erosketaProzezua', [EkitaldiaController::class, 'erosketaProzezuak'])->name('ekitaldiak.erosketaProzezuak');
-    Route::post('/ekitaldiak/{id}/erosketaProzezua', [EkitaldiaController::class, 'gordeErosketa'])->name('ekitaldiak.gordeErosketa');
+    // Route::post('/ekitaldiak/{id}/erosketaProzezua', [EkitaldiaController::class, 'gordeErosketa'])->name('ekitaldiak.gordeErosketa');
 });
 
 // Hau Admin bezala logeatu dienak ein dezakete:
