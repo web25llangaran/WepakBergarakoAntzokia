@@ -165,4 +165,43 @@ class EkitaldiaController extends Controller
             'eserlekua' => $eserlekua,
         ]);
     }
+
+
+        public function erosketaProzezuak(Request $request, Ekitaldia $ekitaldia)
+{
+    // Recibimos un array de IDs de asientos desde la URL o el formulario anterior
+    // Ejemplo: ?eserlekuak[]=1&eserlekuak[]=5&eserlekuak[]=12
+    $eserlekuIds = $request->query('eserlekuak', []); 
+
+    // Buscamos todos los asientos seleccionados
+    $aukeratutakoEserlekuak = Eserlekua::whereIn('id', $eserlekuIds)->get();
+
+    // Si no hay asientos, redirigir de vuelta (opcional, pero recomendado)
+    if ($aukeratutakoEserlekuak->isEmpty()) {
+        return redirect()->route('ekitaldia.eserlekuak', $ekitaldia->id)->with('error', 'Aukeratu gutxienez eserleku bat.');
+    }
+
+    // Precio base por entrada
+    $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
+    
+    // Calculamos el subtotal (precio * cantidad de asientos)
+    $kopurua = $aukeratutakoEserlekuak->count();
+    $azpitotala = $prezioa * $kopurua;
+    
+    // Gastos de gestión (1.50€ TOTAL, o puedes multiplicarlo por entrada si así lo prefieres)
+    $kudeaketaGastuak = 1.50; 
+    
+    // Total a pagar
+    $guztira = $azpitotala + $kudeaketaGastuak;
+
+    return view('erosketaProzezua', compact(
+        'ekitaldia',
+        'aukeratutakoEserlekuak', // Pasamos la colección de asientos
+        'prezioa',
+        'kopurua',
+        'azpitotala',
+        'kudeaketaGastuak',
+        'guztira'
+    ));
+}
 }

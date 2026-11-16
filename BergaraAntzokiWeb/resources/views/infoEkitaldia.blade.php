@@ -43,7 +43,7 @@
                     <option>{{ $ekitaldia->data->format('Y/m/d · H:i') }}</option>
                 </select></label>
             <div class="availability"><span></span> Sarrerak eskuragarri <b>{{ number_format($ekitaldia->sarrerak->min('prezioa'), 2, ',', '.') }}€-tik</b></div>
-                        <a href="{{ route('ekitaldiak.eserlekuak', $ekitaldia) }}" class="btn btn-primary">Aukeratu eserlekuak <svg aria-hidden="true" class="icon" width="20" height="20"viewBox="0 0 24 24">
+            <a href="{{ route('ekitaldiak.eserlekuak', $ekitaldia) }}" class="btn btn-primary">Aukeratu eserlekuak <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                     <path d="M5 12h14"></path>
                     <path d="m13 6 6 6-6 6"></path>
                 </svg></a><small><svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">

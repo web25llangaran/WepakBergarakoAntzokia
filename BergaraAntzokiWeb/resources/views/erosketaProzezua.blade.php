@@ -1,3 +1,15 @@
+{{-- Ze plantila erabili behar den definitu: --}}
+@extends('layouts.arrunta')
+
+{{-- Webgune honen estiloa kargatu --}}
+@push('styles')
+@vite('resources/css/erosketaProzezua.css')
+@endpush
+
+
+{{-- Plantilan txertatuko dena garatu: --}}
+@section('content1')
+
 <div class="flow-page checkout-page">
     <header class="site-header">
         <div class="header-inner">
@@ -45,16 +57,16 @@
                     </div>
                     <label class="field">
                         <span>Izen-abizenak<b> *</b></span>
-                        <input placeholder="Adib. Ane Aranburu" required="" type="text">
+                        <input placeholder="Adib. Ane Aranburu" required="" type="text"name="nombre" value="{{ auth()->check() ? auth()->user()->name : '' }}">
                     </label>
                     <div class="field-grid">
                         <label class="field">
                             <span>Emaila<b> *</b></span>
-                            <input placeholder="ane@email.eus" required="" type="email">
+                            <input placeholder="ane@email.eus" required="" type="email"name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}">
                         </label>
                         <label class="field">
                             <span>Telefono zenbakia<b> *</b></span>
-                            <input placeholder="+34 600 000 000" required="" type="tel">
+                            <input placeholder="+34 600 000 000" required="" type="tel" name="telefono">
                         </label>
                     </div>
                 </section>
@@ -104,42 +116,57 @@
                     <aside class="order-summary">
                         <span class="eyebrow">Zure eskaera</span>
                         <h2>Erosketaren laburpena</h2>
+                        
                         <div class="summary-event">
-                            <img alt="" src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&amp;fit=crop&amp;w=1600&amp;q=88">
+                            <!-- Imagen del evento dinámico -->
+                            <img alt="{{ $ekitaldia->izena }}" src="{{ asset($ekitaldia->irudia) }}">
                             <div>
-                                <b>Erresuma: Shakespeareren Tragediak</b>
-                                <span>Urr. 24 · 20:00</span>
+                                <!-- Nombre y fecha del evento dinámico -->
+                                <b>{{ $ekitaldia->izena }}</b>
+                                <span>{{ \Carbon\Carbon::parse($ekitaldia->data)->translatedFormat('M. j · H:i') }}</span>
                             </div>
                         </div>
+                    
+                        <!-- Bucle para mostrar todos los asientos seleccionados -->
+                        @foreach($aukeratutakoEserlekuak as $asiento)
                         <div class="ticket-line">
-                            <span>2. ilara · 4. eserlekua</span>
-                            <b>22,00€</b>
+                            <span>{{ $asiento->lerro_zenb }}. ilara · {{ $asiento->eserleku_zenb }}. eserlekua</span>
+                            <b>{{ number_format($prezioa, 2, ',', '.') }}€</b>
+                            
+                            <!-- Inputs ocultos para pasar los IDs de los asientos seleccionados al siguiente paso (pago) -->
+                            <input type="hidden" name="eserlekuak[]" value="{{ $asiento->id }}">
                         </div>
+                        @endforeach
+                    
                         <div class="price-lines">
                             <div>
-                                <span>Azpitotala</span>
-                                <b>22,00€</b>
+                                <span>Azpitotala ({{ $kopurua }} sarrera)</span>
+                                <b>{{ number_format($azpitotala, 2, ',', '.') }}€</b>
                             </div>
                             <div>
                                 <span>Kudeaketa-gastuak</span>
-                                <b>1,50€</b>
+                                <b>{{ number_format($kudeaketaGastuak, 2, ',', '.') }}€</b>
                             </div>
                         </div>
+                        
                         <div class="summary-total">
                             <span>Guztira</span>
-                            <strong>23,50€</strong>
+                            <strong>{{ number_format($guztira, 2, ',', '.') }}€</strong>
                         </div>
-                        <button type="submit" class="btn btn-primary ">Ordaindu orain · 23,50€ 
+                        
+                        <button type="submit" class="btn btn-primary">Ordaindu orain · {{ number_format($guztira, 2, ',', '.') }}€ 
                             <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                                 <path d="M5 12h14"></path>
                                 <path d="m13 6 6 6-6 6"></path>
                             </svg>
                         </button>
+                        
                         <small>
                             <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
                                 <path d="m5 12 4 4L19 6"></path>
-                            </svg> SSL bidez babestutako ordainketa</small>
-                        </aside>
+                            </svg> SSL bidez babestutako ordainketa
+                        </small>
+                    </aside>
                     </main>
                     <footer class="footer">
                         <div>
@@ -149,3 +176,4 @@
                         <p>© 2026 Bergarako Udala · Pribatutasuna · Lege oharra</p>
                     </footer>
                 </div>
+@endsection
