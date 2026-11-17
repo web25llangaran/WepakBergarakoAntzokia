@@ -262,3 +262,136 @@ Bergarako antzokiko webgunearen diseinua burutzerako orduan, ondorengo iturriak 
   - [Amaia Antzokia Arrasate](https://amaiaarrasate.janto.es/)
   - [Coliseo Eibar](https://www.eibar.eus/es/cultura/coliseo/cartelera-de-cine-en-el-coliseo)
   - [Elgoibar Herriko Antzokia](https://herrikoantzokia.eus/)
+
+<br>
+
+# PRODUKTU FINALA
+
+<br>
+
+## AURKIBIDEA
+
+- [1. Sarrera Finala](#1-sarrera-finala)
+- [2. Testuingurua](#2-testuingurua)
+- [3. Helburuak](#3-helburuak)
+- [4. Zereginak](#4-zereginak)
+- [5. Baliabideak](#5-baliabideak)
+- [6. Ondorioak](#6-ondorioak)
+- [7. Webgrafia](#7-webgrafia)
+- [8. Eranskina](#8-eranskina)
+
+## 1. Sarrera Finala
+
+Proiektu honetan zehar, Bergarako ekitaldi-enpresarentzako irtenbide teknologiko bat garatuko da, horretarako, web-garapena, negozio-kudeaketa, eta zerbitzari zein sareen konfigurazioa uztartuko dira. Hainbat tresna eta teknologia erabiliko dira, enpresaren beharrei erantzuten dien ingurune funtzional bat sortzeko.
+
+## 2. Testuingurua
+
+Bergaran, ekitaldi-enpresa batek plataforma digital bat garatzeko enkargua eman digu, bere kultur ekintzak kudeatzeko eta bezeroekiko komunikazioa errazteko. Proiektuak webgune bat garatzea dakar, Laravel framework-a erabiliz; bertan, erabiltzaileek kultur egitaraua kontsultatu, ekitaldi zehatzei buruzko informazioa eskuratu eta sarrerak erosi ahal izango dituzte. Plataformak administrazio-atal pribatu bat ere izango du, ekitaldiak, salmentak, langileak eta enpresaren jarduerarekin lotutako beste alderdi batzuk kudeatzeko.
+
+Horrez gain, Odoo enpresa-kudeaketako sistema independente gisa konfiguratuko da, produktu, langile, ekitaldi, kontaktu eta atariko erabiltzaileei buruzko datuak gordetzeko. Beharrezko azpiegitura teknologikoa ere ezarriko da: Windows 11 sistema eragilea duen makina birtual batean Apache Lounge erabiliko da, eta, horrez gain, Ubuntu Server instantzia bat prestatuko da Odoo-rako. Hori guztia osatzeko, sarearen konfigurazioa egingo da, eta webgunerako sarbidea mugatzeko diseinatutako bideratzaile (router) bat instalatuko da.
+
+## 3. Helburuak
+
+1. Webgunearen garapena: Laravel erabiliz webgune bat sortzea, enpresaren informazioa eta haren kultur programazioa erakusteko.
+
+2. Ekitaldien kudeaketa (CRUD): Kultur ekitaldiak ikusi, sortu, aldatu eta ezabatzeko aukera ematen duen sistema bat ezartzea.
+
+3. Sarreren salmenta: Erabiltzaileek eskuragarritasuna egiaztatu eta ekitaldietarako sarrerak erosteko aukera izango duten sistema bat garatzea.
+
+4. Administrazio-panela: Atal pribatu bat sortzea, ekitaldiak, salmentak, langileak eta webgunearekin lotutako bestelako informazioa kudeatzeko.
+
+5. Odoo-ren konfigurazioa: Odoo sistema independente gisa instalatu eta konfiguratzea, enpresaren informazioa kudeatzeko.
+
+6. Langileen kudeaketa: Odoo-ren barruan langileei, sailei, lanpostuei eta sarbide-baimenei buruzko erregistroak sortu eta kudeatzea.
+
+7. Produktuen eta ekitaldien kudeaketa Odoo-n: Enpresaren jarduerarako beharrezkoak diren produktuak, ekitaldiak eta bestelako erregistroak administratzea.
+
+8. Apache Lounge-ren konfigurazioa: Apache Lounge instalatu eta konfiguratzea Windows 11 sistema eragilea duen makina birtual batean, Laravel bidez garatutako webgunea ostatatzeko eta zerbitzatzeko.
+
+9. Ubuntu Server-en konfigurazioa: Ubuntu Server makina birtual bat prestatzea, Odoo instalatu eta exekutatzeko.
+
+10. Sarearen konfigurazioa: Hainbat sistemak funtzionatzeko beharrezkoak diren komunikazio- eta sare-ezarpenak ezartzea.
+
+11. Bideratzailearen (router) konfigurazioa: Bideratzailea konfiguratzea webgunerako sarbidea mugatzeko; horrela, sare horretara konektatutako gailuek soilik izango dute sarbidea.
+
+12. Funtzionamendu-probak: Webguneak, Odoo-k, zerbitzariek eta sare-azpiegiturak behar bezala funtzionatzen dutela egiaztatzea.
+
+## 4. Zereginak
+
+Zeregin guztiak sailkatu eta GitHub-eko proiektu batean gehitu genituen, bertan, pertsona bakoitzari zeregin desberdin bat esleitu zitzaion Eta horrela guk talde lanean egindako lana kudeatu egin dezakegu taldean eta lan guztiak banatu.
+
+[Zereginak GitHub](https://github.com/users/web25llangaran/projects/6/views/1)
+
+## 5. Baliabideak
+
+**Software:**
+
+- Laravel
+- Visual Studio Code
+- Draw\.io
+- Odoo
+- Apache
+- Postgres
+- PHP
+- VmWare
+- Ubuntu Server
+- Windows SE
+
+**Hardware:**
+
+- 4 ordenagailu
+- Windows 11 sistema eragilea.
+- Visual Studio Code
+- Laravel
+- JavaScript, HTML, CSS
+- MySQL
+- Git eta GitHub
+- Figma.com
+- Interneteko sarbidea
+- Wifi Router-a
+- MAC Ordenagailua
+- Sareko kablea
+
+**GIZA BALIABIDEAK:**
+
+- Lau informatikari: App-en analisi, diseinu eta programazioan adituak.
+- Denbora estimazioa: 6-7 astekoa. 160 ordu, 32 lanegun 5 ordukoak.
+
+## 6. Ondorioak
+
+**Ikasketa ondorioak:**
+
+Proiektu honen helburua da honako ezagutza eta gaitasun hauek eskuratzea eta garatzea erraztu digute:
+
+1. Web-aplikazioen garapena: Web-aplikazio bat sortzen eta kudeatzen ikastea, Laravel eta haren oinarrizko funtzionaltasunak erabiliz.
+
+2. Datu-baseen kudeaketa: Informazioa nola biltegiratu, antolatu eta administratzen den ulertzea, Odoo bezalako kudeaketa-sistemak erabiliz.
+
+3. ERP sistemen administrazioa: Odoo konfiguratu eta erabiltzen ikastea, langileak, produktuak, ekitaldiak, kontaktuak eta erabiltzaileak kudeatzeko.
+
+4. Zerbitzarien administrazioa: Windows 11n Apache Lounge eta Ubuntu Server-en Odoo instalatu eta konfiguratzeari buruzko ezagutzak eskuratzea.
+
+5. Birtualizazioa: Makina birtualekin lan egiten eta sistema eragile desberdinak konfiguratzen ikastea, zerbitzu independenteak exekutatzeko.
+
+6. Sareen konfigurazioa: Sareek nola funtzionatzen duten, IP helbideak nola konfiguratu eta gailu desberdinak elkarren artean nola komunikatzen diren ulertzea.
+
+7. Bideratzaileen (router) administrazioa: Bideratzaile bat konfiguratzen eta sarean ostatatutako zerbitzuetarako sarbide-murrizketak ezartzen ikastea.
+
+**Talde ondorioak:**
+
+- Azkenean, taldean kudeatu izan ditugu bakoitzaren zereginak eta bete egin ditgu.
+- Bakoitzak bere kompremezuak bete ditu.
+
+**Hobekuntzak:**
+
+- Gure talde-laneko denbora hobeto kudeatzea.
+- Taldean hitz gehiago egin zereginak hobeto kudeatzeko.
+
+
+## 7. Webgrafia
+
+- MIguel Altunako apunteak
+- [ChatGPT](https://chatgpt.com/)
+
+## 8. Eranskina
+
