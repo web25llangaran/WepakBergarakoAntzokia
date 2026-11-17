@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
 Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -21,6 +20,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'arrunta'])->group(function () {
     // Eserlekuak aukeratzeko orria (saioa hasita egon behar da):
     Route::get('/ekitaldiak/{ekitaldia}/eserlekuak', [EkitaldiaController::class, 'eserlekuak'])->name('ekitaldiak.eserlekuak');
+    Route::get('/ekitaldiak/{ekitaldia}/erosketaProzezua', [EkitaldiaController::class, 'erosketaProzezuak'])->name('ekitaldiak.erosketaProzezuak');
 
     // Erosketaren berrespen orria eta "Onartu" botoia (oraingoz URL-a eskuz idatzita: /ekitaldiak/1/berrespena?eserlekuak=5,6):
     Route::get('/ekitaldiak/{ekitaldia}/berrespena', [EkitaldiaController::class, 'berrespena'])->name('ekitaldiak.berrespena');
@@ -54,4 +54,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

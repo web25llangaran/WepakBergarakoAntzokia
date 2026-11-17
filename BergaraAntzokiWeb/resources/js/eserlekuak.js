@@ -13,6 +13,7 @@ if (orria) {
     const silverKopurua = document.getElementById('silver-kopurua');
     const zerrenda = document.getElementById('aukeratutakoZerrenda');
     const zerrendaHutsik = document.getElementById('zerrenda-hutsik');
+    const aukeratutakoEserlekuak = document.getElementById('aukeratutako-eserlekuak');
     const sarreraKopurua = document.getElementById('sarrera-kopurua');
     const guztira = document.getElementById('guztira');
     const ordainduBotoia = document.getElementById('ordaindu-botoia');
@@ -34,6 +35,7 @@ if (orria) {
         const aukeratuak = eserlekuak.filter((eserlekua) => eserlekua.classList.contains('selected'));
         const unekoPrezioa = silverModua ? silverPrezioa : prezioa;
 
+        aukeratutakoEserlekuak.value = aukeratuak.map((eserlekua) => eserlekua.dataset.id).join(',');
         zerrenda.querySelectorAll('.zerrenda-lerroa').forEach((lerroa) => lerroa.remove());
 
         aukeratuak.forEach((eserlekua) => {

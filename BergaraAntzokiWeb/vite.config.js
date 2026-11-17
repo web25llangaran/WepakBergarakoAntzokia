@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/js/eserlekuak.js',
                 'resources/js/hasieraorria.js',
                 'resources/css/berrespena.css',
+                'resources/css/erosketaProzezua.css',
                 'resources/js/app.js'],
             // Activa la actualización automática del navegador cuando cambian archivos relevantes durante el desarrollo.
             refresh: true,

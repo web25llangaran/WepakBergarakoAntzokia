@@ -1,0 +1,486 @@
+/* --- OINARRIZKO ESTILOAK --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #781f2c;
+    --gold-color: #cba258;
+    --bg-color: #f3f4f6;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-color: #d1d5db;
+    --white: #ffffff;
+    
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* Goiburua eta orri-oina ezkutatu, pantaila-argazkian ordainketa-fluxua baita nagusi */
+.site-header, .footer {
+    display: none;
+}
+
+.flow-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- STEPPER (Prozesuaren urratsak) --- */
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    font-size: 14px;
+}
+
+.stepper > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.stepper > div span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-muted);
+}
+
+.stepper > div.active {
+    color: var(--primary-color);
+}
+
+.stepper > div.active span {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+.stepper > div.active span svg {
+    fill: none;
+    stroke: var(--white);
+    stroke-width: 2px;
+}
+
+.stepper > div:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0 20px;
+}
+
+/* --- DISEINU NAGUSIA (Grid) --- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- EZKERREKO ZATIA (Formularioa) --- */
+.flow-title {
+    margin-bottom: 30px;
+}
+
+.flow-title button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    display: inline-block;
+}
+
+.flow-title .eyebrow {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    display: inline-block;
+}
+
+.flow-title h1 {
+    font-size: 2.8rem;
+    margin-top: 15px;
+}
+
+.form-section {
+    background: var(--white);
+    padding: 35px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.form-section-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.form-section-title span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.form-section-title h2 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.form-section-title p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Formulario Eremuak */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.field span {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.field span b {
+    color: var(--primary-color);
+}
+
+.field input {
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field input::placeholder {
+    color: #9ca3af;
+}
+
+.field input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Ordainketa Fitxak (Tabs) */
+.payment-tabs {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.payment-tabs button {
+    flex: 1;
+    background: var(--white);
+    border: none;
+    border-right: 1px solid var(--border-color);
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.payment-tabs button:last-child {
+    border-right: none;
+}
+
+.payment-tabs button.active {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    margin: -1px;
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.payment-tabs button svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2px;
+}
+
+.payment-tabs button.active svg {
+    stroke: var(--primary-color);
+}
+
+/* Checkbox-a */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-main);
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox span {
+    display: none; /* SVG pertsonalizatua ezkutatu, input normala erabiltzeko */
+}
+
+/* --- ESKUINEKO ZATIA (Laburpena) --- */
+.order-summary {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 35px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 40px;
+}
+
+.order-summary .eyebrow {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.order-summary h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.summary-event {
+    display: flex;
+    gap: 15px;
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.summary-event img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.summary-event div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.summary-event b {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.summary-event span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.ticket-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.ticket-line b {
+    font-weight: 600;
+}
+
+.price-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.price-lines div {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+}
+
+.price-lines div b {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.summary-total span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.summary-total strong {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--gold-color);
+    font-weight: 700;
+}
+
+/* Botoi Nagusia */
+.btn-primary {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #631924;
+}
+
+.btn-primary svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2px;
+}
+
+.order-summary small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.order-summary small svg {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 2px;
+}
+
+.mobile-pay {
+    display: none;
+}
+
+/* --- ERANTZUNKORTASUNA (Responsive) --- */
+@media (max-width: 900px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-summary {
+        position: static;
+    }
+
+    .mobile-pay {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .order-summary .btn-primary {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stepper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .stepper > div:not(:last-child)::after {
+        display: none;
+    }
+}

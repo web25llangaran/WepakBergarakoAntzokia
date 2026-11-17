@@ -155,6 +155,60 @@ class EkitaldiaController extends Controller
         ]);
     }
 
+    public function erosketaProzezuak(Request $request, Ekitaldia $ekitaldia)
+    {
+        $eserlekuIds = $request->query('eserlekuak', '');
+
+        if (! is_string($eserlekuIds) || $eserlekuIds === '') {
+            abort(404);
+        }
+
+        $eserlekuIds = explode(',', $eserlekuIds);
+
+        $aukeratutakoEserlekuak = $ekitaldia->aretoa->eserlekuak()
+            ->whereIn('id', $eserlekuIds)
+            ->orderBy('lerro_zenb')
+            ->orderBy('eserleku_zenb')
+            ->get();
+
+        if ($aukeratutakoEserlekuak->count() !== count($eserlekuIds)) {
+            abort(404);
+        }
+
+        if ($ekitaldia->sarrerak()->whereIn('id_eserlekua', $eserlekuIds)->exists()) {
+            abort(404);
+        }
+
+        $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
+        $silverPrezioa = max($prezioa - self::SILVER_ECONOMY_HOBARIA, 0);
+        $eserlekuPrezioak = [];
+        $azpitotala = 0;
+
+        foreach ($aukeratutakoEserlekuak as $eserlekua) {
+            if ($eserlekua->eserleku_mota === EserlekuMota::Silver_economy->value) {
+                $eserlekuPrezioak[$eserlekua->id] = $silverPrezioa;
+            } else {
+                $eserlekuPrezioak[$eserlekua->id] = $prezioa;
+            }
+
+            $azpitotala += $eserlekuPrezioak[$eserlekua->id];
+        }
+
+        $kopurua = $aukeratutakoEserlekuak->count();
+        $kudeaketaGastuak = 1.50;
+        $guztira = $azpitotala + $kudeaketaGastuak;
+
+        return view('erosketaProzezua', compact(
+            'ekitaldia',
+            'aukeratutakoEserlekuak',
+            'eserlekuPrezioak',
+            'kopurua',
+            'azpitotala',
+            'kudeaketaGastuak',
+            'guztira'
+        ));
+    }
+
     // Erosketaren berrespen orria (QR-a geroago automatikoki sortuko da):
     public function berrespena(Request $request, Ekitaldia $ekitaldia)
     {
