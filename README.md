@@ -834,5 +834,5 @@ Emaitza:
 
 ### URL-a
 
-- URL: bergarakoantzokia.eus
+- bergarakoantzokia.eus
 
