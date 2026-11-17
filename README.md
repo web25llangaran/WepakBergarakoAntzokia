@@ -394,4 +394,417 @@ Proiektu honen helburua da honako ezagutza eta gaitasun hauek eskuratzea eta gar
 - [ChatGPT](https://chatgpt.com/)
 
 ## 8. Eranskina
+# Laravel proiektua hedatzea Apache Lounge erabiliz
 
+---
+
+## AURKIBIDEA
+
+- [Baliabideak](#baliabideak)
+- [Baldintzak](#baldintzak)
+- [1. Helburua eta funtzionamendua](#1-helburua-eta-funtzionamendua)
+- [2. Apache Lounge konfigurazioa](#2-apache-lounge-konfigurazioa)
+  - [Modulua](#modulua)
+  - [Probak](#probak)
+  - [Zerbitzuak eta Firewall](#zerbitzuak-eta-firewall)
+- [3. Laravel proiektua](#3-laravel-proiektua)
+  - [Dependentziak](#dependentziak)
+  - [Probak](#probak-1)
+- [4. .env fitxategia](#4-env-fitxategia)
+  - [Probak](#probak-2)
+- [5. Datu basea](#5-datu-basea)
+  - [Probak](#probak-3)
+- [6. Frontend](#6-frontend)
+  - [Probak](#probak-4)
+- [7. Virtual Host eta DNS lokala](#7-virtual-host-eta-dns-lokala)
+  - [DNS-a](#dns-a)
+- [8. Azken probak](#8-azken-probak)
+
+---
+
+## Baliabideak
+
+| Baliabidea | Erabilitako teknologia |
+|---|---|
+| Sistema zerbitzaria | Windows 11 |
+| Web zerbitzua | Apache HTTP Server – Apache Lounge |
+| Aplikazioa | Laravel (PHP) |
+| Sarbidea | http://(ZERBITZARIAREN IP-A) |
+
+## Baldintzak
+
+- Windows 11 darabilen ordenagailu bat; webgunea erabiltzen den bitartean piztuta egon beharko duena.
+- Apache Lounge, Windows-erako PHP eta Composer.
+- Laravel proiektu oso bat eta, hala badagokio, MySQL edo MariaDB.
+- Tokiko sarerako konexioa. Gida honek sare lokalaren (LAN) barruko sarbidea lantzen du; ez, ordea, Interneten zuzenean argitaratzea.
+
+## 1. Helburua eta funtzionamendua
+
+Helburua da gure web orrialdea (Laravel proiektu bat) Windows 11 sistema eragilea duen ordenagailu batean ostatatzea, eta sare lokal bereko beste gailu batzuei web orri horretara sartzeko aukera ematea, ostalari-ordenagailuaren IP helbidea erabiliz.
+
+## 2. Apache Lounge konfigurazioa
+
+### Modulua
+
+1. Deskargatu `mod_fcgid.so` hemendik: https://www.apachelounge.com/download/
+2. Gorde `C:\Apache24\modules` karpetan.
+3. Editatu `C:\Apache24\conf\httpd.conf`, zure karpetaren ruta jarri.
+
+```apache
+Define SRVROOT "C:/Apache24"
+ServerName localhost:80
+```
+
+4. Iruzkin-markak kendu:
+
+```apache
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule headers_module modules/mod_headers.so
+LoadModule ssl_module modules/mod_ssl.so
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+LoadModule fcgid_module modules/mod_fcgid.so
+```
+
+5. Editatu `DirectoryIndex` lerroa. Bakarrik index bat agertuko da, bestea jarri beharko da.
+
+```apache
+DirectoryIndex index.php index.html
+```
+
+6. Bloc-eko edozein lekutan gehitu hau:
+
+```apache
+<IfModule fcgid_module>
+    FcgidInitialEnv PHPRC "C:/php"
+    FcgidInitialEnv PHP_FCGI_MAX_REQUESTS 1000
+    <Files ~ "\.php$">
+        Options +ExecCGI
+        AddHandler fcgid-script .php
+        FcgidWrapper "C:/php/php-cgi.exe" .php
+    </Files>
+</IfModule>
+```
+
+7. Iruzkin-markak kendu:
+
+```apache
+Include conf/extra/httpd-vhosts.conf
+```
+
+### Probak
+
+1. CMD ireki eta idatzi:
+
+```cmd
+cd C:\Apache24\bin\
+```
+
+2. Konfigurazioa egiaztatu:
+
+```cmd
+httpd.exe -t
+```
+
+Ondo funtzionatzen badu, hau agertu behar da:
+
+```text
+Syntax OK
+```
+
+3. Moduluak egiaztatu:
+
+```cmd
+httpd.exe -M | findstr /i "rewrite ssl headers fcgid"
+```
+
+4 modulu agertu behar dira.
+
+### Zerbitzuak eta Firewall
+
+1. CMD-a ireki eta idatzi:
+
+```cmd
+cd C:\Apache24\bin\
+```
+
+Apache zerbitzua instalatu, eskuz abiarazi behar ez izateko:
+
+```cmd
+httpd.exe -k install
+```
+
+2. PowerShell ireki eta Apache zerbitzua abiarazi:
+
+```powershell
+Start-Service Apache2.4
+```
+
+3. Baimendu 80 eta 443 portuak Firewallean. Ireki PowerShell administratzaile bezala:
+
+```powershell
+New-NetFirewallRule -DisplayName "HTTP" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow
+
+New-NetFirewallRule -DisplayName "HTTPS" -Direction Inbound -Protocol TCP -LocalPort 443 -Action Allow
+```
+
+#### Probak
+
+1. Joan web-nabigatzailera eta URL-an idatzi:
+
+```text
+http://localhost
+```
+
+"It works!" agertu beharko da.
+
+2. PowerShell ireki:
+
+```powershell
+Get-Service Apache2.4
+```
+
+`Running` jarri beharko du funtzionatu ahal izateko.
+
+## 3. Laravel proiektua
+
+1. Jaitsi Laravelen proiektua.
+2. Sortu `www` karpeta bat `C:\` unitatean.
+3. Ireki CMD karpeta horretan (`C:\www`) eta klonatu biltegia:
+
+```cmd
+git clone https://github.com/web25llangaran/WepakBergarakoAntzokia.git
+```
+
+### Dependentziak
+
+1. PowerShell ireki:
+
+```powershell
+cd C:\www\WepakBergarakoAntzokia
+```
+
+2. Erakutsi Boost, Debugbar eta abar dauden lerroak:
+
+```powershell
+Select-String -Path composer.json -Pattern "boost|debugbar" -Context 1,1
+```
+
+3. Ezabatu cache fitxategiak:
+
+```powershell
+Remove-Item bootstrap\cache\packages.php, bootstrap\cache\services.php, bootstrap\cache\config.php -ErrorAction SilentlyContinue
+```
+
+4. Instalatu dependentziak:
+
+```powershell
+composer install --no-dev --optimize-autoloader --no-scripts
+```
+
+5. Exekutatu:
+
+```powershell
+php artisan package:discover --ansi
+```
+
+#### Probak
+
+1. Proiektuko karpetan ireki PowerShell.
+2. Egiaztatu `vendor/autoload.php` fitxategia dagoela. `True` eman behar du:
+
+```powershell
+Test-Path vendor\autoload.php
+```
+
+3. Laravel bertsioa ikusteko:
+
+```powershell
+php artisan --version
+```
+
+4. Ez du ezer itzuli behar:
+
+```powershell
+Select-String -Path bootstrap\cache\packages.php -Pattern "debugbar"
+```
+
+## 4. .env fitxategia
+
+Hori guztia egindakoan, Laravel proiektura pasatuko ginateke eta lehen urratsa egingo genuke: `.env` fitxategia sortzea eta editatzea, betiko pausoak eginez.
+
+Ondoren, hau jarri:
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=http://bergara.antzokia
+```
+
+### Probak
+
+1. Konfigurazioa garbitu:
+
+```powershell
+php artisan config:clear
+```
+
+2. Exekutatu:
+
+```powershell
+php artisan about
+```
+
+Hau agertu behar da:
+
+```text
+Environment: production
+Debug Mode: OFF
+```
+
+## 5. Datu basea
+
+Exekutatu migrazioak:
+
+```powershell
+php artisan migrate --force
+```
+
+### Probak
+
+Migrazioen egoera egiaztatu:
+
+```powershell
+php artisan migrate:status
+```
+
+Migrazioak `Ran` egoeran egon behar dira.
+
+## 6. Frontend
+
+Exekutatu komando hauek:
+
+1. Instalatu dependentziak:
+
+```powershell
+npm ci
+```
+
+2. Sortu frontend fitxategiak:
+
+```powershell
+npm run build
+```
+
+### Probak
+
+Egiaztatu manifest fitxategia sortu dela:
+
+```powershell
+Test-Path public\build\manifest.json
+```
+
+`True` eman behar du.
+
+## 7. Virtual Host eta DNS lokala
+
+1. Editatu fitxategi hau:
+
+```text
+C:\Apache24\conf\extra\httpd-vhosts.conf
+```
+
+2. Ezabatu adibidezko Virtual Host-ak eta kopiatu hau:
+
+```apache
+<VirtualHost *:80>
+    ServerName bergara.antzokia
+    DocumentRoot "C:/www/WepakBergarakoAntzokia/public"
+
+    <Directory "C:/www/WepakBergarakoAntzokia/public">
+        Options +FollowSymLinks +ExecCGI
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog "logs/got-error.log"
+    CustomLog "logs/got-access.log" common
+</VirtualHost>
+```
+
+### DNS-a
+
+1. Ireki PowerShell administratzaile bezala:
+
+```powershell
+Add-Content C:\Windows\System32\drivers\etc\hosts "127.0.0.1 bergara.antzokia"
+```
+
+2. Apache konfigurazioa egiaztatu:
+
+```powershell
+C:\Apache24\bin\httpd.exe -t
+```
+
+3. Zerbitzua berrabiarazi:
+
+```powershell
+Restart-Service Apache2.4
+```
+
+## 8. Azken probak
+
+### CMD bidezko proba
+
+Ireki CMD eta idatzi:
+
+```cmd
+curl.exe -I http://bergara.antzokia
+```
+
+Emaitza hau izan behar da:
+
+```text
+HTTP/1.1 200 OK
+```
+
+### Apache konfigurazioaren proba
+
+```cmd
+C:\Apache24\bin\httpd.exe -t
+```
+
+Emaitza hau izan behar da:
+
+```text
+Syntax OK
+```
+
+AH00112 abisurik gabe.
+
+### Nabigatzailean
+
+Probatu URL hauek:
+
+**1. Existitzen ez den orrialdea:**
+
+```text
+http://bergara.antzokia/ezer-ez-dago
+```
+
+Emaitza:
+
+```text
+404 | NOT FOUND
+```
+
+**2. .env fitxategiaren sarbidea:**
+
+```text
+http://bergara.antzokia/.env
+```
+
+Emaitza:
+
+```text
+404 | NOT FOUND
+```
