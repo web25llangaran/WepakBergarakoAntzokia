@@ -392,6 +392,7 @@ Proiektu honen helburua da honako ezagutza eta gaitasun hauek eskuratzea eta gar
 
 - MIguel Altunako apunteak
 - [ChatGPT](https://chatgpt.com/)
+- [Claude](https://claude.ai/)
 
 ## 8. Eranskina
 # Laravel proiektua hedatzea Apache Lounge erabiliz
@@ -766,6 +767,7 @@ Emaitza hau izan behar da:
 ```text
 HTTP/1.1 200 OK
 ```
+![irudia](Irudiak%20eranskina/HTTP1.1%20200%20OK.png)
 
 ### Apache konfigurazioaren proba
 
@@ -780,6 +782,8 @@ Syntax OK
 ```
 
 AH00112 abisurik gabe.
+
+![irudia](Irudiak%20eranskina/Syntax%20OK.png)
 
 ### Nabigatzailean
 
@@ -796,6 +800,7 @@ Emaitza:
 ```text
 404 | NOT FOUND
 ```
+![irudia](Irudiak%20eranskina/httpbergara.antzokiaezer-ez-dago.png)
 
 **2. .env fitxategiaren sarbidea:**
 
@@ -808,3 +813,8 @@ Emaitza:
 ```text
 404 | NOT FOUND
 ```
+![irudia](Irudiak%20eranskina/httpbergara.antzokia.env.png)
+
+### Orrialdea
+
+![irudia](Irudiak%20eranskina/WebOrrialdea.png)
