@@ -420,6 +420,7 @@ Proiektu honen helburua da honako ezagutza eta gaitasun hauek eskuratzea eta gar
 - [7. Virtual Host eta DNS lokala](#7-virtual-host-eta-dns-lokala)
   - [DNS-a](#dns-a)
 - [8. Azken probak](#8-azken-probak)
+- [9. Erabiltzaileak](#9-erabiltzaileak)
 
 ---
 
@@ -818,3 +819,20 @@ Emaitza:
 ### Orrialdea
 
 ![irudia](Irudiak%20eranskina/WebOrrialdea.png)
+
+## 9. Erabiltzaileak
+
+### Admin
+
+- admin@gmail.com
+- pasahitza: 12345678
+
+### Arrunta
+
+- arrunta@gmail.com
+- pasahitza: 12345678
+
+### URL-a
+
+- bergarakoantzokia.eus
+
