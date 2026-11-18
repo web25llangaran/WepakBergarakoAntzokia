@@ -822,6 +822,12 @@ Emaitza:
 
 ## 9. Erabiltzaileak
 
+### WEB ORRIALDEA
+
+### URL-a
+
+- http://bergarakoantzokia.eus
+
 ### Admin
 
 - admin@gmail.com
@@ -836,3 +842,38 @@ Emaitza:
 
 - bergarakoantzokia.eus
 
+### ODOO
+
+### Admin
+
+- admin@gmail.com
+- pasahitza: 12345678
+
+### URL-a
+
+- bergarakoantzokiaodoo.eus:8069
+
+### WIN 11
+
+- Wepak
+- pasahitza: 12345678
+
+### Ubuntu server
+
+- wepak
+- pasahitza: 12345678
+
+### Router
+
+- ip: 192.168.1.1
+- pasahitza: Wepak12345678
+
+### Wifi
+
+- Izena: WepakBergaraAntzokia
+- pasahitza: 12345678
+
+### Router
+
+- ip: 192.168.1.1
+- pasahitza: Wepak12345678
