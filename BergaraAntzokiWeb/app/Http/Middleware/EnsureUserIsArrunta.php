@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+// Middleware (filtro de rutas): solo deja pasar a los usuarios normales (arrunta). Los admin no pueden comprar entradas.
 class EnsureUserIsArrunta
 {
     /**
@@ -20,6 +21,7 @@ class EnsureUserIsArrunta
         if (! $request->user() || $request->user()->rola !== Rola::Arrunta->value) {
             abort(403, 'Administratzaileek ezin dute sarrerarik erosi.');
         }
+        // Si es usuario normal, la petición sigue su camino.
         return $next($request);
     }
 }

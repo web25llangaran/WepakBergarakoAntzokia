@@ -667,6 +667,7 @@ select:focus-visible {
 /* Cierra el bloque CSS abierto anteriormente. */
 }
 
+/* Precio de las tarjetas en color dorado. */
 .prezioa strong {
     color: var(--gold);
 }
@@ -712,6 +713,7 @@ select:focus-visible {
     line-height: 1.05;
 }
 
+/* Fecha del evento en el carrusel y botón de comprar más grande. */
 .hero-data {
     margin: 0 0 24px;
     color: rgba(255, 255, 255, 0.9);
@@ -729,6 +731,7 @@ select:focus-visible {
     margin-bottom: 28px;
 }
 
+/* Cada línea del indicador del carrusel (la activa se ve más). */
 .hero-karrusela .carousel-indicators [data-bs-target] {
     width: 32px;
     height: 3px;

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Aretoa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// Factory de salas: genera salas con datos falsos (aleatorios) para pruebas.
 class AretoaFactory extends Factory
 {
 

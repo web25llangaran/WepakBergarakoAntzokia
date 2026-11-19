@@ -1,3 +1,4 @@
+{{-- Página principal del panel de admin: usa la plantilla admin y mete cada sección (pestaña) desde su propio archivo. --}}
 @extends('layouts.admin')
 
 @section('content')
@@ -21,6 +22,7 @@
 
 @push('scripts')
 <script>
+    // Este script abre automáticamente la pestaña que indica la URL (ej. /admin#sarrerak abre la de entradas).
     // URL-ak #sarrerak bezalako hash bat badu (adib. sarrera bat gorde ondoren), fitxa hori ireki.
     document.addEventListener('DOMContentLoaded', () => {
         const fitxa = window.location.hash.substring(1);

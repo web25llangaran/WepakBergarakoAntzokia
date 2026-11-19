@@ -8,6 +8,7 @@
 
 @section('content1')
 
+{{-- Página de confirmación: tarjeta centrada con el check, el QR, los datos de la compra y el botón Aceptar. --}}
 <div class="berrespena-page">
     <div class="container">
         <div class="row justify-content-center">
@@ -22,6 +23,7 @@
                         </svg>
                     </div>
 
+                    {{-- Títulos de "pago realizado correctamente". --}}
                     <span class="eyebrow">Ordainketa baieztatuta</span>
                     <h1>Ordainketa ondo burutu da</h1>
                     <p class="subtitle">Su pago ha sido realizado / Zure ordainketa behar bezala egin da</p>
@@ -42,10 +44,12 @@
                     {{-- Erosketaren datuak --}}
                     <dl class="datuak text-start">
                         <div class="d-flex justify-content-between align-items-center gap-3">
+                            {{-- Nombre del evento. --}}
                             <dt>Ekitaldia</dt>
                             <dd>{{ $ekitaldia->izena }}</dd>
                         </div>
                         <div class="d-flex justify-content-between align-items-center gap-3">
+                            {{-- Lista de butacas compradas (fila y número). --}}
                             <dt>{{ $eserlekuak->count() > 1 ? 'Eserlekuak' : 'Eserlekua' }}</dt>
                             <dd>
                                 @foreach ($eserlekuak as $eserlekua)
@@ -54,6 +58,7 @@
                             </dd>
                         </div>
                         <div class="d-flex justify-content-between align-items-center gap-3">
+                            {{-- Código de referencia de la compra: BER-año-ID del evento-ID de la primera butaca. --}}
                             <dt>Erreferentzia</dt>
                             <dd>BER-{{ date('Y') }}-{{ str_pad($ekitaldia->id, 4, '0', STR_PAD_LEFT) }}{{ $eserlekuak->first()->id }}</dd>
                         </div>
@@ -61,6 +66,7 @@
 
                     {{-- Onartu: sarrerak gorde (eserlekuak okupatuta geratzen dira) eta hasierako orrira itzuli, saioa itxi gabe --}}
                     <form method="POST" action="{{ route('ekitaldiak.berrespena.onartu', $ekitaldia) }}">
+                        {{-- Mandamos el token CSRF (seguridad) y un input oculto por cada butaca para que el controlador las guarde como entradas. --}}
                         @csrf
                         @foreach ($eserlekuak as $eserlekua)
                         <input type="hidden" name="eserlekuak[]" value="{{ $eserlekua->id }}">

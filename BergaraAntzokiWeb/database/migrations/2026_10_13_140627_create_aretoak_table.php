@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // up(): crea la tabla "aretoak" (salas) con su nombre, número de butacas y número de filas.
     /**
      * Run the migrations.
      */
@@ -21,6 +22,7 @@ return new class extends Migration
         });
     }
 
+    // down(): borra la tabla si se deshace la migración.
     /**
      * Reverse the migrations.
      */

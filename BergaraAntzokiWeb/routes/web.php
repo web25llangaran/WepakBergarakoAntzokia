@@ -7,9 +7,11 @@ use App\Http\Controllers\SarreraController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+// Rutas públicas: página de inicio (lista de eventos) e información de un evento.
 Route::get('/', [EkitaldiaController::class, 'index'])->name('welcome');
 Route::get('/ekitaldiak/{ekitaldia}', [EkitaldiaController::class, 'show'])->name('ekitaldiak.show');
 
+// Rutas del perfil (vienen de Breeze): solo para usuarios con sesión iniciada.
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -28,6 +30,7 @@ Route::middleware(['auth', 'arrunta'])->group(function () {
 });
 
 // Hau Admin bezala logeatu dienak ein dezakete:
+// Rutas del panel de administración: todas empiezan por /admin y solo las puede usar un admin.
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     // Sarreren CRUD-a
@@ -54,4 +57,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
+// Cargamos las rutas de login, registro, logout... que genera Breeze.
 require __DIR__.'/auth.php';

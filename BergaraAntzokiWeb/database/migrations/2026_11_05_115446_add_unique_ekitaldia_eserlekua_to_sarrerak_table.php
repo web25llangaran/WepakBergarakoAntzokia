@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Añade un índice único (evento + butaca): la BD no deja vender la misma butaca dos veces en el mismo evento.
         Schema::table('sarrerak', function (Blueprint $table) {
             $table->unique(['id_ekitaldia', 'id_eserlekua']);
         });
     }
 
+    // down(): quita el índice único si se deshace la migración.
     /**
      * Reverse the migrations.
      */

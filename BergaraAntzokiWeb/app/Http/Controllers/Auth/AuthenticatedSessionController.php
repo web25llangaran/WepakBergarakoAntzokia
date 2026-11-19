@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+// Controlador de inicio y cierre de sesión (viene de Breeze; cambiamos a dónde redirige).
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    // Recibe el formulario de login del popup: comprueba email y contraseña e inicia sesión.
     /**
      * Handle an incoming authentication request.
      */
@@ -28,9 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Vuelve a la página guardada por el popup (ej. elegir butacas); si no hay ninguna, va a la página de inicio.
         return redirect()->intended(route('welcome', absolute: false));
     }
 
+    // Cierra la sesión: desloguea al usuario, invalida la sesión, regenera el token CSRF y vuelve al inicio.
     /**
      * Destroy an authenticated session.
      */

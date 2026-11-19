@@ -2,8 +2,10 @@
   Sortu eta editatu formularioek partekatzen duten zatia.
   Aldagaiak: $erabiltzaileak, $ekitaldiak, $eserlekuak, $saldutakoEserlekuak, $sarrera (aukerakoa).
 --}}
+{{-- Si venimos de "crear", $sarrera no existe, así que lo ponemos a null. old() recupera lo escrito si la validación falla. --}}
 @php($sarrera ??= null)
 
+{{-- Desplegable de usuario comprador (solo usuarios normales). --}}
 <div class="mb-3">
   <label for="id_user" class="form-label fw-semibold">Erabiltzailea</label>
   <select name="id_user" id="id_user" class="form-select py-3 fw-semibold @error('id_user') is-invalid @enderror" required>
@@ -17,6 +19,7 @@
   @error('id_user') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+{{-- Desplegable de evento. Cada opción guarda en data-aretoa la sala del evento (lo usa el JavaScript de abajo). --}}
 <div class="mb-3">
   <label for="id_ekitaldia" class="form-label fw-semibold">Ekitaldia</label>
   <select name="id_ekitaldia" id="id_ekitaldia" class="form-select py-3 fw-semibold @error('id_ekitaldia') is-invalid @enderror" required>
@@ -30,6 +33,7 @@
   @error('id_ekitaldia') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+{{-- Desplegable de butaca. Cada opción guarda su sala en data-aretoa para poder filtrarla. --}}
 <div class="mb-3">
   <label for="id_eserlekua" class="form-label fw-semibold">Eserlekua</label>
   <select name="id_eserlekua" id="id_eserlekua" class="form-select py-3 fw-semibold @error('id_eserlekua') is-invalid @enderror" required>
@@ -44,6 +48,7 @@
   <small class="text-muted">Ekitaldiaren aretoko eserleku libreak bakarrik erakusten dira.</small>
 </div>
 
+{{-- Campo precio (con 2 decimales). --}}
 <div class="mb-3">
   <label for="prezioa" class="form-label fw-semibold">Prezioa (€)</label>
   <input type="number" step="0.01" min="0" name="prezioa" id="prezioa" value="{{ old('prezioa', $sarrera?->prezioa) }}" class="form-control py-3 fw-semibold @error('prezioa') is-invalid @enderror" required>
@@ -54,11 +59,13 @@
 <script>
   // Ekitaldia aldatzean, bere aretoko eserleku libreak bakarrik erakutsi.
   document.addEventListener('DOMContentLoaded', () => {
+    // Recibimos de PHP las butacas vendidas por evento y el ID de la entrada que estamos editando (si hay).
     const saldutakoak = @json($saldutakoEserlekuak);
     const unekoSarrera = @json($sarrera?->id);
     const ekitaldiaSelect = document.getElementById('id_ekitaldia');
     const eserlekuaSelect = document.getElementById('id_eserlekua');
 
+    // FILTRO DE BUTACAS: oculta las butacas que no son de la sala del evento elegido o que ya están vendidas (menos la de esta misma entrada).
     const eserlekuakIragazi = () => {
       const ekitaldiOption = ekitaldiaSelect.selectedOptions[0];
       const aretoa = ekitaldiOption?.dataset.aretoa;
@@ -79,6 +86,7 @@
       }
     };
 
+    // Se filtra cada vez que se cambia el evento y también una vez al cargar la página.
     ekitaldiaSelect.addEventListener('change', eserlekuakIragazi);
     eserlekuakIragazi();
   });

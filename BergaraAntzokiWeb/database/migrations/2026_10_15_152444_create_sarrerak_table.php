@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // up(): crea la tabla "sarrerak" (entradas): evento, butaca y usuario (claves foráneas) y el precio.
     /**
      * Run the migrations.
      */
@@ -26,6 +27,7 @@ return new class extends Migration
         });
     }
 
+    // down(): borra la tabla si se deshace la migración.
     /**
      * Reverse the migrations.
      */

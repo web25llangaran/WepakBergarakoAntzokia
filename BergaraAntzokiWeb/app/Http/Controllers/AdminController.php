@@ -7,8 +7,10 @@ use App\Models\Ekitaldia;
 use App\Models\Sarrera;
 use App\Models\User;
 
+// Controlador del panel de administración: prepara todos los datos que se muestran en el dashboard del admin.
 class AdminController extends Controller
 {
+    // Carga eventos, usuarios y entradas y los manda a la vista admin.admin (el panel con pestañas).
     public function index()
     {
         $ekitaldiak = Ekitaldia::all();
@@ -23,6 +25,7 @@ class AdminController extends Controller
         // 4 kontsulta egin beharko genituzke.
         $sarrerak = Sarrera::with(['ekitaldia.aretoa', 'eroslea', 'eserlekua'])->get();
 
+        // Devolvemos la vista del panel pasándole todas las listas.
         return view('admin.admin', compact('ekitaldiak', 'erabiltzaileak', 'users', 'sarrerak'));
     }
 }

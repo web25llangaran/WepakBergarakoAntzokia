@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // up(): crea la tabla "eserlekuak" (butacas): sala, número de fila, número de butaca y tipo (normal/Silver).
     /**
      * Run the migrations.
      */
@@ -24,6 +25,7 @@ return new class extends Migration
         });
     }
 
+    // down(): borra la tabla si se deshace la migración.
     /**
      * Reverse the migrations.
      */

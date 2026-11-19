@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+// Middleware (filtro de rutas): solo deja pasar a los usuarios con rol admin. Si no, error 403 (prohibido).
 class EnsureUserIsAdmin
 {
     /**
@@ -21,6 +22,7 @@ class EnsureUserIsAdmin
             abort(403, 'Ez duzu baimenik orri hau ikusteko.');
         }
 
+        // Si es admin, la petición sigue su camino normal.
         return $next($request);
     }
 }

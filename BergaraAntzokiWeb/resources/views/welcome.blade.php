@@ -17,6 +17,7 @@
 <section id="ekitaldiKarrusela" class="carousel slide hero-karrusela" data-bs-ride="carousel">
 
     {{-- Puntuak: zenbat irudi dauden eta zein den ikusten ari garena --}}
+    {{-- Los puntitos de abajo del carrusel: uno por cada evento. --}}
     <div class="carousel-indicators">
         @foreach ($ekitaldiak as $ekitaldia)
         <button type="button" data-bs-target="#ekitaldiKarrusela" data-bs-slide-to="{{ $loop->index }}"
@@ -24,6 +25,7 @@
         @endforeach
     </div>
 
+    {{-- Una diapositiva por cada evento: imagen de fondo, tipo, sala, nombre, fecha y botón para comprar. --}}
     <div class="carousel-inner">
         @foreach ($ekitaldiak as $ekitaldia)
         <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
@@ -38,6 +40,7 @@
         @endforeach
     </div>
 
+    {{-- Flechas para pasar a la diapositiva anterior / siguiente. --}}
     <button class="carousel-control-prev" type="button" data-bs-target="#ekitaldiKarrusela" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Aurrekoa</span>
@@ -51,6 +54,7 @@
 
 
 
+{{-- Sección del catálogo de eventos: título, barra de filtros y tarjetas. --}}
 <section class="catalog-section" id="ekitaldiak">
     <div class="section-heading">
         <div>
@@ -59,6 +63,7 @@
         </div>
         <p>Aurkitu zure hurrengo kultura-plana Bergaran.</p>
     </div>
+    {{-- Barra de filtros: buscador por nombre, desplegable de tipo, selector de fecha y botón (los hace funcionar hasieraorria.js). --}}
     <div class="filter-bar">
         <label class="search-field">
             <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
@@ -85,6 +90,7 @@
         </label>
         <button type="button" class="btn btn-primary" id="filtratu-botoia">Filtratu</button>
     </div>
+    {{-- Rejilla de tarjetas: una tarjeta por cada evento con imagen, fecha, nombre, sala, precio mínimo y botón de comprar. --}}
     <div class="event-grid">
         @foreach ($ekitaldiak as $ekitaldia)
         {{-- data-* atributuak JavaScript-eko filtroek irakurtzen dituzte --}}
@@ -105,6 +111,7 @@
                         <path d="M7 14V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v8"></path>
                     </svg> {{ $ekitaldia->aretoa->izena }}
                 </p>
+                {{-- Parte de abajo de la tarjeta: precio más barato de las entradas del evento y botón "Sarrerak erosi". --}}
                 <div class="event-bottom">
                     <div>
                         <small>Preziotik</small>

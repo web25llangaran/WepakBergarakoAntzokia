@@ -7,6 +7,7 @@ button.nav-btn {
     cursor: pointer;
 }
 
+/* Variables de color del popup y estilo de su caja. */
 .popup-saioa {
     /* Proiektuko koloreak */
     --primary: #7a1c2c;
@@ -35,6 +36,7 @@ button.nav-btn {
     margin-bottom: 16px;
 }
 
+/* Nombre de la web y título del popup. */
 .popup-marka {
     margin-bottom: 4px;
     color: var(--primary);
@@ -51,6 +53,7 @@ button.nav-btn {
     font-weight: 500;
 }
 
+/* Botón X para cerrar el popup. */
 .popup-itxi {
     display: flex;
     flex: 0 0 auto;
@@ -97,6 +100,7 @@ button.nav-btn {
     color: var(--primary);
 }
 
+/* Alerta roja con los errores de validación. */
 .popup-alerta {
     border-radius: 3px;
     font-size: 0.85rem;
@@ -175,6 +179,7 @@ button.nav-btn {
     font-weight: 700;
 }
 
+/* Tamaño y trazo de los iconos SVG de los botones. */
 .popup-botoia svg,
 .popup-itxi svg {
     fill: none;

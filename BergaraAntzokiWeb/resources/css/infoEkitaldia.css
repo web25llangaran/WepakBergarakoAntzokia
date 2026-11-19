@@ -19,6 +19,7 @@
     --detail-shadow: 0 18px 50px rgba(30, 36, 43, 0.11);
 }
 
+/* Fuentes tipográficas propias (se cargan desde archivos). */
 @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -35,6 +36,7 @@
     src: url("https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_naUXtXA-W2r.woff2") format("woff2");
 }
 
+/* Reset y estilos base: box-sizing, scroll suave, fuente del body y de los controles de formulario. */
 *,
 *::before,
 *::after {
@@ -75,6 +77,7 @@ select:focus-visible {
     outline-offset: 2px;
 }
 
+/* Estilo común de los iconos SVG (solo trazo, sin relleno). */
 .icon {
     display: inline-block;
     flex: 0 0 auto;
@@ -96,6 +99,7 @@ select:focus-visible {
     background-repeat: no-repeat;
 }
 
+/* Enlace de "volver a eventos" de arriba a la izquierda. */
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -116,6 +120,7 @@ select:focus-visible {
     color: #efce62;
 }
 
+/* Textos de la cabecera: rótulo, título grande y descripción. */
 .detail-copy {
     max-width: 820px;
 }
@@ -151,6 +156,7 @@ select:focus-visible {
     white-space: nowrap;
 }
 
+/* Etiquetas de duración, edad e idioma. */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -196,6 +202,7 @@ select:focus-visible {
     padding: 80px 0 68px;
 }
 
+/* Columna de la izquierda: título, texto, cita (blockquote) y reparto. */
 .detail-content {
     min-width: 0;
 }
@@ -287,6 +294,7 @@ blockquote cite {
     line-height: 1.25;
 }
 
+/* Desplegable de fecha/hora dentro de la tarjeta de compra. */
 .field {
     display: flex;
     flex-direction: column;
@@ -318,6 +326,7 @@ blockquote cite {
     outline-color: rgba(122, 28, 44, 0.35);
 }
 
+/* Indicador verde de "entradas disponibles" con el precio mínimo. */
 .availability {
     display: flex;
     flex-wrap: wrap;

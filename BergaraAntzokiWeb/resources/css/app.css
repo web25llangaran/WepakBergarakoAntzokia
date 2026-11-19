@@ -1,2 +1,3 @@
 
+/* Importa todo el CSS de Bootstrap para poder usar sus clases (botones, rejilla, modales...). */
 @import 'bootstrap/dist/css/bootstrap.min.css';

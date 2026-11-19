@@ -30,12 +30,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // Tabla para guardar los tokens de "he olvidado mi contraseña" (Laravel por defecto).
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // Tabla para guardar las sesiones de los usuarios (Laravel por defecto).
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -46,6 +48,7 @@ return new class extends Migration
         });
     }
 
+    // down(): deshace la migración borrando las tablas.
     /**
      * Reverse the migrations.
      */

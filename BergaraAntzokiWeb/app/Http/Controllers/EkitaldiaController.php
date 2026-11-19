@@ -12,11 +12,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
+// Controlador de los eventos: página de inicio, info de evento, elegir butacas, compra y confirmación, y el CRUD de eventos del admin.
 class EkitaldiaController extends Controller
 {
     // Silver Economy sarrerak, sarrera arruntak baino zenbat euro merkeagoak diren.
     private const SILVER_ECONOMY_HOBARIA = 10.00;
 
+    // Página de inicio: coge todos los eventos de la BD y los manda a la vista welcome.
     public function index()
     {
         $ekitaldiak = Ekitaldia::all(); // Datu basetik Ekitaldia taulako datu GUZTIAK hartzen ditugu.
@@ -25,17 +27,22 @@ class EkitaldiaController extends Controller
         return view('welcome', ['ekitaldiak' => $ekitaldiak]); // "Ekitaldien zerrenda "Welcome" orrian sartzen ditugu, eta gainera, orria ikusi ahal izateko eskatzen dugu.
     }
 
+    // ADMIN - Muestra el formulario para crear un evento (con la lista de salas para el desplegable).
     /**
      * Ekitaldi berria sortzeko formularioa erakutsi.
      */
     public function create()
     {
+        // Coge todos los eventos con su sala ya cargada (with = eager loading) y ordenados por fecha. (Ojo: esta vista no la usa, sobra.)
         $ekitaldiak = Ekitaldia::with('aretoa')->orderBy('data')->get();
+        // Coge todas las salas de la BD para rellenar el desplegable "Aretoa" del formulario.
         $aretoak = Aretoa::all();
 
+        // Carga la vista resources/views/admin/ekitaldiak/create.blade.php y le pasa las variables $ekitaldiak y $aretoak (compact crea el array).
         return view('admin.ekitaldiak.create', compact(['ekitaldiak', 'aretoak']));
     }
 
+    // ADMIN - Valida los datos del formulario, crea el evento y vuelve al panel con mensaje de éxito.
     /**
      * Ekitaldi berria datubasean gorde.
      */
@@ -46,6 +53,7 @@ class EkitaldiaController extends Controller
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo sortu da!');
     }
 
+    // ADMIN - Muestra el detalle de un evento (cargando su sala y sus entradas).
     /**
      * Sarrera baten xehetasunak erakutsi.
      */
@@ -56,6 +64,7 @@ class EkitaldiaController extends Controller
         return view('admin.ekitaldiak.show', compact('ekitaldia'));
     }
 
+    // ADMIN - Muestra el formulario para editar un evento ya existente.
     /**
      * Sarrera bat editatzeko formularioa erakutsi.
      */
@@ -66,6 +75,7 @@ class EkitaldiaController extends Controller
         return view('admin.ekitaldiak.edit', compact(['ekitaldia', 'aretoak']));
     }
 
+    // ADMIN - Valida los datos y actualiza el evento en la BD.
     /**
      * Sarrera baten datuak eguneratu.
      */
@@ -76,6 +86,7 @@ class EkitaldiaController extends Controller
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo eguneratu da!');
     }
 
+    // ADMIN - Borra el evento y vuelve al panel.
     /**
      * Sarrera bat ezabatu.
      */
@@ -86,6 +97,7 @@ class EkitaldiaController extends Controller
         return redirect()->to(route('admin.dashboard').'#ekitaldiak')->with('success', 'Ekitaldia, ondo ezabatu da!');
     }
 
+    // Función reutilizable para crear y editar: valida los campos del evento y, si se sube imagen, la guarda.
     /**
      * Ekitaldi baten datuak balidatu (sortzeko eta editatzeko) eta irudia gorde.
      *
@@ -93,6 +105,7 @@ class EkitaldiaController extends Controller
      */
     private function ekitaldiaBalidatu(Request $request): array
     {
+        // Reglas de validación (izquierda) y mensajes de error en euskera que verá el usuario (derecha).
         $datuak = $request->validate([
             'izena' => 'required|string|max:255',
             'deskripzioa' => 'nullable|string',
@@ -114,6 +127,7 @@ class EkitaldiaController extends Controller
             'irudia.max' => 'Irudiak gehienez 2 MB izan ditzake.',
         ]);
 
+        // Si se ha subido una imagen, se guarda en storage/public/Ekitaldiak y se guarda su URL en el evento.
         if ($request->hasFile('irudia')) {
             $path = $request->file('irudia')->store('Ekitaldiak', 'public');
             $datuak['irudia'] = Storage::url($path);
@@ -123,12 +137,14 @@ class EkitaldiaController extends Controller
     }
 
     // Ekitaldiaren informazio orria:
+    // Página pública con la información de un evento concreto.
     public function show(Ekitaldia $ekitaldia)
     {
         return view('infoEkitaldia', ['ekitaldia' => $ekitaldia]);
     }
 
     // Eserlekuak aukeratzeko orria:
+    // Página para elegir butacas: prepara el plano de la sala, las butacas ocupadas y los precios.
     public function eserlekuak(Ekitaldia $ekitaldia)
     {
         // Ekitaldiaren aretoko eserleku GUZTIAK hartzen ditugu, lerroka antolatuta (1. lerroa, 2. lerroa...) eta lerro bakoitzean eserlekuaren zenbakiaren arabera.
@@ -139,6 +155,7 @@ class EkitaldiaController extends Controller
             ->groupBy('lerro_zenb');
 
         // Ekitaldi honetarako saldutako eserlekuen id-ak (sarrerak taulatik). Hauek beltzez agertuko dira.
+        // pluck('id_eserlekua') recorre todas las entradas del evento y saca SOLO el valor de la columna id_eserlekua de cada una (ej. [5, 12, 13]); ->all() lo convierte de colección a array normal de PHP.
         $okupatutakoEserlekuak = $ekitaldia->sarrerak->pluck('id_eserlekua')->all();
 
         // Prezioa: ekitaldiaren sarreren prezioa (hasierako orrian "Preziotik" ateratzen den berbera).
@@ -155,35 +172,43 @@ class EkitaldiaController extends Controller
         ]);
     }
 
+    // Página del proceso de compra (resumen y pago): recibe las butacas elegidas por la URL y calcula los precios.
     public function erosketaProzezuak(Request $request, Ekitaldia $ekitaldia)
     {
+        // Leemos las butacas de la URL (?eserlekuak=1,2,3). Si no viene nada, error 404.
         $eserlekuIds = $request->query('eserlekuak', '');
 
         if (! is_string($eserlekuIds) || $eserlekuIds === '') {
             abort(404);
         }
 
+        // Pasamos el texto "1,2,3" a un array [1,2,3].
         $eserlekuIds = explode(',', $eserlekuIds);
 
+        // Buscamos esas butacas, pero solo las que pertenecen a la sala del evento.
         $aukeratutakoEserlekuak = $ekitaldia->aretoa->eserlekuak()
             ->whereIn('id', $eserlekuIds)
             ->orderBy('lerro_zenb')
             ->orderBy('eserleku_zenb')
             ->get();
 
+        // Seguridad: si alguna butaca no existe en esa sala, error 404.
         if ($aukeratutakoEserlekuak->count() !== count($eserlekuIds)) {
             abort(404);
         }
 
+        // Seguridad: si alguna de las butacas ya está vendida para este evento, error 404.
         if ($ekitaldia->sarrerak()->whereIn('id_eserlekua', $eserlekuIds)->exists()) {
             abort(404);
         }
 
+        // Cálculo de precios: precio normal y precio Silver (10 € más barato, nunca menos de 0).
         $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
         $silverPrezioa = max($prezioa - self::SILVER_ECONOMY_HOBARIA, 0);
         $eserlekuPrezioak = [];
         $azpitotala = 0;
 
+        // Recorremos cada butaca, le ponemos su precio según su tipo y lo vamos sumando al subtotal.
         foreach ($aukeratutakoEserlekuak as $eserlekua) {
             if ($eserlekua->eserleku_mota === EserlekuMota::Silver_economy->value) {
                 $eserlekuPrezioak[$eserlekua->id] = $silverPrezioa;
@@ -194,10 +219,12 @@ class EkitaldiaController extends Controller
             $azpitotala += $eserlekuPrezioak[$eserlekua->id];
         }
 
+        // Total final = subtotal + 1,50 € de gastos de gestión.
         $kopurua = $aukeratutakoEserlekuak->count();
         $kudeaketaGastuak = 1.50;
         $guztira = $azpitotala + $kudeaketaGastuak;
 
+        // Mandamos todos los datos a la vista erosketaProzezua.
         return view('erosketaProzezua', compact(
             'ekitaldia',
             'aukeratutakoEserlekuak',
@@ -210,6 +237,7 @@ class EkitaldiaController extends Controller
     }
 
     // Erosketaren berrespen orria (QR-a geroago automatikoki sortuko da):
+    // Página de confirmación de la compra (con el QR y el resumen de butacas).
     public function berrespena(Request $request, Ekitaldia $ekitaldia)
     {
         // Eserlekuak "?eserlekuak=ID,ID" bidez jasotzen dira (ordainketa orriak bidaliko ditu).
@@ -226,6 +254,7 @@ class EkitaldiaController extends Controller
             abort(404);
         }
 
+        // Mandamos el evento y las butacas a la vista berrespena.
         return view('berrespena', [
             'ekitaldia' => $ekitaldia,
             'eserlekuak' => $eserlekuak,
@@ -233,8 +262,10 @@ class EkitaldiaController extends Controller
     }
 
     // "Onartu" sakatzean: sarrerak datubasean gorde (eserlekuak okupatuta agertzeko) eta hasierako orrira itzuli.
+    // Al pulsar "Onartu" (aceptar): valida las butacas y guarda una entrada (Sarrera) por cada butaca en la BD.
     public function berrespenaOnartu(Request $request, Ekitaldia $ekitaldia)
     {
+        // Validación: tiene que llegar al menos una butaca, que sea de la sala del evento y que no esté ya vendida.
         $datuak = $request->validate([
             'eserlekuak' => 'required|array',
             'eserlekuak.*' => [
@@ -254,8 +285,10 @@ class EkitaldiaController extends Controller
         $prezioa = (float) $ekitaldia->sarrerak->min('prezioa');
         $silverPrezioa = max($prezioa - self::SILVER_ECONOMY_HOBARIA, 0);
 
+        // Buscamos las butacas elegidas para saber de qué tipo es cada una.
         $eserlekuak = Eserlekua::whereIn('id', $datuak['eserlekuak'])->get();
 
+        // Creamos una entrada por cada butaca con el precio que le corresponde (normal o Silver).
         foreach ($eserlekuak as $eserlekua) {
             Sarrera::create([
                 'id_ekitaldia' => $ekitaldia->id,

@@ -9,6 +9,7 @@ use App\Enums\EkitaldiMota;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+// Seeder de eventos: crea 5 eventos reales de ejemplo con su sala, fecha, tipo e imagen.
 class EkitaldiaSeeder extends Seeder
 {
     use WithoutModelEvents;

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // up(): crea la tabla "ekitaldiak" (eventos): sala (clave foránea), nombre, descripción, tipo, fecha e imagen.
     /**
      * Run the migrations.
      */
@@ -24,6 +25,7 @@ return new class extends Migration
         });
     }
 
+    // down(): borra la tabla si se deshace la migración.
     /**
      * Reverse the migrations.
      */

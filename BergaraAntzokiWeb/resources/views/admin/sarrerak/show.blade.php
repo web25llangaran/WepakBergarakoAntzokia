@@ -1,3 +1,4 @@
+{{-- Página para VER el detalle de un entrada (solo lectura). --}}
 @extends('layouts.admin')
 
 @section('title', 'Sarrera #'.$sarrera->id)
@@ -6,6 +7,7 @@
 
 @section('content')
 <div class="admin-main flex-grow-1 p-4 overflow-auto">
+  {{-- Cabecera con el título y el botón para volver al listado. --}}
   <div class="d-flex justify-content-between align-items-end mb-3">
     <div>
       <h2 class="mb-0">Sarrerak</h2>
@@ -20,6 +22,7 @@
       <h5 class="mb-0">{{ $sarrera->ekitaldia->izena }}</h5>
     </div>
 
+    {{-- Lista con todos los datos del entrada. --}}
     <div class="card-body px-4">
       <dl class="row mb-0">
         <dt class="col-sm-4 text-muted">Eroslea</dt>
@@ -48,6 +51,7 @@
       </dl>
     </div>
 
+    {{-- Botones: Borrar (pide confirmación antes) y Editar. --}}
     <div class="card-footer bg-white border-0 d-flex justify-content-end gap-2 pb-4 px-4">
       <form action="{{ route('admin.sarrera.destroy', $sarrera) }}" method="POST" onsubmit="return confirm('Ziur zaude sarrera hau ezabatu nahi duzula?');">
         @csrf

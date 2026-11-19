@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+// Modelo de la tabla "aretoak" (salas del teatro). Representa una sala y sus relaciones.
 class Aretoa extends Model
 {
     use HasFactory;
     protected $table = 'aretoak';
 
+    // Campos que se pueden rellenar de golpe con create() o update().
     protected $fillable = ['izena', 'exerleku_kopurua', 'lerro_kopurua'];
 
     //Aretoak ze eserleku dituen ezagutzeko:

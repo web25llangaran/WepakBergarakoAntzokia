@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- Plantilla (layout) del panel de administración: cabecera, menú lateral, mensajes de éxito y contenido. --}}
 <html lang="eu">
 
 <head>
@@ -15,6 +16,7 @@
 
 
 <body class="d-flex flex-column vh-100 overflow-hidden">
+    {{-- Cabecera: logo a la izquierda y saludo + iniciales del admin a la derecha. --}}
     <header>
         <div class="container-fluid">
             <div class="row border-bottom">
@@ -59,6 +61,7 @@
       beste orrietan dashboard-eko fitxa horretara eramaten du (#hash bidez).
       Orri bakoitzak @section('fitxa', '...') erabil dezake menuko aukera aktiboa adierazteko.
     --}}
+    {{-- Variables para el menú: si estamos en el dashboard, qué pestaña está activa y la lista de pestañas. --}}
     @php
         $dashboardanDago = request()->routeIs('admin.dashboard');
         $fitxaAktiboa = trim($__env->yieldContent('fitxa', 'dashboard'));
@@ -73,6 +76,7 @@
     <!-- MAIN - DASHBOARD - EKITALDIAK- ERABILTZAILEAK - SALDUTAKO SARRERAK -->
     <main class="flex-grow-1 d-flex overflow-hidden">
         <div class="d-flex flex-grow-1 bg-light" style="min-height:0;">
+            {{-- Menú lateral: un enlace por pestaña. En el dashboard cambia de pestaña sin recargar; en otras páginas vuelve al dashboard a esa pestaña. --}}
             <nav class="nav flex-column nav-pills col-2 bg-dark p-3" style="--bs-nav-pills-link-active-bg: var(--bs-danger);" id="v-pills-tab" @if ($dashboardanDago) role="tablist" @endif aria-orientation="vertical">
                 @foreach ($menukoFitxak as $fitxa => $izena)
                 <a href="{{ route('admin.dashboard') }}#{{ $fitxa }}"
@@ -95,10 +99,12 @@
                 </form>
             </nav>
 
+            {{-- Aquí se mete el contenido de cada página del admin. --}}
             @yield('content')
         </div>
     </main>
 
+    {{-- Aquí se cargan los scripts que añada cada página con @push('scripts'). --}}
     @stack('scripts')
 </body>
 

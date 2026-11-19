@@ -1,8 +1,10 @@
+/* Variables de color del panel de administración. */
 :root {
     --bs-danger: #701920;
     --bs-danger-rgb: 112, 25, 32;
 }
 
+/* Botones rojos de Bootstrap (btn-danger) adaptados al color corporativo del teatro. */
 .btn-danger {
     --bs-btn-bg: #701920;
     --bs-btn-border-color: #701920;
@@ -12,6 +14,7 @@
     --bs-btn-active-border-color: #5a141a;
 }
 
+/* Botones con borde rojo (btn-outline-danger) adaptados también al color corporativo. */
 .btn-outline-danger {
     --bs-btn-color: #701920;
     --bs-btn-border-color: #701920;
@@ -24,6 +27,7 @@
     --bs-btn-focus-shadow-rgb: 112, 25, 32;
 }
 
+/* La pestaña activa del panel ocupa todo el alto disponible. */
 .tab-pane.active {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,7 @@
     min-height: 0;
 }
 
+/* Pequeño rótulo de encima de los títulos de los formularios. */
 #sarreraCreateModal .modal-eyebrow {
   letter-spacing: .15em;
 }

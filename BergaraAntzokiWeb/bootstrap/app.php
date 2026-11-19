@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsArrunta;
 
+// Configuración principal de la aplicación Laravel: rutas, middlewares y excepciones.
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -14,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+          // Registramos nuestros middlewares con nombres cortos ("admin" y "arrunta") para usarlos en routes/web.php.
           $middleware->alias([
             'admin' => EnsureUserIsAdmin::class,
             'arrunta' => EnsureUserIsArrunta::class,
@@ -24,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
             ? route('ekitaldiak.show', $request->route('ekitaldia'))
             : route('welcome'));
     })
+    // Si la petición es de API o espera JSON, los errores se devuelven en formato JSON.
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),

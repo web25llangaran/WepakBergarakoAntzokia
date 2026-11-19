@@ -10,11 +10,13 @@
 {{-- Plantilan txertatuko dena garatu: --}}
 @section('content1')
 
+{{-- Imagen del evento (si no tiene, se usa una por defecto). --}}
 @php
     $irudia = $ekitaldia->irudia ?: 'https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1600&q=88';
 @endphp
 
 <div class="flow-page checkout-page">
+    {{-- Cabecera propia de la página de pago (logo y menú). --}}
     <header class="site-header">
         <div class="header-inner">
             <button class="brand" aria-label="Hasierara">
@@ -28,6 +30,7 @@
         </div>
     </header>
 
+    {{-- Pasos de la compra: 1 (butacas, ya hecho), 2 (pago, paso actual) y 3 (confirmación). --}}
     <div class="stepper">
         <div class="active">
             <span>
@@ -44,15 +47,18 @@
                 <b>Berrespena</b>
             </div>
         </div>
+        {{-- Formulario "invisible" que lleva a la página de confirmación. El input oculto le pasa los IDs de las butacas elegidas. --}}
         <form id="berrespena-form" action="{{ route('ekitaldiak.berrespena', $ekitaldia) }}" method="GET"></form>
         <input form="berrespena-form" type="hidden" name="eserlekuak" value="{{ $aukeratutakoEserlekuak->pluck('id')->implode(',') }}">
         <main class="checkout-layout">
+            {{-- Formulario de pago (datos de contacto y tarjeta). Los botones "Ordaindu" lo envían a través del formulario berrespena-form. --}}
             <form class="checkout-form">
                 <div class="flow-title">
                     <button type="button">← Atzera</button>
                     <span class="eyebrow">Ordainketa segurua</span>
                     <h1>Osatu zure erosketa</h1>
                 </div>
+                {{-- Sección 1: datos de contacto (nombre y email se rellenan solos con los datos del usuario logueado). --}}
                 <section class="form-section">
                     <div class="form-section-title">
                         <span>1</span>
@@ -76,6 +82,7 @@
                         </label>
                     </div>
                 </section>
+                {{-- Sección 2: método de pago (tarjeta, Bizum o Apple Pay) y los campos de la tarjeta. --}}
                 <section class="form-section">
                     <div class="form-section-title">
                         <span>2</span>
@@ -109,6 +116,7 @@
                                 </div>
                             </div>
                         </section>
+                        {{-- Checkbox obligatorio de aceptar condiciones y botón de pagar (versión móvil). --}}
                         <label class="checkbox">
                             <input required="" type="checkbox">
                             <span>
@@ -119,6 +127,7 @@
                         </label>
                         <button type="submit" form="berrespena-form" class="btn btn-primary mobile-pay">Ordaindu orain · {{ number_format($guztira, 2, ',', '.') }}€</button>
                     </form>
+                    {{-- Resumen del pedido (columna derecha): evento, butacas con su precio, subtotal, gastos y total. --}}
                     <aside class="order-summary">
                         <span class="eyebrow">Zure eskaera</span>
                         <h2>Erosketaren laburpena</h2>
@@ -142,6 +151,7 @@
                         </div>
                         @endforeach
                     
+                        {{-- Subtotal y gastos de gestión (calculados en el controlador). --}}
                         <div class="price-lines">
                             <div>
                                 <span>Azpitotala ({{ $kopurua }} sarrera)</span>
@@ -153,6 +163,7 @@
                             </div>
                         </div>
                         
+                        {{-- Precio total y botón de pagar, que lleva a la página de confirmación. --}}
                         <div class="summary-total">
                             <span>Guztira</span>
                             <strong>{{ number_format($guztira, 2, ',', '.') }}€</strong>
@@ -172,6 +183,7 @@
                         </small>
                     </aside>
                     </main>
+                    {{-- Pie de página. --}}
                     <footer class="footer">
                         <div>
                             <strong>Bergarako Antzoki Web</strong>

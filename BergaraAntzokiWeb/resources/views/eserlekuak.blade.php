@@ -9,6 +9,7 @@
 {{-- Plantilan txertatuko dena garatu: --}}
 @section('content1')
 
+{{-- Variables de apoyo: nombre corto del evento, fecha en euskera e imagen (o una por defecto). --}}
 @php
     // Ekitaldiaren izena bakarrik ":" aurretik (adibidez "Erresuma: Shakespeareren Tragediak" -> "Erresuma").
     $izenLaburra = Str::before($ekitaldia->izena, ':');
@@ -25,6 +26,7 @@
         <div><span>3</span><b>Berrespena</b></div>
     </div>
 
+    {{-- Contenedor principal. En los data-* le pasamos al JavaScript los precios y el tipo Silver. --}}
     <div class="container seat-layout"
         id="eserlekuak"
         data-prezioa="{{ $prezioa }}"
@@ -35,6 +37,7 @@
             {{-- Eserlekuen mapa --}}
             <div class="col-md">
                 <section class="seat-main">
+                    {{-- Cabecera del plano: sala, título, fecha y botón Silver Economy (+65 años). --}}
                     <div class="seat-heading d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                         <div>
                             <span class="eyebrow">{{ $ekitaldia->aretoa->izena }}</span>
@@ -58,14 +61,17 @@
                         </label>
                     </div>
 
+                    {{-- Plano de la sala: escenario arriba y debajo las filas de butacas. --}}
                     <div class="seat-map">
                         <div class="stage"><span>ESZENATOKIA</span></div>
 
+                        {{-- Por cada fila de butacas... (si la fila es Silver se le pone un estilo especial). --}}
                         @foreach ($lerroak as $lerroZenbakia => $eserlekuak)
                         @php $silverLerroa = $eserlekuak->first()->eserleku_mota === $silverMota; @endphp
                         <div class="seat-row {{ $silverLerroa ? 'silver-row' : '' }}">
                             <span class="row-label">{{ $lerroZenbakia }}. ILARA</span>
                             <div>
+                                {{-- Por cada butaca de la fila creamos un botón. Si es Silver o está ocupada, sale deshabilitado (no se puede pulsar). --}}
                                 @foreach ($eserlekuak as $eserlekua)
                                 @php
                                     $silver = $eserlekua->eserleku_mota === $silverMota;
@@ -86,6 +92,7 @@
                         </div>
                         @endforeach
 
+                        {{-- Leyenda de colores: libre, seleccionada, ocupada y Silver. --}}
                         <div class="legend">
                             <span><i class="available"></i>Libre</span>
                             <span><i class="chosen"></i>Hautatua</span>
@@ -102,6 +109,7 @@
                     <span class="eyebrow">Zure aukeraketa</span>
                     <h2>Laburpena</h2>
 
+                    {{-- Mini tarjeta con la imagen, el nombre y la fecha del evento. --}}
                     <div class="summary-event">
                         <img alt="" src="{{ $irudia }}">
                         <div>
@@ -110,6 +118,7 @@
                         </div>
                     </div>
 
+                    {{-- Lista de butacas elegidas (la rellena eserlekuak.js). Al principio sale el mensaje de "no has elegido ninguna". --}}
                     <div class="selected-list" id="aukeratutakoZerrenda">
                         <p class="empty-selection" id="zerrenda-hutsik">
                             <svg aria-hidden="true" class="icon" width="20" height="20" viewBox="0 0 24 24">
@@ -119,9 +128,11 @@
                         </p>
                     </div>
 
+                    {{-- Número de entradas y precio total (los actualiza el JavaScript). --}}
                     <div class="summary-row"><span>Kopurua</span><b id="sarrera-kopurua">0 sarrera</b></div>
                     <div class="summary-total"><span>Guztira</span><strong id="guztira">0,00€</strong></div>
 
+                    {{-- Formulario que manda los IDs de las butacas elegidas (input oculto) a la página de pago. El botón está deshabilitado hasta elegir alguna. --}}
                     <form action="{{ route('ekitaldiak.erosketaProzezuak', $ekitaldia) }}" method="GET">
                     <input type="hidden" name="eserlekuak" id="aukeratutako-eserlekuak">
                     <button type="submit" class="btn btn-primary" id="ordaindu-botoia" disabled>

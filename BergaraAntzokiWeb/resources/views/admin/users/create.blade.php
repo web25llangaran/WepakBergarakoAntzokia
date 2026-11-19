@@ -1,3 +1,4 @@
+{{-- Página para CREAR un usuario: usa la plantilla admin y marca la pestaña "users" del menú como activa. --}}
 @extends('layouts.admin')
 
 @section('title', 'Erabiltzaile berria')
@@ -6,6 +7,7 @@
 
 @section('content')
 <div class="admin-main flex-grow-1 p-4 overflow-auto">
+  {{-- Cabecera con el título y el botón para volver al listado. --}}
   <div class="d-flex justify-content-between align-items-end mb-3">
     <div>
       <h2 class="mb-0">Erabiltzaileak</h2>
@@ -15,6 +17,7 @@
   </div>
 
   <div class="card mx-auto" style="max-width:640px;">
+    {{-- Formulario que envía los datos por POST a la ruta store para guardar el usuario nuevo (@csrf es el token de seguridad). --}}
     <form action="{{ route('admin.user.store') }}" method="POST" class="p-2">
       @csrf
 
@@ -23,10 +26,12 @@
         <h5 class="mb-0">Erabiltzailearen datuak</h5>
       </div>
 
+      {{-- Campos del formulario: se cargan desde form.blade.php (el mismo archivo que usa la página de editar). --}}
       <div class="card-body">
         @include('admin.users.form')
       </div>
 
+      {{-- Botones: Cancelar (vuelve al listado) y Guardar (envía el formulario). --}}
       <div class="card-footer bg-white border-0 d-flex justify-content-end gap-2">
         <a href="{{ route('admin.dashboard') }}#erabiltzaileak" class="btn btn-light py-3 px-4 fw-semibold">Utzi</a>
         <button type="submit" class="btn btn-danger py-3 px-4 fw-semibold">Gorde erabiltzailea</button>

@@ -13,6 +13,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
+// Controlador de registro (viene de Breeze, pero lo adaptamos a nuestra tabla users).
 class RegisteredUserController extends Controller
 {
     /**
@@ -23,6 +24,7 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    // Recibe el formulario de registro del popup: valida los datos, crea el usuario, inicia sesión y redirige.
     /**
      * Handle an incoming registration request.
      *
@@ -43,6 +45,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Creamos el usuario con nuestros campos (contraseña cifrada, fecha de alta = hoy y rol normal).
         $user = User::create([
             // Taula aldatu denez erabiltzailearen sortzeko funtzioa ere aldatu behar da.
             // 'name' => $request->name,
@@ -58,6 +61,7 @@ class RegisteredUserController extends Controller
             'rola' => 'arrunta', // erabiltzailea defectuz arrunta izango da.
         ]);
 
+        // Lanzamos el evento de "usuario registrado" e iniciamos sesión automáticamente con el nuevo usuario.
         event(new Registered($user));
 
         Auth::login($user);

@@ -7,6 +7,7 @@ use App\Models\Aretoa;
 use App\Enums\EkitaldiMota;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// Factory de eventos: genera eventos falsos (nombre, descripción, fecha en los próximos 3 meses...) para pruebas y seeders.
 class EkitaldiaFactory extends Factory
 {
 

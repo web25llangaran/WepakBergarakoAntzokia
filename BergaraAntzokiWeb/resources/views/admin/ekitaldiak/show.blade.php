@@ -1,3 +1,4 @@
+{{-- Página para VER el detalle de un evento (solo lectura). --}}
 @extends('layouts.admin')
 
 @section('title', 'Ekitaldia #'.$ekitaldia->id)
@@ -6,6 +7,7 @@
 
 @section('content')
 <div class="admin-main flex-grow-1 p-4 overflow-auto">
+  {{-- Cabecera con el título y el botón para volver al listado. --}}
   <div class="d-flex justify-content-between align-items-end mb-3">
     <div>
       <h2 class="mb-0">Ekitaldiak</h2>
@@ -15,6 +17,7 @@
   </div>
 
   <div class="card mx-auto overflow-hidden" style="max-width:640px;">
+    {{-- Si el evento tiene imagen, se muestra arriba de la tarjeta. --}}
     @if ($ekitaldia->irudia)
     <img src="{{ $ekitaldia->irudia }}" alt="{{ $ekitaldia->izena }}" class="card-img-top" style="max-height:260px;object-fit:cover;">
     @endif
@@ -24,6 +27,7 @@
       <h5 class="mb-0">{{ $ekitaldia->izena }}</h5>
     </div>
 
+    {{-- Lista con todos los datos del evento. --}}
     <div class="card-body px-4">
       <dl class="row mb-0">
         <dt class="col-sm-4 text-muted">Data eta ordua</dt>
@@ -43,6 +47,7 @@
       </dl>
     </div>
 
+    {{-- Botones: Borrar (pide confirmación antes) y Editar. --}}
     <div class="card-footer bg-white border-0 d-flex justify-content-end gap-2 pb-4 px-4">
       <form action="{{ route('admin.ekitaldia.destroy', $ekitaldia) }}" method="POST" onsubmit="return confirm('Ziur zaude ekitaldi hau ezabatu nahi duzula? Bere sarrera guztiak ere ezabatuko dira.');">
         @csrf

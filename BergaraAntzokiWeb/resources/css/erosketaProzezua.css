@@ -1,6 +1,7 @@
 /* --- OINARRIZKO ESTILOAK --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
 
+/* Variables de color de la página de pago. */
 :root {
     --primary-color: #781f2c;
     --gold-color: #cba258;
@@ -14,6 +15,7 @@
     --font-serif: 'Playfair Display', Georgia, serif;
 }
 
+/* Estilo general del body y de los títulos. */
 body {
     background-color: var(--bg-color);
     font-family: var(--font-sans);
@@ -34,6 +36,7 @@ h1, h2 {
     display: none;
 }
 
+/* Contenedor general de la página de pago. */
 .flow-page {
     max-width: 1100px;
     margin: 0 auto;
@@ -49,6 +52,7 @@ h1, h2 {
     font-size: 14px;
 }
 
+/* Cada paso es un círculo con número; el paso activo se pinta de color y entre pasos hay una línea. */
 .stepper > div {
     display: flex;
     align-items: center;
@@ -103,6 +107,7 @@ h1, h2 {
 }
 
 /* --- EZKERREKO ZATIA (Formularioa) --- */
+/* Título de la página con botón de volver atrás. */
 .flow-title {
     margin-bottom: 30px;
 }
@@ -131,6 +136,7 @@ h1, h2 {
     margin-top: 15px;
 }
 
+/* Cada bloque del formulario (contacto, pago) es una tarjeta con su número y título. */
 .form-section {
     background: var(--white);
     padding: 35px;
@@ -211,6 +217,7 @@ h1, h2 {
     box-shadow: 0 0 0 1px var(--primary-color);
 }
 
+/* Rejilla de 2 columnas para poner dos campos en la misma fila. */
 .field-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -313,6 +320,7 @@ h1, h2 {
     margin-bottom: 25px;
 }
 
+/* Mini tarjeta del evento en el resumen (imagen, nombre y fecha). */
 .summary-event {
     display: flex;
     gap: 15px;
@@ -348,6 +356,7 @@ h1, h2 {
     color: var(--text-muted);
 }
 
+/* Líneas de cada butaca con su precio, subtotal y gastos. */
 .ticket-line {
     display: flex;
     justify-content: space-between;
@@ -383,6 +392,7 @@ h1, h2 {
     font-weight: 600;
 }
 
+/* Total final en grande. */
 .summary-total {
     display: flex;
     justify-content: space-between;
@@ -430,6 +440,7 @@ h1, h2 {
     stroke-width: 2px;
 }
 
+/* Texto pequeño de "pago seguro" y botón de pagar para móvil (oculto en escritorio). */
 .order-summary small {
     display: flex;
     align-items: center;
@@ -450,6 +461,7 @@ h1, h2 {
 }
 
 /* --- ERANTZUNKORTASUNA (Responsive) --- */
+/* Tablet: el resumen pasa debajo del formulario (una sola columna). */
 @media (max-width: 900px) {
     .checkout-layout {
         grid-template-columns: 1fr;
@@ -469,6 +481,7 @@ h1, h2 {
     }
 }
 
+/* Móvil: se reducen espacios y los campos dobles pasan a uno por fila. */
 @media (max-width: 600px) {
     .field-grid {
         grid-template-columns: 1fr;

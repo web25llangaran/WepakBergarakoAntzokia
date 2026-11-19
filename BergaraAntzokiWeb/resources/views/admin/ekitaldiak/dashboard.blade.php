@@ -1,3 +1,4 @@
+{{-- Pestaña de eventos del panel admin: cabecera con la fecha de la última modificación. --}}
 <div class="d-flex justify-content-between align-items-end mb-3 flex-shrink-0">
   <div>
     <h2 class="mb-0">Ekitaldiak</h2>
@@ -7,6 +8,7 @@
 </div>
 
 <div class="card flex-grow-1 d-flex flex-column" style="min-height:0;">
+  {{-- Título de la tabla y botón para añadir un evento nuevo. --}}
   <div class="card-body d-flex justify-content-between align-items-center flex-shrink-0">
     <div>
       <h4 class="mb-0">Ekitaldien zerrenda</h4>
@@ -17,6 +19,7 @@
       + Ekitaldia gehitu
     </a>
   </div>
+  {{-- Tabla con todos los eventos. La cabecera se queda fija (sticky) al hacer scroll. --}}
   <div class="table-responsive overflow-auto flex-grow-1" style="min-height:0;">
     <table class="table table-hover align-middle mb-0">
       <thead class="sticky-top bg-white">
@@ -31,6 +34,7 @@
         </tr>
       </thead>
       <tbody>
+        {{-- Una fila por cada evento (si no hay ninguno, sale el mensaje de @empty). --}}
         @forelse ($ekitaldiak as $ekitaldia)
         <tr>
           <td><b>{{ $ekitaldia->id }}</b></td>
@@ -46,6 +50,7 @@
           <td>{{ $ekitaldia->data->format('Y-m-d H:i') }}</td>
           <td>{{ $ekitaldia->aretoa->izena }}</td>
           <td>
+            {{-- Botones de acción: ver, editar y borrar. El borrado pide confirmación con un confirm() de JavaScript. --}}
             <div class="btn-group btn-group-sm">
               <a href="{{ route('admin.ekitaldia.show', $ekitaldia) }}" class="btn btn-outline-secondary" aria-label="Ikusi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>

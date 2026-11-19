@@ -2,14 +2,17 @@
   Sortu eta editatu formularioek partekatzen duten zatia.
   Aldagaiak: $user (aukerakoa).
 --}}
+{{-- Si venimos de "crear", $user no existe, así que lo ponemos a null. old() recupera lo escrito si la validación falla. --}}
 @php($user ??= null)
 
+{{-- Nombre de usuario (para el login). --}}
 <div class="mb-3">
   <label for="user_izena" class="form-label fw-semibold">Erabiltzaile izena</label>
   <input type="text" name="user_izena" id="user_izena" maxlength="255" value="{{ old('user_izena', $user?->user_izena) }}" class="form-control py-3 fw-semibold @error('user_izena') is-invalid @enderror" required>
   @error('user_izena') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+{{-- Nombre y apellido. --}}
 <div class="row">
   <div class="col-md-6 mb-3">
     <label for="izena" class="form-label fw-semibold">Izena</label>
@@ -24,6 +27,7 @@
   </div>
 </div>
 
+{{-- Email y DNI (opcional). --}}
 <div class="row">
   <div class="col-md-6 mb-3">
     <label for="email" class="form-label fw-semibold">Emaila</label>
@@ -38,6 +42,7 @@
   </div>
 </div>
 
+{{-- Desplegable de rol (admin o arrunta), sacado del enum Rola. Por defecto, arrunta. --}}
 <div class="mb-3">
   <label for="rola" class="form-label fw-semibold">Rola</label>
   <select name="rola" id="rola" class="form-select py-3 fw-semibold @error('rola') is-invalid @enderror" required>
@@ -50,6 +55,7 @@
   @error('rola') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+{{-- Fecha de alta y fecha de baja (opcional). --}}
 <div class="row">
   <div class="col-md-6 mb-3">
     <label for="alta_data" class="form-label fw-semibold">Alta data</label>
@@ -64,6 +70,7 @@
   </div>
 </div>
 
+{{-- Contraseña y confirmación: obligatorias al crear; al editar, si se dejan vacías se mantiene la actual. --}}
 <div class="row">
   <div class="col-md-6 mb-3">
     <label for="password" class="form-label fw-semibold">Pasahitza</label>

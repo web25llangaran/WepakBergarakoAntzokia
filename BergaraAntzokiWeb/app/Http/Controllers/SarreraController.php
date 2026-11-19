@@ -14,8 +14,10 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
+// Controlador del CRUD de entradas (Sarrerak) para el administrador: crear, ver, editar y borrar.
 class SarreraController extends Controller
 {
+    // Muestra el formulario para crear una entrada nueva.
     /**
      * Sarrera berria sortzeko formularioa erakutsi.
      */
@@ -24,6 +26,7 @@ class SarreraController extends Controller
         return view('admin.sarrerak.create', $this->formularioarenDatuak());
     }
 
+    // Valida los datos y guarda la entrada nueva en la BD.
     /**
      * Sarrera berria datu-basean gorde.
      */
@@ -34,6 +37,7 @@ class SarreraController extends Controller
         return $this->sarreretaraBideratu('Sarrera ondo sortu da!');
     }
 
+    // Muestra el detalle de una entrada (con su evento, sala, butaca y comprador).
     /**
      * Sarrera baten xehetasunak erakutsi.
      */
@@ -44,6 +48,7 @@ class SarreraController extends Controller
         return view('admin.sarrerak.show', compact('sarrera'));
     }
 
+    // Muestra el formulario de edición de una entrada, con los datos que ya tiene.
     /**
      * Sarrera bat editatzeko formularioa erakutsi.
      */
@@ -55,6 +60,7 @@ class SarreraController extends Controller
         ]);
     }
 
+    // Valida y actualiza la entrada.
     /**
      * Sarrera baten datuak eguneratu.
      */
@@ -65,6 +71,7 @@ class SarreraController extends Controller
         return $this->sarreretaraBideratu('Sarrera ondo eguneratu da!');
     }
 
+    // Borra la entrada.
     /**
      * Sarrera bat ezabatu.
      */
@@ -75,6 +82,7 @@ class SarreraController extends Controller
         return $this->sarreretaraBideratu('Sarrera ondo ezabatu da!');
     }
 
+    // Función de validación reutilizable para crear y editar entradas.
     /**
      * Sarrera baten datuak balidatu (sortzeko eta editatzeko).
      * Editatzean, $sarrera pasatzen da unique arauak bere eserlekua ignora dezan.
@@ -83,6 +91,7 @@ class SarreraController extends Controller
      */
     private function sarreraBalidatu(Request $request, ?Sarrera $sarrera = null): array
     {
+        // Reglas: usuario, evento y butaca tienen que existir, la butaca no puede estar vendida y el precio tiene que ser válido.
         $datuak = $request->validate([
             'id_user' => ['required', 'integer', Rule::exists('users', 'id')],
             'id_ekitaldia' => ['required', 'integer', Rule::exists('ekitaldiak', 'id')],
@@ -96,6 +105,7 @@ class SarreraController extends Controller
                     ->ignore($sarrera),
             ],
             'prezioa' => ['required', 'numeric', 'decimal:0,2', 'min:0', 'max:999999.99'],
+        // Mensajes de error en euskera que verá el admin si algo falla.
         ], [
             'id_user.required' => 'Erabiltzailea aukeratu behar da.',
             'id_user.exists' => 'Aukeratutako erabiltzailea ez da existitzen.',
@@ -115,6 +125,7 @@ class SarreraController extends Controller
         $ekitaldia = Ekitaldia::find($datuak['id_ekitaldia']);
         $eserlekua = Eserlekua::find($datuak['id_eserlekua']);
 
+        // Si la butaca no es de la sala donde se hace el evento, lanzamos un error de validación.
         if ($ekitaldia->id_aretoa !== $eserlekua->id_aretoa) {
             throw ValidationException::withMessages([
                 'id_eserlekua' => 'Eserlekua ez dago ekitaldiaren aretoan.',
@@ -124,6 +135,7 @@ class SarreraController extends Controller
         return $datuak;
     }
 
+    // Prepara las listas para los desplegables del formulario (usuarios, eventos, butacas y butacas ya vendidas).
     /**
      * Sortu eta editatu formularioek behar dituzten zerrendak.
      *
@@ -142,6 +154,7 @@ class SarreraController extends Controller
         ];
     }
 
+    // Redirige al panel del admin, a la pestaña de entradas, mostrando un mensaje de éxito.
     /**
      * Admin dashboard-eko sarreren fitxara bideratu, flash mezu batekin.
      */

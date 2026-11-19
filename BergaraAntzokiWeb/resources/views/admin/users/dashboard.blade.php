@@ -1,3 +1,4 @@
+{{-- Pestaña de usuarios del panel admin: cabecera con la fecha de la última modificación. --}}
 <div class="d-flex justify-content-between align-items-end mb-3 flex-shrink-0">
   <div>
     <h2 class="mb-0">Erabiltzaileak</h2>
@@ -7,6 +8,7 @@
 </div>
 
 <div class="card flex-grow-1 d-flex flex-column" style="min-height:0;">
+  {{-- Título de la tabla y botón para añadir un usuario nuevo. --}}
   <div class="card-body d-flex justify-content-between align-items-center flex-shrink-0">
     <div>
       <h4 class="mb-0">Erabiltzaileen zerrenda</h4>
@@ -17,6 +19,7 @@
       + Erabiltzailea gehitu
     </a>
   </div>
+  {{-- Tabla con todos los usuarios. La cabecera se queda fija (sticky) al hacer scroll. --}}
   <div class="table-responsive overflow-auto flex-grow-1" style="min-height:0;">
     <table class="table table-hover align-middle mb-0">
       <thead class="sticky-top bg-white">
@@ -33,6 +36,7 @@
         </tr>
       </thead>
       <tbody>
+        {{-- Una fila por cada usuario (si no hay ninguno, sale el mensaje de @empty). --}}
         @forelse ($users as $user)
         <tr>
           <td><b>{{ $user->id }}</b></td>
@@ -59,6 +63,7 @@
                   <path d="M12 20h9"></path>
                   <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path>
                 </svg></a>
+              {{-- Botón de borrar: pide confirmación con un confirm() de JavaScript antes de enviar el DELETE. --}}
               <form action="{{ route('admin.user.destroy', $user) }}" method="POST" class="d-inline" onsubmit="return confirm('Ziur zaude «{{ $user->user_izena }}» erabiltzailea ezabatu nahi duzula? Bere sarrera guztiak ere ezabatuko dira.');">
                 @csrf
                 @method('DELETE')

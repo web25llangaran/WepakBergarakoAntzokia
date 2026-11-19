@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Enums\Rola;
 
+// Seeder de entradas: simula ventas aleatorias para que haya butacas ocupadas en cada evento.
 class SarreraSeeder extends Seeder
 {
     /**
@@ -21,6 +22,7 @@ class SarreraSeeder extends Seeder
         $users = User::all();       
         $erabiltzaileak = $users->where('rola', '!=', Rola::Admin->value);
 
+        // Por cada evento, cogemos entre 3 y 10 butacas al azar de su sala y creamos una entrada vendida a un usuario normal aleatorio.
         foreach ($ekitaldiak as $ekitaldia) {
             // Ekitaldiari dagokion eserlekuak lortu:
             $eserlekuak = Eserlekua::where('id_aretoa', $ekitaldia->id_aretoa)->get();

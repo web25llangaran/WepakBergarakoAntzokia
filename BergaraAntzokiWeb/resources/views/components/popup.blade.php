@@ -1,13 +1,16 @@
 {{-- Saioa hasteko eta erregistratzeko popup-a (Bootstrap modal). --}}
 {{-- popup_fitxa eremu ezkutuak adierazten du zein formulario bidali den, erroreekin fitxa zuzena irekitzeko. --}}
 {{-- Saioa hasi edo erregistratu ondoren erabiltzaile arrunta 'hurrengoa' orrira joateko (redirect()->intended-ek irakurtzen du). --}}
+{{-- Parámetro del componente: a qué página ir después de iniciar sesión. Se guarda en la sesión como "url.intended". --}}
 @props(['hurrengoa' => url()->full()])
 @php(session(['url.intended' => $hurrengoa]))
+{{-- Modal de Bootstrap. Si hubo errores al enviar el formulario, lleva data-berriro-ireki para que popup.js lo vuelva a abrir. --}}
 <div class="modal fade popup-saioa" id="popup-saioa" tabindex="-1" aria-labelledby="popup-titulua" aria-hidden="true" @if($errors->any() && old('popup_fitxa')) data-berriro-ireki @endif>
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             {{-- Goiburua --}}
+            {{-- Título del popup (cambia entre "Hasi saioa" y "Sortu zure kontua") y botón X para cerrar. --}}
             <div class="popup-goiburua">
                 <div>
                     <p class="popup-marka">Bergarako Antzoki Web</p>
@@ -19,6 +22,7 @@
             </div>
 
             {{-- Fitxak --}}
+            {{-- Dos pestañas: iniciar sesión y registrarse. Si el error vino del registro, se abre la de registro. --}}
             <ul class="nav nav-tabs nav-fill popup-fitxak">
                 <li class="nav-item">
                     <button type="button" class="nav-link {{ old('popup_fitxa') === 'erregistroa' ? '' : 'active' }}" data-bs-toggle="tab" data-bs-target="#panela-login" data-titulua="Hasi saioa">
@@ -33,6 +37,7 @@
             </ul>
 
             {{-- Balidazio erroreak --}}
+            {{-- Si hay errores de validación, se muestran todos en una alerta roja. --}}
             @if($errors->any() && old('popup_fitxa'))
                 <div class="alert alert-danger popup-alerta" role="alert">
                     @foreach($errors->all() as $errorea)
@@ -41,10 +46,12 @@
                 </div>
             @endif
 
+            {{-- Contenido de las pestañas. --}}
             <div class="tab-content">
 
                 {{-- Saioa hasteko formularioa --}}
                 <div class="tab-pane fade {{ old('popup_fitxa') === 'erregistroa' ? '' : 'show active' }}" id="panela-login">
+                    {{-- Formulario de login: manda email y contraseña a la ruta login de Breeze. --}}
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <input type="hidden" name="popup_fitxa" value="login">
@@ -68,6 +75,7 @@
 
                 {{-- Erregistratzeko formularioa --}}
                 <div class="tab-pane fade {{ old('popup_fitxa') === 'erregistroa' ? 'show active' : '' }}" id="panela-erregistroa">
+                    {{-- Formulario de registro: manda usuario, nombre, apellido, email y contraseña (x2) a la ruta register. --}}
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <input type="hidden" name="popup_fitxa" value="erregistroa">

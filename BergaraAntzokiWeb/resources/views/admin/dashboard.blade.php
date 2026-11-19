@@ -1,4 +1,5 @@
 {{-- DASHBOARD --}}
+{{-- Cálculos para las tarjetas de estadísticas: eventos activos/pasados, usuarios normales, entradas Silver y porcentajes de las barras. --}}
 @php
     // Datak datu-basean ordu lokalean gordetzen dira (app.timezone = UTC), beraz "orain" ordu lokalean hartu.
     $orain = now('Europe/Madrid')->shiftTimezone(config('app.timezone'));
@@ -13,6 +14,7 @@
     $silverEhunekoa = round(count($silverSarrerak) * 100 / max(count($sarrerak), 1));
 @endphp
 <div class="tab-pane fade show active overflow-auto" style="min-height:0;" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab" tabindex="0">
+    {{-- Cabecera del dashboard con título y hora de la última actualización. --}}
     <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
             <h2 class="mb-0">Bergarako Antzoki Web gunerako kudeaketa gunea</h2>
@@ -20,6 +22,7 @@
         </div>
         <small class="text-muted">Azken eguneraketa: gaur, {{ now('Europe/Madrid')->format('H:i') }}</small>
     </div>
+    {{-- Fila de 3 tarjetas de estadísticas (eventos, usuarios y entradas), cada una con su número y barra de progreso. --}}
     <div class="row g-3 mb-4">
         {{-- EKITALDIAK --}}
         <div class="col-md-4">

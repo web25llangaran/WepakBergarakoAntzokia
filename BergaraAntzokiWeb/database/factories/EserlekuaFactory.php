@@ -7,6 +7,7 @@ use App\Models\Eserlekua;
 use App\Models\Aretoa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// Factory de butacas: genera butacas falsas (fila y número aleatorios) para pruebas.
 class EserlekuaFactory extends Factory
 {
 

@@ -13,6 +13,7 @@
 @section('content1')
 
 
+{{-- Cabecera grande con la imagen del evento de fondo, botón de volver, tipo, sala, nombre, etiquetas y descripción. --}}
 <section class="detail-hero"
     style="background-image: linear-gradient(90deg, rgba(20, 18, 20, 0.4) 0%, rgba(20, 18, 20, 0.7) 53%, rgba(20, 18, 20, 0.15)), url('{{ $ekitaldia->irudia}}');">
     <a href="{{ route('welcome') }}" class="back-link">← Ekitaldietara itzuli</a>
@@ -27,7 +28,9 @@
 </section>
 
 
+{{-- Cuerpo de la página: a la izquierda info del espectáculo y a la derecha la tarjeta de compra. --}}
 <main class="detail-layout">
+    {{-- Información sobre el espectáculo (texto, cita y reparto). --}}
     <article class="detail-content"><span class="eyebrow">Ikuskizunari buruz</span>
         <h2>Tradizioa gorputz garaikidean</h2>
         <p>Erritual zaharren oihartzuna, herri-dantzen keinuak eta mugimendu garaikidea eszenan elkartzen dira.
@@ -40,6 +43,7 @@
             <div><span>Jantzigintza</span><strong>Iraia Oiartzabal</strong></div>
         </div>
     </article>
+    {{-- Tarjeta de compra: fecha/hora del evento, precio mínimo y botón para elegir butacas. --}}
     <aside class="purchase-card"><span class="eyebrow">Sarrerak</span>
         <h3>Aukeratu zure saioa</h3><label class="field"><span>Aukeratu data / ordua</span><select>
                 <option>{{ $ekitaldia->data->format('Y/m/d · H:i') }}</option>

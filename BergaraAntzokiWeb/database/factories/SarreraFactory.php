@@ -9,6 +9,7 @@ use App\Models\Sarrera;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// Factory de entradas: genera entradas falsas (crea también su evento, butaca y usuario) con un precio aleatorio.
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sarrera>
  */

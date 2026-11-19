@@ -5,6 +5,7 @@
    hemen Figma-ren diseinuko xehetasunak bakarrik daude.
    ========================================================== */
 
+/* Variables de color de la página de confirmación. */
 :root {
     --primary: #7a1c2c;
     --primary-dark: #5f1321;
@@ -32,6 +33,7 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 }
 
+/* Círculo verde con el icono de check. */
 .check-circle {
     width: 90px;
     height: 90px;
@@ -44,6 +46,7 @@
     margin-bottom: 32px;
 }
 
+/* Textos de la tarjeta: rótulo pequeño, título y subtítulo. */
 .berrespena-card .eyebrow {
     display: block;
     color: var(--primary);
@@ -150,6 +153,7 @@
     font-size: 12px;
 }
 
+/* Responsive: en móvil se reduce el espacio interior de la tarjeta. */
 @media (max-width: 575.98px) {
     .berrespena-card {
         padding: 40px 20px 32px;

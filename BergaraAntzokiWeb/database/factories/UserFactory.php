@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+// Factory de usuarios: genera usuarios falsos adaptados a nuestra tabla (contraseña por defecto 12345678).
 /**
  * @extends Factory<User>
  */
@@ -42,6 +43,7 @@ class UserFactory extends Factory
         ];
     }
 
+    // Estado opcional: crea el usuario con el email sin verificar.
     /**
      * Indicate that the model's email address should be unverified.
      */

@@ -13,13 +13,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 //Breeze-k sortu dauena komentau eta taula egokirako modeloa sortu:
 // #[Fillable(['name', 'email', 'password'])]
+// Campos rellenables del usuario (adaptados a nuestra tabla) y campos ocultos (contraseña y token nunca se muestran).
 #[Fillable(['user_izena', 'email', 'password', 'alta_data', 'baja_data', 'izena', 'abizena', 'rola', 'nan'])]
 #[Hidden(['password', 'remember_token'])]
+// Modelo de la tabla "users": los usuarios que inician sesión en la web (admin o normales).
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    // Casts: convierte automáticamente los datos (fechas a objeto fecha y la contraseña se guarda cifrada).
     /**
      * Get the attributes that should be cast.
      *
